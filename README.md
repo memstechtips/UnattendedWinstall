@@ -42,7 +42,7 @@ This version is the most debloated of all and removes almost every Windows packa
 Also, because there is no browser preinstalled, I also include a Powershell Script on the Desktop called "LAUNCH-CTT-WINUTIL.ps1" - Make sure you are connected to the internet, then right click on this file and select Run with Powershell. 
 It will launch the Chris Titus Tech Windows Utility and you can use that to install your browser of choice and any other software for that matter. 
 
-### Memories
+### Memory's
 This is the version I personally use. It doesn’t remove all of the Windows packages like in the Main version; some of them are kept, like Notepad, Calculator, Snipping Tool, etc. 
 Microsoft Edge and the Microsoft Store are still removed because I don’t use them. Windows Security is included as I don’t recommend removing it and probably never will.
 Also, because there is no browser preinstalled, I also include a Powershell Script on the Desktop called "LAUNCH-CTT-WINUTIL.ps1" - Make sure you are connected to the internet, then right click on this file and select Run with Powershell. 
