@@ -34,19 +34,21 @@ Additionally, you can also add more tweaks or customizations, but only do this i
 ## Choosing an Answer File
 It’s impossible for me to create a single answer file that will be perfect and please everybody, so I have a few versions you can choose from to get you started.
 
-### LTSC-like
-This version is the closest to the LTSC version of Windows in terms of what you get from the Windows experience. Obviously, it doesn’t have extended security updates like LTSC, but all of the bloat that’s been removed resembles that of the LTSC versions. It still includes Microsoft Edge and a few pre-installed apps that are included in the LTSC versions.
+### Thick
+This version is close to a stock Windows install and includes Microsoft Edge, the Microsoft Store and various useful preinstalled Windows apps. (Notepad, Paint, Calculator etc.)
+Privacy, performance and some personlization tweaks are included.
 
-### Main
+### Thin
 This version is the most debloated of all and removes almost every Windows package, including the removal of Microsoft Edge and the Microsoft Store. Windows Security is still included as I don’t recommend removing it and probably never will.
 Also, because there is no browser preinstalled, I also include a Powershell Script on the Desktop called "LAUNCH-CTT-WINUTIL.ps1" - Make sure you are connected to the internet, then right click on this file and select Run with Powershell. 
-It will launch the Chris Titus Tech Windows Utility and you can use that to install your browser of choice and any other software for that matter. 
+It will launch the Chris Titus Tech Windows Utility and you can use that to install your browser of choice (even Edge) and any other software for that matter. 
 
 ### Memory's
-This is the version I personally use. It doesn’t remove all of the Windows packages like in the Main version; some of them are kept, like Notepad, Calculator, Snipping Tool, etc. 
+This is the version I personally use and includes a lot of personalization tweaks like Dark Mode, Small and Transparent Taskbar on Windows 10 etc.
+It doesn’t remove all of the Windows packages like in the Thin version; some of the ones I use are kept, like Notepad, Calculator, Snipping Tool, etc. 
 Microsoft Edge and the Microsoft Store are still removed because I don’t use them. Windows Security is included as I don’t recommend removing it and probably never will.
 Also, because there is no browser preinstalled, I also include a Powershell Script on the Desktop called "LAUNCH-CTT-WINUTIL.ps1" - Make sure you are connected to the internet, then right click on this file and select Run with Powershell. 
-It will launch the Chris Titus Tech Windows Utility and you can use that to install your browser of choice and any other software for that matter. 
+It will launch the Chris Titus Tech Windows Utility and you can use that to install your browser of choice (even Edge) and any other software for that matter. 
 
 ## Usage Instructions
 In short, you need to include the autounattended.xml answer file on your Windows Installation Media so it can be read and executed during the Windows Setup. Here are a few ways to do it.
