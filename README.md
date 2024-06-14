@@ -7,7 +7,7 @@ If you’ve ever used Rufus to create Windows installation media, and you saw op
 
 More info on Answer files can be found here: [Microsoft Docs on Answer Files](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/update-windows-settings-and-scripts-create-your-own-answer-file-sxs?view=windows-11)
 
-I have created a few of these answer files that I use to automate and streamline my Windows installs, and that’s what I’m sharing here with you. These answer files work on both Windows 10 and Windows 11, and I’ve tested them on Windows 10 22H2 and Windows 11 23H2 without any issues.
+I have created a few of these answer files that I use to automate and streamline my Windows installs, and that’s what I’m sharing here with you. These answer files work on both Windows 10 and Windows 11, and I’ve tested them on the Pro versions of Windows 10 22H2 and Windows 11 23H2 without any issues.
 
 My motivation for this project is to get an “LTSC-like” or even better experience on the Pro and Home versions of Windows 10 and 11 without having to run a bunch of programs and scripts every time I do a fresh install of Windows. It’s already automated for me and saves me a ton of time.
 
