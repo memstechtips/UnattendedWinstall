@@ -89,17 +89,17 @@ In short, you need to include the [autounattended.xml](https://github.com/memste
 ### Method 1: Create Bootable Windows Installation Media
 1. Download the [autounattended.xml](https://github.com/memstechtips/UnattendedWinstall/blob/main/autounattend.xml) file and save it on your computer.
 2. Create a Windows 10 or 11 Bootable Installation USB drive with the Media Creation Tool or Rufus, for example. (When using Rufus, don’t select any of the checkboxes in “Customize Your Windows Experience” as it creates another answer file, we don't want that.)
-   - Windows 10: [Download Windows 10](https://www.microsoft.com/en-us/software-download/windows10)
-   - Windows 11: [Download Windows 11](https://www.microsoft.com/en-us/software-download/windows11)
-   - Rufus: [Rufus](https://rufus.ie/en/)
+   - [Download Windows 10](https://www.microsoft.com/en-us/software-download/windows10)
+   - [Download Windows 11](https://www.microsoft.com/en-us/software-download/windows11)
+   - [Rufus](https://rufus.ie/en/)
 3. Copy the autounattended.xml file you downloaded in Step 1 to the root of the Bootable Windows Installation USB you created in Step 2.
 4. Boot from the Windows Installation USB, do a clean install of Windows as normal, and the scripts will run automatically.
 
 ### Method 2: Create Custom ISO File
 1. Download the [autounattended.xml](https://github.com/memstechtips/UnattendedWinstall/blob/main/autounattend.xml) file and save it on your computer.
 2. Download the Windows 10 or Windows 11 ISO file depending on the version you want.
-   - Windows 10: [Download Windows 10](https://www.microsoft.com/en-us/software-download/windows10)
-   - Windows 11: [Download Windows 11](https://www.microsoft.com/en-us/software-download/windows11)
+   - [Download Windows 10](https://www.microsoft.com/en-us/software-download/windows10)
+   - [Download Windows 11](https://www.microsoft.com/en-us/software-download/windows11)
 3. Download and Install AnyBurn: [AnyBurn](https://anyburn.com/download.php)
    - In AnyBurn, select the “Edit Image File” option.
    - Navigate to and select the Official Windows ISO file you downloaded in Step 2.
@@ -107,8 +107,8 @@ In short, you need to include the [autounattended.xml](https://github.com/memste
    - Click on “Next,” then on “Create Now.” You should be prompted to overwrite the ISO file, click on “Yes.”
    - Once the process is complete, close AnyBurn.
 4. Use this ISO file to Install Windows on a Virtual Machine OR use a program like Rufus or Ventoy to create a bootable USB flash drive with the edited Windows ISO file. (When using Rufus, don’t select any of the checkboxes in “Customize Your Windows Experience” as it creates another answer file, we don't want that.)
-   - Rufus: [Rufus](https://rufus.ie/en/)
-   - Ventoy: [Ventoy](https://www.ventoy.net/)
+   - [Rufus](https://rufus.ie/en/)
+   - [Ventoy](https://www.ventoy.net/)
 5. Boot from the Windows Installation USB, do a clean install of Windows as normal, and the scripts will run automatically.
 
 ## Conclusion
