@@ -1,4 +1,4 @@
-# Memory’s Tech Tips’ Unattended Windows Installation Script
+# Memory’s Tech Tips’ Unattended Windows Installation
 
 ## Overview
 Microsoft allows you to add Answer Files (or Unattend files) to Windows ISO files, which can be used to modify Windows settings in the Windows Image (ISO) during the Windows Setup process.
