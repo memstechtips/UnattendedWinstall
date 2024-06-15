@@ -21,7 +21,7 @@ In my opinion, the best thing about an answer file is that it’s very safe.
 
 
 ## What does Memory's UnattendedWinstall answer file do?
-I've taken the time to add descriptions to almost all of the tweaks in the answer file, and you can inspect it right here on GitHub.
+I've taken the time to add descriptions to almost all of the tweaks in the [autounattended.xml](https://github.com/memstechtips/UnattendedWinstall/blob/main/autounattend.xml) answer file, and you can inspect it right here on GitHub.
 
 Alternatively, you can download the file and use any one of the following programs to open it, inspect it and make changes to it if needed.  
   - [Cursor](https://www.cursor.com/) (my favorite) 
