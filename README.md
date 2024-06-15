@@ -64,8 +64,10 @@ Alternatively, you can download the file and use any one of the following progra
   - Aligns the Start Button in Windows 11 to the left by default.
  
 In addition to the tweaks I added to the answer file, it also contains elements and scripts from the following sources:
-- Base Answer File generation: [Schneegans Unattend Generator](https://schneegans.de/windows/unattend-generator/)
-- Windows Tweaks & Optimizations: [ChrisTitusTech WinUtil](https://github.com/ChrisTitusTech/winutil)
+- Base Answer File generation:
+  - [Schneegans Unattend Generator](https://schneegans.de/windows/unattend-generator/)
+- Windows Tweaks & Optimizations:
+  - [ChrisTitusTech WinUtil](https://github.com/ChrisTitusTech/winutil)
 - Various Tweaks:
   - [Tiny11Builder](https://github.com/ntdevlabs/tiny11builder)
   - [Ten Forums](https://www.tenforums.com/)
