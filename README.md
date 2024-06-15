@@ -76,7 +76,7 @@ In addition to the tweaks I added to the answer file, it also contains elements 
 
 It would be impossible for me to create a single answer file that will please everyone, so instead I'm supplying you with one that basically removes everything (except Windows Security) and is "over-tweaked" if you will, so you can just edit the file and remove the tweaks you don't want.
 
-Additionally, you can also add more tweaks or customizations if you have the know-how, but I will not provide any form of support for any changes you make to the file.
+Additionally, you can also add more tweaks or customizations if you have the know-how, but please note that I will not provide any form of support for any changes you make to the file.
 
 ### Note:
 Due to the removal of Microsoft Edge, I also include a Powershell Script on the Desktop called "LAUNCH-CTT-WINUTIL.ps1" 
