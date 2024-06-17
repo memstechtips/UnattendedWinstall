@@ -86,7 +86,7 @@ Due to the removal of Microsoft Edge, I also include a Powershell Script on the 
 ## Usage Instructions
 In short, you need to include the [autounattended.xml](https://github.com/memstechtips/UnattendedWinstall/blob/main/autounattend.xml) answer file on your Windows Installation Media so it can be read and executed during the Windows Setup. Here are a few ways to do it:
 
-*If these instructions are unclear, maybe [this video]() will help.*
+*If these instructions are unclear, maybe [this video](https://youtu.be/JUTdRZNqODY) will help.*
 
 ### Method 1: Create Bootable Windows Installation Media
 1. Download the [autounattended.xml](https://github.com/memstechtips/UnattendedWinstall/blob/main/autounattend.xml) file and save it on your computer.
