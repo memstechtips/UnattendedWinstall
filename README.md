@@ -1,6 +1,7 @@
 # Memory’s Tech Tips’ Unattended Windows Installation
 
 ## Overview
+
 Microsoft allows you to add Answer Files (or Unattend files) to Windows ISO files, which can be used to modify Windows settings in the Windows Image (ISO) during the Windows Setup process.
 
 If you’ve ever used Rufus to create Windows installation media, and you saw options like “Remove Windows 11 Hardware Requirements” and “Disable Privacy Questions,” they achieve that by including an Answer file in the installation media.
@@ -14,21 +15,25 @@ My motivation for this project is to get an “LTSC-like” or even better exper
 The answer file also automates many parts of the Windows setup and saves me a ton of time because I don't have to run a bunch of programs and scripts every time I do a fresh install of Windows, it's already debloated and customized with my preferred settings.
 
 ## Why should I use an answer file?
+
 In my opinion, the best thing about an answer file is that it’s very safe.
+
 1. You can see every single change it will make to the Windows Image by inspecting the answer file.
 2. You insert it on the Official Windows 10 or 11 ISO directly from Microsoft, no need to download ISO files from Unofficial sources.
 3. It's not dependent on any third party tools and is an Official Microsoft Feature used to make Mass Windows Deployments easier.
 
-
 ## What does Memory's UnattendedWinstall answer file do?
+
 I've taken the time to add descriptions to almost all of the tweaks in the [autounattended.xml](https://github.com/memstechtips/UnattendedWinstall/blob/main/autounattend.xml) answer file, and you can inspect it right here on GitHub.
 
 Alternatively, you can download the file and use any one of the following programs to open it, inspect it and make changes to it if needed.  
-  - [Cursor](https://www.cursor.com/) (my favorite) 
-  - [VSCode](https://code.visualstudio.com/)
-  - [Notepad++](https://notepad-plus-plus.org/downloads/)
+
+- [Cursor](https://www.cursor.com/) (my favorite)
+- [VSCode](https://code.visualstudio.com/)
+- [Notepad++](https://notepad-plus-plus.org/downloads/)
   
-### But in short it does the following:
+### But in short it does the following
+
 - **Bypasses Windows 11 System Requirements**:
   - Adds registry entries to bypass TPM, Secure Boot, Storage, CPU, RAM, and Disk checks.
 
@@ -62,8 +67,9 @@ Alternatively, you can download the file and use any one of the following progra
   - Disables various scheduled tasks related to telemetry and diagnostics.
   - Enables Dark Mode by default.
   - Aligns the Start Button in Windows 11 to the left by default.
- 
+
 In addition to the tweaks I added to the answer file, it also contains elements and scripts from the following sources:
+
 - Base Answer File generation:
   - [Schneegans Unattend Generator](https://schneegans.de/windows/unattend-generator/)
 - Windows Tweaks & Optimizations:
@@ -78,17 +84,20 @@ It would be impossible for me to create a single answer file that will please ev
 
 Additionally, you can also add more tweaks or customizations if you have the know-how, but please note that I will not provide any form of support for any changes you make to the file.
 
-### Note:
-Due to the removal of Microsoft Edge, I also include a Powershell Script on the Desktop called "LAUNCH-CTT-WINUTIL.ps1" 
-  - Make sure you are connected to the internet, then right click on this file and select Run with Powershell. 
-  - It will launch the Chris Titus Tech Windows Utility and you can use that to install your browser of choice (even Edge) and any other software for that matter. 
+> [!NOTE]
+> Due to the removal of Microsoft Edge, I also include a Powershell Script on the Desktop called "LAUNCH-CTT-WINUTIL.ps1"
+
+- Make sure you are connected to the internet, then right click on this file and select Run with Powershell.
+- It will launch the Chris Titus Tech Windows Utility and you can use that to install your browser of choice (even Edge) and any other software for that matter.
 
 ## Usage Instructions
+
 In short, you need to include the [autounattended.xml](https://github.com/memstechtips/UnattendedWinstall/blob/main/autounattend.xml) answer file on your Windows Installation Media so it can be read and executed during the Windows Setup. Here are a few ways to do it:
 
 *If these instructions are unclear, maybe [this video](https://youtu.be/JUTdRZNqODY) will help.*
 
-### Method 1: Create Bootable Windows Installation Media
+### Method 1: Create a Bootable Windows Installation Media
+
 1. Download the [autounattended.xml](https://github.com/memstechtips/UnattendedWinstall/blob/main/autounattend.xml) file and save it on your computer.
 2. Create a Windows 10 or 11 Bootable Installation USB drive with the Media Creation Tool or Rufus, for example. (When using Rufus, don’t select any of the checkboxes in “Customize Your Windows Experience” as it creates another answer file, we don't want that.)
    - [Download Windows 10](https://www.microsoft.com/en-us/software-download/windows10)
@@ -97,7 +106,8 @@ In short, you need to include the [autounattended.xml](https://github.com/memste
 3. Copy the autounattended.xml file you downloaded in Step 1 to the root of the Bootable Windows Installation USB you created in Step 2.
 4. Boot from the Windows Installation USB, do a clean install of Windows as normal, and the scripts will run automatically.
 
-### Method 2: Create Custom ISO File
+### Method 2: Create a Custom ISO File
+
 1. Download the [autounattended.xml](https://github.com/memstechtips/UnattendedWinstall/blob/main/autounattend.xml) file and save it on your computer.
 2. Download the Windows 10 or Windows 11 ISO file depending on the version you want.
    - [Download Windows 10](https://www.microsoft.com/en-us/software-download/windows10)
@@ -114,6 +124,7 @@ In short, you need to include the [autounattended.xml](https://github.com/memste
 5. Boot from the Windows Installation USB, do a clean install of Windows as normal, and the scripts will run automatically.
 
 ## Conclusion
-I hope this Unattended Windows Answer file helps streamline the Windows installation process as much as it has for me. Feel free to leave Your feedback and suggestions as they are always welcome! Also, if you find these scripts useful, consider giving this repository a star ⭐ on GitHub. 
+
+I hope this Unattended Windows Answer file helps streamline the Windows installation process as much as it has for me. Feel free to leave Your feedback and suggestions as they are always welcome! Also, if you find these scripts useful, consider giving this repository a star ⭐ on GitHub.
 
 Happy installing!
