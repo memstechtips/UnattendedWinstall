@@ -1,3 +1,10 @@
+# Updates 20 June 2024
+
+Removed the following entry as it causes the legacy language bar to  be displayed on the lock screen.
+
+Hides the Language Switcher on the Taskbar
+Set-WinLanguageBarOption -UseLegacyLanguageBar
+
 # Initial Release 15 June 2024
 ### Removed Preinstalled Bloatware Apps (remove-packages.ps1)
 The following preinstalled bloatware apps are removed during the Windows installation process:
