@@ -1,5 +1,12 @@
-# Updates 20 June 2024
+# Updates
+## 21/6/2024
+Removed the following entry as it removes the ability for the user to set a custom picture on the sign-in/lock screen and that wasn't my original purpose.
 
+*Disables the lock screen*
+
+*reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization" /v NoLockScreen /t REG_DWORD /d 1 /f*
+
+## 20/6/2024
 Removed the following entry as it causes the legacy language bar to  be displayed on the lock screen.
 
 *Hides the Language Switcher on the Taskbar*
