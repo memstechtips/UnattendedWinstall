@@ -1,20 +1,31 @@
 # Updates
+
 ## 21/6/2024
-Removed the following entry as it removes the ability for the user to set a custom picture on the sign-in/lock screen and that wasn't my original purpose.
 
-*Disables the lock screen*
+- Added an option for the user to disable or enable Core Isolation & Memory Integration [^1] [^2]
+  - These are enabled by default unless you just upgrade from Windows 10 [^3]
+  - Run the `disableCoreIso-MemoryInteg.reg` or `enableCoreIso-MemoryInteg.reg` from desktop yourself
 
-*reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization" /v NoLockScreen /t REG_DWORD /d 1 /f*
+- Removed the following entry as it removes the ability for the user to set a custom picture on the sign-in/lock screen and that wasn't my original purpose.
+
+  ```shell
+  :: Disables the lock screen
+  reg.exe "HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Personalization" /v NoLockScreen /t REG_DWORD /d 1 /f
+  ```
 
 ## 20/6/2024
-Removed the following entry as it causes the legacy language bar to  be displayed on the lock screen.
 
-*Hides the Language Switcher on the Taskbar*
+- Removed the following entry as it causes the legacy language bar to  be displayed on the lock screen.
 
-*Set-WinLanguageBarOption -UseLegacyLanguageBar*
+  ```shell
+  :: Hides the Language Switcher on the Taskbar
+  Set-WinLanguageBarOption -UseLegacyLanguageBar
+  ```
 
-# Initial Release 15 June 2024
+## Initial Release 15 June 2024
+
 ### Removed Preinstalled Bloatware Apps (remove-packages.ps1)
+
 The following preinstalled bloatware apps are removed during the Windows installation process:
 
 | Package Name                                      | Name in Windows                               |
@@ -73,6 +84,7 @@ The following preinstalled bloatware apps are removed during the Windows install
 | `Microsoft.WindowsStore`                          | Microsoft Store                               |
 
 ### Removed Legacy Apps (remove-caps.ps1 & remove-features.ps1)
+
 | Package Name                        | Name in Windows                   |
 |-------------------------------------|-----------------------------------|
 | Browser.InternetExplorer            | Internet Explorer                 |
@@ -88,6 +100,7 @@ The following preinstalled bloatware apps are removed during the Windows install
 | Microsoft-SnippingTool              | Snipping Tool                     |
 
 ### Registry Entries on Local Machine (localmachine.cmd)
+
 - Bypasses Microsoft Account Creation
 - Disables User Account Control
 - Disables the lock screen
@@ -146,6 +159,7 @@ The following preinstalled bloatware apps are removed during the Windows install
 - Deleting QueueReporting
 
 ### Registry Entries for Default User and Current User (defaultuser.cmd & currentuser.cmd)
+
 - Disabling the Delivery of Personalized or Suggested Content Like App Suggestions, Tips, and Advertisements in Windows
 - Removes Copilot
 - Removes Store Banner in Notepad
@@ -197,6 +211,7 @@ The following preinstalled bloatware apps are removed during the Windows install
 - Don't Update Last Access Time Stamp - This Can Improve File System Performance
 
 ### Various Windows Tweaks (wintweaks.ps1)
+
 - Creates Desktop Shortcut for the Chris Titus Windows Utility So You Can Easily Launch it to Install Programs
 - Hides the Language Switcher on the Taskbar
 - Configure Maximum Password Age in Windows
@@ -344,4 +359,8 @@ The following preinstalled bloatware apps are removed during the Windows install
   - Cbdhsvc_*
   - Cloudidsvc
 
-# END
+## END
+
+[^1]:[AtlasOS Documentation](https://docs.atlasos.net/getting-started/post-installation/atlas-folder/security/#__tabbed_1_1)
+[^2]:[Benchmarked: Do Windows 11’s Security Features Really Hobble Gaming Performance? (tomshardware)](https://www.tomshardware.com/news/windows-11-gaming-benchmarks-performance-vbs-hvci-security)
+[^3]:[Why is Memory Integrity disabled by Default in Windows 11 upon Upgrade?](https://techdirectarchive.com/2022/12/15/core-isolation-enable-or-disable-core-isolation-memory-integrity-in-windows-10-and-windows-11/#h-why-is-memory-integrity-disabled-by-default-in-windows-11-upon-upgrade)
