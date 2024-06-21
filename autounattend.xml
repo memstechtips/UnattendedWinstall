@@ -453,6 +453,32 @@ Invoke-Expression $icaclsCommand | Out-Null
 # Disable Defender Auto Sample Submission
 Set-MpPreference -SubmitSamplesConsent 2 -ErrorAction Continue | Out-Null
 
+# (Optional) Disable Core Isolation & Memory Integrity (run the .reg from desktop yourself)
+$regDisable = @"
+Windows Registry Editor Version 5.00
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\DeviceGuard]
+"LsaCfgFlags"=dword:00000000
+
+[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity]
+"Enabled"=dword:00000000
+"@
+
+# (Optional) Enable Core Isolation & Memory Integrity (run the .reg from desktop yourself)
+$regEnable = @"
+Windows Registry Editor Version 5.00
+
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\DeviceGuard]
+
+[-HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\DeviceGuard\Scenarios\HypervisorEnforcedCodeIntegrity]
+"@
+
+$regFilePath = "$env:userprofile\Desktop\disableCoreIso-MemoryInteg.reg"
+Set-Content -Path $regFilePath -Value $regDisable -Force
+
+$regFilePath = "$env:userprofile\Desktop\enableCoreIso-MemoryInteg.reg"
+Set-Content -Path $regFilePath -Value $regEnable -Force
+
 # Removes Microsoft Edge
 foreach ($line in $lines) {
     if ($line -like '*Architecture : *') {
