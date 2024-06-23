@@ -3,6 +3,12 @@
 Reorder Runsynchronous commands in the specialize phase to load Default User Registry hive earlier.
    
 Restore and Set Windows Photo Viewer as default image viewer.
+
+Updated following description:
+```
+:: Controls whether the memory page file is cleared at shutdown. Value 0 means it will not be cleared, speeding up shutdown. 
+reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management" /v ClearPageFileAtShutdown /t REG_DWORD /d 0 /f
+```
    
 ## 21/6/2024
 Removed the following entry as it removes the ability for the user to set a custom picture on the sign-in/lock screen and that wasn't my original purpose.
