@@ -1,4 +1,9 @@
 # Updates
+## 23/6/2024
+Reorder Runsynchronous commands in the specialize phase to load Default User Registry hive earlier.
+   
+Restore and Set Windows Photo Viewer as default image viewer.
+   
 ## 21/6/2024
 Removed the following entry as it removes the ability for the user to set a custom picture on the sign-in/lock screen and that wasn't my original purpose.
 
