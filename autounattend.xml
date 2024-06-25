@@ -6,6 +6,15 @@
 <!--Credit to Chris Titus Tech as this file contains Tweaks from The Windows Utility https://github.com/ChrisTitusTech/winutil | https://christitus.com/windows-tool/ | https://www.youtube.com/@ChrisTitusTech/ -->
 	<settings pass="offlineServicing"></settings>
 	<settings pass="windowsPE">
+		<component name="Microsoft-Windows-International-Core-WinPE" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<SetupUILanguage>
+				<UILanguage>en-US</UILanguage>
+			</SetupUILanguage>
+			<InputLocale>0409:00000409</InputLocale>
+			<SystemLocale>cs-CZ</SystemLocale>
+			<UILanguage>en-US</UILanguage>
+			<UserLocale>cs-CZ</UserLocale>
+		</component>
 		<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 			<UserData>
 				<ProductKey>
@@ -90,18 +99,16 @@
 					<Order>9</Order>
           				<Description>Registry Entry to Execute the HKU\DefaultUser Registry Entries Script</Description>
 					<Path>cmd.exe /c "C:\Windows\Setup\Scripts\defaultuser.cmd &gt;&gt;"C:\Windows\Setup\Scripts\defaultuser.log" 2&gt;&amp;1"</Path>
-				</RunSynchronousCommand>
-				<RunSynchronousCommand wcm:action="add">
-					<Order>10</Order>
-          				<Description>Executes the EdgeRemoval batch file</Description>
-					<Path>cmd.exe /c "C:\Windows\Setup\Scripts\edgeremoval.bat &gt;&gt;"C:\Windows\Setup\Scripts\edgeremoval.log" 2&gt;&amp;1"</Path>
-				</RunSynchronousCommand>     
+				</RunSynchronousCommand> 
           			<RunSynchronousCommand wcm:action="add">
-					<Order>11</Order>
+					<Order>10</Order>
           				<Description>Unloads the Default User Registry Hive</Description>
 					<Path>reg.exe unload "HKU\DefaultUser"</Path>
 				</RunSynchronousCommand>          
 			</RunSynchronous>
+		</component>
+    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<TimeZone>Central Europe Standard Time</TimeZone>
 		</component>
 	</settings>
 	<settings pass="auditSystem"></settings>
@@ -149,7 +156,7 @@ Get-AppxProvisionedPackage -Online |
 Where-Object -Property 'DisplayName' -In -Value @(
   'Microsoft.Microsoft3DViewer';
   'Microsoft.BingSearch';
-  'Microsoft.WindowsCalculator';
+  #'Microsoft.WindowsCalculator';
   'Microsoft.WindowsCamera';
   'Clipchamp.Clipchamp';
   'Microsoft.WindowsAlarms';
@@ -162,12 +169,12 @@ Where-Object -Property 'DisplayName' -In -Value @(
   'Microsoft.WindowsMaps';
   'Microsoft.ZuneVideo';
   'Microsoft.BingNews';
-  'Microsoft.WindowsNotepad';
+  #'Microsoft.WindowsNotepad';
   'Microsoft.MicrosoftOfficeHub';
   'Microsoft.Office.OneNote';
   'Microsoft.OutlookForWindows';
-  'Microsoft.Paint';
-  'Microsoft.MSPaint';
+  #'Microsoft.Paint';
+  #'Microsoft.MSPaint';
   'Microsoft.People';
   'Microsoft.Windows.Photos';
   'Microsoft.PowerAutomateDesktop';
@@ -182,7 +189,7 @@ Where-Object -Property 'DisplayName' -In -Value @(
   'Microsoft.WindowsSoundRecorder';
   'Microsoft.BingWeather';
   'Microsoft.ZuneMusic';
-  'Microsoft.WindowsTerminal';
+  #'Microsoft.WindowsTerminal';
   'Microsoft.Xbox.TCUI';
   'Microsoft.XboxApp';
   'Microsoft.XboxGameOverlay';
@@ -190,20 +197,20 @@ Where-Object -Property 'DisplayName' -In -Value @(
   'Microsoft.XboxIdentityProvider';
   'Microsoft.XboxSpeechToTextOverlay';
   'Microsoft.GamingApp';
-  'Microsoft.YourPhone';
-  'Microsoft.MicrosoftEdge';
-  'Microsoft.MicrosoftEdge.Stable';
-  'Microsoft.MicrosoftEdge_8wekyb3d8bbwe';
-  'Microsoft.MicrosoftEdgeDevToolsClient_8wekyb3d8bbwe';
-  'Microsoft.MicrosoftEdgeDevToolsClient_1000.19041.1023.0_neutral_neutral_8wekyb3d8bbwe';
-  'Microsoft.MicrosoftEdge_44.19041.1266.0_neutral__8wekyb3d8bbwe';
+  #'Microsoft.YourPhone';
+  #'Microsoft.MicrosoftEdge';
+  #'Microsoft.MicrosoftEdge.Stable';
+  #'Microsoft.MicrosoftEdge_8wekyb3d8bbwe';
+  #'Microsoft.MicrosoftEdgeDevToolsClient_8wekyb3d8bbwe';
+  #'Microsoft.MicrosoftEdgeDevToolsClient_1000.19041.1023.0_neutral_neutral_8wekyb3d8bbwe';
+  #'Microsoft.MicrosoftEdge_44.19041.1266.0_neutral__8wekyb3d8bbwe';
   'Microsoft.OneDrive';
-  'Microsoft.MicrosoftEdgeDevToolsClient';
+  #'Microsoft.MicrosoftEdgeDevToolsClient';
   'Microsoft.549981C3F5F10';
   'Microsoft.MixedReality.Portal';
   'Microsoft.Windows.Ai.Copilot.Provider';
   'Microsoft.WindowsMeetNow';
-  'Microsoft.WindowsStore';
+  #'Microsoft.WindowsStore';
 ) | Remove-AppxProvisionedPackage -AllUsers -Online *&gt;&amp;1 &gt;&gt; "$env:TEMP\remove-packages.log";
 		</File>
 		
@@ -214,10 +221,10 @@ Where-Object -FilterScript {
   ($_.Name -split '~')[0] -in @(
     'Browser.InternetExplorer';
     'MathRecognizer';
-    'Microsoft.Windows.Notepad';
+    #'Microsoft.Windows.Notepad';
     'OpenSSH.Client';
-    'Microsoft.Windows.MSPaint';
-    'Microsoft.Windows.PowerShell.ISE';
+    #'Microsoft.Windows.MSPaint';
+    #'Microsoft.Windows.PowerShell.ISE';
     'App.Support.QuickAssist';
     'App.StepsRecorder';
     'Media.WindowsMediaPlayer';
@@ -240,7 +247,7 @@ Where-Object -Property 'FeatureName' -In -Value @(
 reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE" /v BypassNRO /t REG_DWORD /d 1 /f
 
 :: Disables User Account Control
-reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v EnableLUA /t REG_DWORD /d 0 /f
+::reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v EnableLUA /t REG_DWORD /d 0 /f
 
 :: Disable Windows Spotlight and set the normal Windows Picture as the desktop background
 :: Disable Windows Spotlight on the lock screen
@@ -290,11 +297,11 @@ reg.exe add "HKLM\SYSTEM\CurrentControlSet\Control\BitLocker" /v "PreventDeviceE
 reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\EnhancedStorageDevices" /v TCGSecurityActivationDisabled /t REG_DWORD /d 1 /f
 
 :: Sets Windows Update to Only Install Security Updates and Delay Other Updates for 2 Years
-reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v AUOptions /t REG_DWORD /d 3 /f
-reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v DeferFeatureUpdates /t REG_DWORD /d 1 /f
-reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v DeferFeatureUpdatesPeriodInDays /t REG_DWORD /d 730 /f
-reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v DeferQualityUpdates /t REG_DWORD /d 1 /f
-reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v DeferQualityUpdatesPeriodInDays /t REG_DWORD /d 730 /f
+::reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v AUOptions /t REG_DWORD /d 3 /f
+::reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v DeferFeatureUpdates /t REG_DWORD /d 1 /f
+::reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v DeferFeatureUpdatesPeriodInDays /t REG_DWORD /d 730 /f
+::reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v DeferQualityUpdates /t REG_DWORD /d 1 /f
+::reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v DeferQualityUpdatesPeriodInDays /t REG_DWORD /d 730 /f
 
 :: Disables Cortana
 reg.exe add "HKLM\Software\Policies\Microsoft\Windows\Windows Search" /v AllowCortana /t REG_DWORD /d 0 /f
@@ -400,14 +407,14 @@ reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableC
 reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\CloudContent" /v "DisableCloudOptimizedContent" /t REG_DWORD /d 1 /f
 
 :: Deletes Microsoft Edge Registry Entries
-reg.exe delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge" /f
-reg.exe delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update" /f
-reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\Applications\Microsoft.MicrosoftEdge.Stable_124.0.2478.105_neutral__8wekyb3d8bbwe" /f
-reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\InboxApplications\Microsoft.MicrosoftEdge_44.19041.1266.0_neutral__8wekyb3d8bbwe" /f
-reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\InboxApplications\Microsoft.MicrosoftEdgeDevToolsClient_10.0.19041.1023_neutral__8wekyb3d8bbwe" /f
-reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\S-1-5-21-2466455740-832722602-188176761-1001\Microsoft.MicrosoftEdge.Stable_124.0.2478.105_neutral__8wekyb3d8bbwe" /f
-reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\S-1-5-21-2466455740-832722602-188176761-1001\Microsoft.MicrosoftEdge_44.19041.1266.0_neutral__8wekyb3d8bbwe" /f
-reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\S-1-5-21-2466455740-832722602-188176761-1001\Microsoft.MicrosoftEdgeDevToolsClient_10.0.19041.1023_neutral__8wekyb3d8bbwe" /f
+::reg.exe delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge" /f
+::reg.exe delete "HKLM\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update" /f
+::reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\Applications\Microsoft.MicrosoftEdge.Stable_124.0.2478.105_neutral__8wekyb3d8bbwe" /f
+::reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\InboxApplications\Microsoft.MicrosoftEdge_44.19041.1266.0_neutral__8wekyb3d8bbwe" /f
+::reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\InboxApplications\Microsoft.MicrosoftEdgeDevToolsClient_10.0.19041.1023_neutral__8wekyb3d8bbwe" /f
+::reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\S-1-5-21-2466455740-832722602-188176761-1001\Microsoft.MicrosoftEdge.Stable_124.0.2478.105_neutral__8wekyb3d8bbwe" /f
+::reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\S-1-5-21-2466455740-832722602-188176761-1001\Microsoft.MicrosoftEdge_44.19041.1266.0_neutral__8wekyb3d8bbwe" /f
+::reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore\S-1-5-21-2466455740-832722602-188176761-1001\Microsoft.MicrosoftEdgeDevToolsClient_10.0.19041.1023_neutral__8wekyb3d8bbwe" /f
 
 :: DELETES SCHEDULED TASKS REGISTRY KEYS
 :: Deleting Application Compatibility Appraiser
@@ -433,6 +440,42 @@ $content = 'irm https://www.christitus.com/win | iex'
 New-Item -Path $path -ItemType File -Force
 $content | Out-File -FilePath $path -Encoding UTF8 -Force
 
+# Creates Desktop ps.1 script that will install all my apps using Winget
+$path = "C:\Users\Johny\Desktop\Johny_Winget_Install.ps1"
+$content = @'
+$appIds = @(
+    "Mozilla.Firefox",
+    "9N8G7TSCL18R", #NanaZip
+    "KeePassXCTeam.KeePassXC",
+    "Telegram.TelegramDesktop",
+    "VideoLAN.VLC",
+    "RevoUninstaller.RevoUninstaller",
+    "Microsoft.VisualStudioCode",
+    "Ghisler.TotalCommander",
+    "Notepad++.Notepad++",
+    "Gyan.FFmpeg",
+    "Gyan.Git.Git",
+    "Discord.Discord",
+    "ShareX.ShareX",
+    "REALiX.HWiNFO",
+    "Oracle.VirtualBox",
+    "Valve.Steam",
+    "Ubisoft.Connect",
+    "9PLJWWSV01LK", #Twinkle Tray
+    "9NKSQGP7F2NH", #WhatsApp
+    "9NBLGGH516XP", #EarTrumpet
+    "Microsoft.PowerToys",
+    "Brave.Brave"
+)
+
+foreach ($id in $appIds) {
+    Write-Output "Installing $id
+    winget install --id=$id -e
+}
+'@
+New-Item -Path $path -ItemType File -Force
+$content | Out-File -FilePath $path -Encoding UTF8 -Force
+
 # Configure Maximum Password Age in Windows
 net.exe accounts /maxpwage:UNLIMITED
 
@@ -453,62 +496,50 @@ Invoke-Expression $icaclsCommand | Out-Null
 # Disable Defender Auto Sample Submission
 Set-MpPreference -SubmitSamplesConsent 2 -ErrorAction Continue | Out-Null
 
-# Removes Microsoft Edge
-foreach ($line in $lines) {
-    if ($line -like '*Architecture : *') {
-        $architecture = $line -replace 'Architecture : ',''
-        # If the architecture is x64, replace it with amd64
-        if ($architecture -eq 'x64') {
-            $architecture = 'amd64'
-        }
-        Write-Host "Architecture: $architecture"
-        break
-    }
-}
-
-if (-not $architecture) {
-    Write-Host "Architecture information not found."
-}
-Remove-Item -Path "C:\Program Files (x86)\Microsoft\Edge" -Recurse -Force -ErrorAction Continue
-Remove-Item -Path "C:\Program Files (x86)\Microsoft\EdgeWebView" -Recurse -Force -ErrorAction Continue
-Remove-Item -Path "C:\Program Files (x86)\Microsoft\EdgeUpdate" -Recurse -Force -ErrorAction Continue
-Remove-Item -Path "C:\Program Files (x86)\Microsoft\EdgeCore" -Recurse -Force -ErrorAction Continue
-Remove-Item -Path "C:\Users\Public\Desktop\Microsoft Edge.lnk" -Recurse -Force -ErrorAction Continue
-Remove-Item -Path "C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge.lnk" -Recurse -Force -ErrorAction Continue
-Remove-Item -Path "C:\Windows\SystemApps\Microsoft.MicrosoftEdge_8wekyb3d8bbwe" -Recurse -Force -ErrorAction Continue
-Remove-Item -Path "C:\Windows\SystemApps\Microsoft.MicrosoftEdgeDevToolsClient_8wekyb3d8bbwe" -Recurse -Force -ErrorAction Continue
-if ($architecture -eq 'amd64') {
-    $folderPath = Get-ChildItem -Path "C:\Windows\WinSxS" -Filter "amd64_microsoft-edge-webview_31bf3856ad364e35*" -Directory | Select-Object -ExpandProperty FullName
-
-    if ($folderPath) {
-        & 'takeown' '/f' $folderPath '/r' 
-        & icacls $folderPath  "/grant" "$($adminGroup.Value):(F)" '/T' '/C' 
-        Remove-Item -Path $folderPath -Recurse -Force 
-    } else {
-        Write-Host "Folder not found."
-    }
-} elseif ($architecture -eq 'arm64') {
-    $folderPath = Get-ChildItem -Path "C:\Windows\WinSxS" -Filter "arm64_microsoft-edge-webview_31bf3856ad364e35*" -Directory | Select-Object -ExpandProperty FullName
-
-    if ($folderPath) {
-        & 'takeown' '/f' $folderPath '/r'
-        & icacls $folderPath  "/grant" "$($adminGroup.Value):(F)" '/T' '/C' 
-        Remove-Item -Path $folderPath -Recurse -Force 
-    } else {
-        Write-Host "Folder not found."
-    }
-} else {
-    Write-Host "Unknown architecture: $architecture"
-}
-& 'takeown' '/f' "C:\Windows\System32\Microsoft-Edge-Webview" '/r' 
-& 'icacls' "C:\Windows\System32\Microsoft-Edge-Webview" '/grant' "$($adminGroup.Value):(F)" '/T' '/C' 
-Remove-Item -Path "C:\Windows\System32\Microsoft-Edge-Webview" -Recurse -Force
-
 # Removes OneDrive
-Remove-Item "C:\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk" -ErrorAction Continue
-Remove-Item "C:\Users\Default\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.exe" -ErrorAction Continue
-Remove-Item "C:\Windows\System32\OneDriveSetup.exe" -ErrorAction Continue
-Remove-Item "C:\Windows\SysWOW64\OneDriveSetup.exe" -ErrorAction Continue
+# Description: This script will remove and disable OneDrive integration.
+# https://github.com/ionuttbara/one-drive-uninstaller/blob/main/Remove%20OneDrive.ps1
+
+Write-Output "Remove OneDrive"
+if (Test-Path "$env:systemroot\System32\OneDriveSetup.exe") {
+    & "$env:systemroot\System32\OneDriveSetup.exe" /uninstall
+}
+if (Test-Path "$env:systemroot\SysWOW64\OneDriveSetup.exe") {
+    & "$env:systemroot\SysWOW64\OneDriveSetup.exe" /uninstall
+}
+
+Write-Output "Removing OneDrive leftovers"
+Remove-Item -Recurse -Force -ErrorAction SilentlyContinue "$env:localappdata\Microsoft\OneDrive"
+Remove-Item -Recurse -Force -ErrorAction SilentlyContinue "$env:programdata\Microsoft OneDrive"
+Remove-Item -Recurse -Force -ErrorAction SilentlyContinue "$env:systemdrive\OneDriveTemp"
+# check if directory is empty before removing:
+If ((Get-ChildItem "$env:userprofile\OneDrive" -Recurse | Measure-Object).Count -eq 0) {
+    Remove-Item -Recurse -Force -ErrorAction SilentlyContinue "$env:userprofile\OneDrive"
+}
+
+Write-Output "Disable OneDrive via Group Policies"
+New-FolderForced -Path "HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\OneDrive"
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Wow6432Node\Policies\Microsoft\Windows\OneDrive" "DisableFileSyncNGSC" 1
+
+Write-Output "Remove Onedrive from explorer sidebar"
+New-PSDrive -PSProvider "Registry" -Root "HKEY_CLASSES_ROOT" -Name "HKCR"
+mkdir -Force "HKCR:\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"
+Set-ItemProperty -Path "HKCR:\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" "System.IsPinnedToNameSpaceTree" 0
+mkdir -Force "HKCR:\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}"
+Set-ItemProperty -Path "HKCR:\Wow6432Node\CLSID\{018D5C66-4533-4307-9B53-224DE2ED1FE6}" "System.IsPinnedToNameSpaceTree" 0
+Remove-PSDrive "HKCR"
+
+# Thank you Matthew Israelsson
+Write-Output "Removing run hook for new users"
+reg load "hku\Default" "C:\Users\Default\NTUSER.DAT"
+reg delete "HKEY_USERS\Default\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v "OneDriveSetup" /f
+reg unload "hku\Default"
+
+Write-Output "Removing startmenu entry"
+Remove-Item -Force -ErrorAction SilentlyContinue "$env:userprofile\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\OneDrive.lnk"
+
+Write-Output "Removing scheduled task"
+Get-ScheduledTask -TaskPath '\' -TaskName 'OneDrive*' -ea SilentlyContinue | Unregister-ScheduledTask -Confirm:$false
  
 # Removes Microsoft Teams
 $TeamsPath = [System.IO.Path]::Combine($env:LOCALAPPDATA, 'Microsoft', 'Teams')
@@ -991,7 +1022,7 @@ reg.exe add "HKU\DefaultUser\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\
 reg.exe add "HKU\DefaultUser\Control Panel\Desktop" /v MenuShowDelay /t REG_DWORD /d 1 /f
 
 :: On Shutdown, Windows will automatically close any running applications
-reg.exe add "HKU\DefaultUser\Control Panel\Desktop" /v AutoEndTasks /t REG_DWORD /d 1 /f
+::reg.exe add "HKU\DefaultUser\Control Panel\Desktop" /v AutoEndTasks /t REG_DWORD /d 1 /f
 
 :: Sets the Mouse hover time to 400 milliseconds
 reg.exe add "HKU\DefaultUser\Control Panel\Mouse" /v MouseHoverTime /t REG_SZ /d "400" /f
@@ -1244,7 +1275,7 @@ reg.exe add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explore
 reg.exe add "HKEY_CURRENT_USER\Control Panel\Desktop" /v MenuShowDelay /t REG_DWORD /d 1 /f
 
 :: On Shutdown, Windows will automatically close any running applications
-reg.exe add "HKEY_CURRENT_USER\Control Panel\Desktop" /v AutoEndTasks /t REG_DWORD /d 1 /f
+::reg.exe add "HKEY_CURRENT_USER\Control Panel\Desktop" /v AutoEndTasks /t REG_DWORD /d 1 /f
 
 :: Sets the Mouse hover time to 400 milliseconds
 reg.exe add "HKEY_CURRENT_USER\Control Panel\Mouse" /v MouseHoverTime /t REG_SZ /d "400" /f
@@ -1374,246 +1405,6 @@ reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explore
 
 :: Restart PC to Apply All Changes
 shutdown /r -t 1
-</File>
-
-<!--Additional Edge Removal Script by Chris Titus & AveYo to Ensure Complete Removal-->
-<File path="C:\Windows\Setup\Scripts\edgeremoval.bat"><![CDATA[
-@(set "0=%~f0"^)#) & powershell -nop -c iex([io.file]::ReadAllText($env:0)) & exit /b
-#:: made by AveYo source: https://raw.githubusercontent.com/AveYo/fox/main/Edge_Removal.bat
-sp 'HKCU:\Volatile Environment' 'Edge_Removal' @'
-
-$also_remove_webview = 0
-
-$host.ui.RawUI.WindowTitle = 'Edge Removal - AveYo, 2023.09.09'
-$remove_win32 = @("Microsoft Edge","Microsoft Edge Update"); $remove_appx = @("MicrosoftEdge"); $skip = @() # @("DevTools")
-if ($also_remove_webview -eq 1) {$remove_win32 += "Microsoft EdgeWebView"; $remove_appx += "WebExperience","Win32WebViewHost"}
-
-## 1 bonus! enter into powershell console: firefox / edge / webview to install a browser / reinstall edge or webview after removal
-function global:firefox { $url = 'https://download.mozilla.org/?product=firefox-stub'
-  $setup = "$((new-object -ComObject Shell.Application).NameSpace('shell:Downloads').Self.Path)\Firefox Installer.exe"
-  write-host $url; Invoke-WebRequest $url -OutFile $setup; start $setup
-}
-function global:edge { $url = 'https://go.microsoft.com/fwlink/?linkid=2108834&Channel=Stable&language=en'
-  $setup = "$((new-object -ComObject Shell.Application).NameSpace('shell:Downloads').Self.Path)\MicrosoftEdgeSetup.exe"
-  write-host $url; Invoke-WebRequest $url -OutFile $setup; prepare_edge; start $setup
-}
-function global:webview { $url = 'https://go.microsoft.com/fwlink/p/?LinkId=2124703'
-  $setup = "$((new-object -ComObject Shell.Application).NameSpace('shell:Downloads').Self.Path)\MicrosoftEdgeWebview2Setup.exe"
-  write-host $url; Invoke-WebRequest $url -OutFile $setup; prepare_webview; start $setup
-}
-## helper for set-itemproperty remove-itemproperty new-item remove-item with auto test-path
-function global:sp_test_path { if (test-path $args[0]) {Microsoft.PowerShell.Management\Set-ItemProperty @args} else {
-  Microsoft.PowerShell.Management\New-Item $args[0] -force -ea 0 >''; Microsoft.PowerShell.Management\Set-ItemProperty @args} }
-function global:rp_test_path { if (test-path $args[0]) {Microsoft.PowerShell.Management\Remove-ItemProperty @args} }
-function global:ni_test_path { if (-not (test-path $args[0])) {Microsoft.PowerShell.Management\New-Item @args} }
-function global:ri_test_path { if (test-path $args[0]) {Microsoft.PowerShell.Management\Remove-Item @args} }
-foreach ($f in 'sp','rp','ni','ri') {set-alias -Name $f -Value "${f}_test_path" -Scope Local -Option AllScope -force -ea 0}
-## helper for edge reinstall - remove bundled OpenWebSearch redirector and edgeupdate policies
-function global:prepare_edge {
-  foreach ($f in 'ni','ri','sp','rp') {set-alias -Name $f -Value "${f}_test_path" -Scope Local -Option AllScope -force -ea 0}
-  $MS=($env:ProgramFiles,${env:ProgramFiles(x86)})[[Environment]::Is64BitOperatingSystem]+'\Microsoft\Edge\Application\msedge.exe'
-  ri "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\msedge.exe" -recurse -force -ea 0
-  ri "HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options\ie_to_edge_stub.exe" -recurse -force -ea 0
-  ri 'Registry::HKEY_Users\S-1-5-21*\Software\Classes\microsoft-edge' -recurse -force -ea 0
-  ri 'Registry::HKEY_Users\S-1-5-21*\Software\Classes\MSEdgeHTM' -recurse -force -ea 0
-  ni "HKLM:\SOFTWARE\Classes\microsoft-edge\shell\open\command" -force -ea 0 >''
-  sp "HKLM:\SOFTWARE\Classes\microsoft-edge\shell\open\command" '(Default)' "`"$MS`" --single-argument %%1" -force -ea 0 
-  ni "HKLM:\SOFTWARE\Classes\MSEdgeHTM\shell\open\command" -force -ea 0 >''
-  sp "HKLM:\SOFTWARE\Classes\MSEdgeHTM\shell\open\command" '(Default)' "`"$MS`" --single-argument %%1" -force -ea 0
-  foreach ($p in 'HKLM:\SOFTWARE\Policies','HKLM:\SOFTWARE','HKLM:\SOFTWARE\WOW6432Node') {
-    rp "$p\Microsoft\EdgeUpdate" 'InstallDefault' -force -ea 0
-    rp "$p\Microsoft\EdgeUpdate" 'Install{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}' -force -ea 0
-    rp "$p\Microsoft\EdgeUpdate" 'Install{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}' -force -ea 0
-  }
-  $edgeupdate='Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}'
-  $webvupdate='Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}'
-  $on_actions='on-os-upgrade','on-logon','on-logon-autolaunch','on-logon-startup-boost'
-  foreach ($p in 'HKLM:\SOFTWARE','HKLM:\SOFTWARE\Wow6432Node') { foreach ($launch in $on_actions) {
-    ri "$p\$edgeupdate\Commands\$launch" -force -ea 0; ri "$p\$webvupdate\Commands\$launch" -force -ea 0
-  }}
-}
-## helper for webview reinstall - restore webexperience (widgets) if available
-function global:prepare_webview {
-  $cfg = @{Register=$true; ForceApplicationShutdown=$true; ForceUpdateFromAnyVersion=$true; DisableDevelopmentMode=$true} 
-  dir "$env:ProgramFiles\WindowsApps\MicrosoftWindows.Client.WebExperience*\AppxManifest.xml" -rec -ea 0 | Add-AppxPackage @cfg
-  dir "$env:SystemRoot\SystemApps\Microsoft.Win32WebViewHost*\AppxManifest.xml" -rec -ea 0 | Add-AppxPackage @cfg
-  kill -name explorer -ea 0; if ((get-process -name 'explorer' -ea 0) -eq $null) {start explorer}
-}
-
-## 2 enable admin privileges
-$D1=[uri].module.gettype('System.Diagnostics.Process')."GetM`ethods"(42) |where {$_.Name -eq 'SetPrivilege'} #`:no-ev-warn
-'SeSecurityPrivilege','SeTakeOwnershipPrivilege','SeBackupPrivilege','SeRestorePrivilege'|foreach {$D1.Invoke($null, @("$_",2))}
-
-## 3 shut edge & webview clone stuff down and gather install paths
-$shut = 'explorer','Widgets','widgetservice','msedgewebview2','MicrosoftEdge*','chredge','msedge','edge'
-$shut+= 'msteams','msfamily','WebViewHost','Clipchamp' 
-cd $env:systemdrive; taskkill /im explorer.exe /f 2>&1 >''; foreach ($p in $shut) {kill -name $p -force -ea 0}
-prepare_edge
-## clear win32 uninstall block
-foreach ($hk in 'HKCU:','HKLM:') { foreach ($wow in '','\Wow6432Node') { foreach ($i in $remove_win32) {
-  rp "$hk\SOFTWARE${wow}\Microsoft\Windows\CurrentVersion\Uninstall\$i" 'NoRemove' -force -ea 0
-  ni "$hk\SOFTWARE${wow}\Microsoft\EdgeUpdateDev" -force >''
-  sp "$hk\SOFTWARE${wow}\Microsoft\EdgeUpdateDev" 'AllowUninstall' 1 -type Dword -force
-}}}
-## find all Edge setup.exe and gather BHO paths for OpenWebSearch / MSEdgeRedirect usage
-$edges = @(); $bho = @(); 'LocalApplicationData','ProgramFilesX86','ProgramFiles' |foreach {
-  $folder = [Environment]::GetFolderPath($_); $bho += dir "$folder\Microsoft\Edge*\ie_to_edge_stub.exe" -rec -ea 0
-  if ($also_remove_webview -eq 1) {$edges += dir "$folder\Microsoft\Edge*\setup.exe" -rec -ea 0 |where {$_ -like '*EdgeWebView*'}}
-  $edges += dir "$folder\Microsoft\Edge*\setup.exe" -rec -ea 0 |where {$_ -notlike '*EdgeWebView*'}
-}
-## use dedicated C:\Scripts path to save OpenWebSearch (due to Sigma rules FUD)
-$DIR = "$env:SystemDrive\Scripts"; mkdir $DIR -ea 0 >''
-## export OpenWebSearch innovative redirector - used by MSEdgeRedirect as well
-foreach ($b in $bho) { if (test-path $b) { try {copy $b "$DIR\ie_to_edge_stub.exe" -force -ea 0} catch{} } }
-
-## 4 remove found *Edge* appx packages with unblock tricks
-$provisioned = get-appxprovisionedpackage -online; $appxpackage = get-appxpackage -allusers; $eol = @()
-$store = 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Appx\AppxAllUserStore'
-$users = @('S-1-5-18'); if (test-path $store) {$users += $((dir $store -ea 0 |where {$_ -like '*S-1-5-21*'}).PSChildName)}
-foreach ($choice in $remove_appx) { if ('' -eq $choice.Trim()) {continue}
-  foreach ($appx in $($provisioned |where {$_.PackageName -like "*$choice*"})) {
-    $next = !1; foreach ($no in $skip) {if ($appx.PackageName -like "*$no*") {$next = !0}} ; if ($next) {continue}
-    $PackageName = $appx.PackageName; $PackageFamilyName = ($appxpackage |where {$_.Name -eq $appx.DisplayName}).PackageFamilyName 
-    ni "$store\Deprovisioned\$PackageFamilyName" -force >''; $PackageFamilyName  
-    foreach ($sid in $users) {ni "$store\EndOfLife\$sid\$PackageName" -force >''} ; $eol += $PackageName
-    dism /online /set-nonremovableapppolicy /packagefamily:$PackageFamilyName /nonremovable:0 >''
-    remove-appxprovisionedpackage -packagename $PackageName -online -allusers >''
-  }
-  foreach ($appx in $($appxpackage |where {$_.PackageFullName -like "*$choice*"})) {
-    $next = !1; foreach ($no in $skip) {if ($appx.PackageFullName -like "*$no*") {$next = !0}} ; if ($next) {continue}
-    $PackageFullName = $appx.PackageFullName; 
-    ni "$store\Deprovisioned\$appx.PackageFamilyName" -force >''; $PackageFullName
-    foreach ($sid in $users) {ni "$store\EndOfLife\$sid\$PackageFullName" -force >''} ; $eol += $PackageFullName
-    dism /online /set-nonremovableapppolicy /packagefamily:$PackageFamilyName /nonremovable:0 >''
-    remove-appxpackage -package $PackageFullName -allusers >''
-  }
-}
-
-## 5 run found *Edge* setup.exe with uninstall args and wait in-between
-foreach ($setup in $edges) { if (test-path $setup) {
-  if ($setup -like '*EdgeWebView*') {$target = "--msedgewebview"} else {$target = "--msedge"}
-  $removal = "--uninstall $target --system-level --verbose-logging --force-uninstall"
-  try {write-host $setup $removal; start -wait $setup -args $removal} catch {}
-  do {sleep 3} while ((get-process -name 'setup','MicrosoftEdge*' -ea 0).Path -like '*\Microsoft\Edge*')
-}}
-
-## 6 extra cleanup
-foreach ($PF in $env:ProgramFiles,${env:ProgramFiles(x86)}) { if (test-path "$PF\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe") {
-  write-host "$PF\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe /uninstall"
-  start -wait "$PF\Microsoft\EdgeUpdate\MicrosoftEdgeUpdate.exe" -args '/uninstall'
-  do {sleep 3} while ((get-process -name 'setup','MicrosoftEdge*' -ea 0).Path -like '*\Microsoft\Edge*')
-  if ($also_remove_webview -eq 1) { foreach ($hk in 'HKCU:','HKLM:') { foreach ($wow in '','\Wow6432Node') {
-    ri "$hk\SOFTWARE${wow}\Microsoft\Windows\CurrentVersion\Uninstall\Microsoft Edge Update" -rec -force -ea 0 }}
-    ri "$PF\Microsoft\EdgeUpdate" -rec -force -ea 0; Unregister-ScheduledTask -TaskName MicrosoftEdgeUpdate* -Confirm:$false -ea 0
-  }  
-}}
-$appdata = $([Environment]::GetFolderPath('ApplicationData'))
-ri "$appdata\Microsoft\Internet Explorer\Quick Launch\User Pinned\TaskBar\Tombstones\Microsoft Edge.lnk" -force
-ri "$appdata\Microsoft\Internet Explorer\Quick Launch\Microsoft Edge.lnk" -force
-
-## undo eol unblock trick to prevent latest cumulative update (LCU) failing 
-foreach ($sid in $users) { foreach ($PackageName in $eol) {ri "$store\EndOfLife\$sid\$PackageName" -force >''} }
-
-## set (almost) useless policies to prevent unsolicited reinstalls 
-foreach ($p in 'HKLM:\SOFTWARE\Policies','HKLM:\SOFTWARE','HKLM:\SOFTWARE\WOW6432Node') {
-  ni "$p\Microsoft\EdgeUpdate" -force >''
-  sp "$p\Microsoft\EdgeUpdate" 'InstallDefault' 0 -type Dword -force
-  sp "$p\Microsoft\EdgeUpdate" 'Install{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}' 0 -type Dword -force
-  sp "$p\Microsoft\EdgeUpdate" 'Install{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}' 1 -type Dword -force
-  sp "$p\Microsoft\EdgeUpdate" 'DoNotUpdateToEdgeWithChromium' 1 -type Dword -force
-}
-$edgeupdate='Microsoft\EdgeUpdate\Clients\{56EB18F8-B008-4CBD-B6D2-8C97FE7E9062}'
-$webvupdate='Microsoft\EdgeUpdate\Clients\{F3017226-FE2A-4295-8BDF-00C3A9A7E4C5}'
-$on_actions='on-os-upgrade','on-logon','on-logon-autolaunch','on-logon-startup-boost'
-foreach ($p in 'HKLM:\SOFTWARE','HKLM:\SOFTWARE\Wow6432Node') { foreach ($launch in $on_actions) {
-  ni "$p\$edgeupdate\Commands\$launch" -force >''; sp "$p\$edgeupdate\Commands\$launch" 'CommandLine' 'systray.exe' -force
-  ni "$p\$webvupdate\Commands\$launch" -force >''; sp "$p\$webvupdate\Commands\$launch" 'CommandLine' 'systray.exe' -force
-}}
-
-## 7 add bundled OpenWebSearch script to redirect microsoft-edge: anti-competitive links to the default browser
-$MSEP = ($env:ProgramFiles,${env:ProgramFiles(x86)})[[Environment]::Is64BitOperatingSystem] + '\Microsoft\Edge\Application'
-$IFEO = 'HKLM:\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Image File Execution Options'
-$MIN = ('--headless','--width 1 --height 1')[([environment]::OSVersion.Version.Build) -gt 25179]
-$CMD = "$env:systemroot\system32\conhost.exe $MIN" # AveYo: minimize prompt - see Terminal issue #13914
-ni "HKLM:\SOFTWARE\Classes\microsoft-edge\shell\open\command" -force >''
-sp "HKLM:\SOFTWARE\Classes\microsoft-edge" '(Default)' 'URL:microsoft-edge' -force
-sp "HKLM:\SOFTWARE\Classes\microsoft-edge" 'URL Protocol' '' -force
-sp "HKLM:\SOFTWARE\Classes\microsoft-edge" 'NoOpenWith' '' -force
-sp "HKLM:\SOFTWARE\Classes\microsoft-edge\shell\open\command" '(Default)' "`"$DIR\ie_to_edge_stub.exe`" %1" -force
-ni "HKLM:\SOFTWARE\Classes\MSEdgeHTM\shell\open\command" -force >''
-sp "HKLM:\SOFTWARE\Classes\MSEdgeHTM" 'NoOpenWith' '' -force
-sp "HKLM:\SOFTWARE\Classes\MSEdgeHTM\shell\open\command" '(Default)' "`"$DIR\ie_to_edge_stub.exe`" %1" -force
-ni "$IFEO\ie_to_edge_stub.exe\0" -force >''
-sp "$IFEO\ie_to_edge_stub.exe" 'UseFilter' 1 -type Dword -force
-sp "$IFEO\ie_to_edge_stub.exe\0" 'FilterFullPath' "$DIR\ie_to_edge_stub.exe" -force
-sp "$IFEO\ie_to_edge_stub.exe\0" 'Debugger' "$CMD $DIR\OpenWebSearch.cmd" -force
-ni "$IFEO\msedge.exe\0" -force >''
-sp "$IFEO\msedge.exe" 'UseFilter' 1 -type Dword -force
-sp "$IFEO\msedge.exe\0" 'FilterFullPath' "$MSEP\msedge.exe" -force
-sp "$IFEO\msedge.exe\0" 'Debugger' "$CMD $DIR\OpenWebSearch.cmd" -force
-
-$OpenWebSearch = @$
-@title OpenWebSearch Redux & echo off & set ?= open start menu web search, widgets links or help in your chosen browser - by AveYo
-for /f %%E in ('"prompt $E$S& for %%e in (1) do rem"') do echo;%%E[2t 2>nul & rem AveYo: minimize prompt
-call :reg_var "HKCU\SOFTWARE\Microsoft\Windows\Shell\Associations\UrlAssociations\https\UserChoice" ProgID ProgID
-if /i "%ProgID%" equ "MSEdgeHTM" echo;Default browser is set to Edge! Change it or remove OpenWebSearch script. & pause & exit /b
-call :reg_var "HKCR\%ProgID%\shell\open\command" "" Browser
-set Choice=& for %%. in (%Browser%) do if not defined Choice set "Choice=%%~."
-call :reg_var "HKCR\MSEdgeMHT\shell\open\command" "" FallBack
-set "Edge=" & for %%. in (%FallBack%) do if not defined Edge set "Edge=%%~."
-set "URI=" & set "URL=" & set "NOOP=" & set "PassTrough=%Edge:msedge=edge%"
-set "CLI=%CMDCMDLINE:"=``% "
-if defined CLI set "CLI=%CLI:*ie_to_edge_stub.exe`` =%"
-if defined CLI set "CLI=%CLI:*ie_to_edge_stub.exe =%"
-if defined CLI set "CLI=%CLI:*msedge.exe`` =%"
-if defined CLI set "CLI=%CLI:*msedge.exe =%"
-set "FIX=%CLI:~-1%"
-if defined CLI if "%FIX%"==" " set "CLI=%CLI:~0,-1%"
-if defined CLI set "RED=%CLI:microsoft-edge=%"
-if defined CLI set "URL=%CLI:http=%"
-if defined CLI set "ARG=%CLI:``="%"
-if "%CLI%" equ "%RED%" (set NOOP=1) else if "%CLI%" equ "%URL%" (set NOOP=1)
-if defined NOOP if exist "%PassTrough%" start "" "%PassTrough%" %ARG%
-if defined NOOP exit /b
-set "URL=%CLI:*microsoft-edge=%"
-set "URL=http%URL:*http=%"
-set "FIX=%URL:~-2%"
-if defined URL if "%FIX%"=="``" set "URL=%URL:~0,-2%"
-call :dec_url
-start "" "%Choice%" "%URL%"
-exit
-
-:reg_var [USAGE] call :reg_var "HKCU\Volatile Environment" value-or-"" variable [extra options]
-set {var}=& set {reg}=reg query "%~1" /v %2 /z /se "," /f /e& if %2=="" set {reg}=reg query "%~1" /ve /z /se "," /f /e
-for /f "skip=2 tokens=* delims=" %%V in ('%{reg}% %4 %5 %6 %7 %8 %9 2^>nul') do if not defined {var} set "{var}=%%V"
-if not defined {var} (set {reg}=& set "%~3="& exit /b) else if %2=="" set "{var}=%{var}:*)    =%"& rem AveYo: v3
-if not defined {var} (set {reg}=& set "%~3="& exit /b) else set {reg}=& set "%~3=%{var}:*)    =%"& set {var}=& exit /b
-
-:dec_url brute url percent decoding by AveYo
-set ".=%URL:!=}%"&setlocal enabledelayedexpansion& rem brute url percent decoding
-set ".=!.:%%={!" &set ".=!.:{3A=:!" &set ".=!.:{2F=/!" &set ".=!.:{3F=?!" &set ".=!.:{23=#!" &set ".=!.:{5B=[!" &set ".=!.:{5D=]!"
-set ".=!.:{40=@!"&set ".=!.:{21=}!" &set ".=!.:{24=$!" &set ".=!.:{26=&!" &set ".=!.:{27='!" &set ".=!.:{28=(!" &set ".=!.:{29=)!"
-set ".=!.:{2A=*!"&set ".=!.:{2B=+!" &set ".=!.:{2C=,!" &set ".=!.:{3B=;!" &set ".=!.:{3D==!" &set ".=!.:{25=%%!"&set ".=!.:{20= !"
-set ".=!.:{=%%!" &rem set ",=!.:%%=!" & if "!,!" neq "!.!" endlocal& set "URL=%.:}=!%" & call :dec_url
-endlocal& set "URL=%.:}=!%" & exit /b
-rem done
-
-$@
-[io.file]::WriteAllText("$DIR\OpenWebSearch.cmd", $OpenWebSearch)
-
-## 8 done
-$done = gp 'Registry::HKEY_Users\S-1-5-21*\Volatile*' Edge_Removal -ea 0; if ($done) {rp $done.PSPath Edge_Removal -force -ea 0}
-if ((get-process -name 'explorer' -ea 0) -eq $null) {start explorer}
-
-## 9 bonus enter into powershell console: firefox / edge / webview to install a browser / reinstall edge or webview after removal
-${.} = [char]27; $firefox = "${.}[38;2;255;165;0m firefox"; $edge = "${.}[94m edge${.}[97m"; $webview = "${.}[94mwebview ${.}[97m"
-write-host "`n${.}[40;32m EDGE REMOVED! ${.}[97m -GET-ANOTHER-BROWSER? ENTER:$firefox ${.}[97m -REINSTALL? ENTER:$edge / $webview"
-
-## 0 ask to run script as admin
-'@.replace("$@","'@").replace("@$","@'") -force -ea 0; $code='gp ''Registry::HKEY_Users\S-1-5-21*\Volatile*'' Edge_Removal -ea 0'
-start powershell -args "-nop -noe -c & {iex(($code)[0].Edge_Removal)}" -verb runas
-$_Press_Enter
-#::]]>
 </File>
 
 <!--Start Menu Template (Credit:https://schneegans.de/windows/unattend-generator/)-->

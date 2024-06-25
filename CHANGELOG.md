@@ -1,4 +1,25 @@
 # Updates
+## 23/6/2024 SipeP
+- Set Region and language settings
+- Set TimeZone to Central Europe Standard Time
+- Enabled User Account Control
+- Removed Edge removal
+- OneDrive removal changed to ionuttbara github script
+- Added Johny_Winget_Install.ps1 script to Desktop that will install all my apps
+- Disabled: "Sets Windows Update to Only Install Security Updates and Delay Other Updates for 2 Years"
+- Disabled: "Deletes Microsoft Edge Registry Entries"
+- Disabled: "On Shutdown, Windows will automatically close any running applications"
+- Excluded (commented out) some apps from remove-packages.ps1 & remove-caps.ps1 scripts:
+  - Calculator
+  - Notepad
+  - Paint
+  - Terminal
+  - Your Phone
+  - Edge
+  - MS Store
+
+
+
 ## 23/6/2024
 Reorder Runsynchronous commands in the specialize phase to load Default User Registry hive earlier.
    
