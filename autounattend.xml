@@ -177,13 +177,9 @@ Where-Object -Property 'DisplayName' -In -Value @(
   'Microsoft.Todos';
   'Microsoft.WindowsSoundRecorder';
   'Microsoft.BingWeather';
-  'Microsoft.Xbox.TCUI';
-  'Microsoft.XboxApp';
   'Microsoft.XboxGameOverlay';
   'Microsoft.XboxGamingOverlay';
-  'Microsoft.XboxIdentityProvider';
   'Microsoft.XboxSpeechToTextOverlay';
-  'Microsoft.GamingApp';
   'Microsoft.YourPhone';
   'Microsoft.MicrosoftEdge';
   'Microsoft.MicrosoftEdge.Stable';
