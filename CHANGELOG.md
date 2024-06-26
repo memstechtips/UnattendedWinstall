@@ -1,4 +1,16 @@
 # Updates
+## 26/6/2024
+Updated description and changed Quality and Feature Updates delay to 365 days which is the maximum allowed period.
+
+```
+:: Sets Windows Update to Only Install Security Updates and Delay Other Updates for 1 Year
+reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU" /v AUOptions /t REG_DWORD /d 3 /f
+reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v DeferFeatureUpdates /t REG_DWORD /d 1 /f
+reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v DeferFeatureUpdatesPeriodInDays /t REG_DWORD /d 365 /f
+reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v DeferQualityUpdates /t REG_DWORD /d 1 /f
+reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v DeferQualityUpdatesPeriodInDays /t REG_DWORD /d 365 /f
+```
+
 ## 23/6/2024
 Reorder Runsynchronous commands in the specialize phase to load Default User Registry hive earlier.
    
