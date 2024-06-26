@@ -128,7 +128,9 @@ In short, you need to include the [autounattended.xml](https://github.com/memste
 1. If you want to install and use Adobe Creative Cloud then you need to reinstall Microsoft Edge or else the Adobe Installer won't run.
    - Open Windows Powershell as admin and run the following command to reinstall Microsoft Edge (or use the Chris Titus Windows Utility)
      
-     ```winget install -e --id Microsoft.Edge```
+     ```
+     winget install -e --id Microsoft.Edge
+     ```
 
 ## Conclusion
 
