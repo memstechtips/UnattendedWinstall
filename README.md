@@ -2,6 +2,8 @@
 
 ## Overview
 
+## !This is a fork of "Memory’s Tech Tips’ Unattended Windows Installation" that does not remove the Calculator, Windows Terminal, PowerShell, Windows Alarms, OpenSSH, Calendar and Notifications, Notepad, Xbox App, Music Player, and Photos.
+
 Microsoft allows you to add Answer Files (or Unattend files) to Windows ISO files, which can be used to modify Windows settings in the Windows Image (ISO) during the Windows Setup process.
 
 If you’ve ever used Rufus to create Windows installation media, and you saw options like “Remove Windows 11 Hardware Requirements” and “Disable Privacy Questions,” they achieve that by including an Answer file in the installation media.
