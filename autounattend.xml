@@ -536,8 +536,6 @@ foreach ($key in $registryKeysTeredo) {
 netsh interface teredo set state disabled
 
 # Disables IPv6
-New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters' -Name 'DisabledComponents' -PropertyType 'DWord' -Value 255 -Force
-Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpip6
 
 # Disables Telemetry
 # Disable Scheduled Tasks
