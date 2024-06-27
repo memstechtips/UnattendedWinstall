@@ -2,7 +2,7 @@
 
 ## Overview
 
-## !This is a fork of "Memory’s Tech Tips’ Unattended Windows Installation" that does not remove the Calculator, Windows Terminal, PowerShell, Windows Alarms, OpenSSH, Calendar and Notifications, Notepad, Xbox App, Music Player, and Photos.
+## !This is a fork of "Memory’s Tech Tips’ Unattended Windows Installation" that does not remove the Calculator, Windows Terminal, IPv6, Windows Alarms, OpenSSH, Calendar and Notifications, Notepad, Xbox App, Music Player, and Photos.
 
 Microsoft allows you to add Answer Files (or Unattend files) to Windows ISO files, which can be used to modify Windows settings in the Windows Image (ISO) during the Windows Setup process.
 
