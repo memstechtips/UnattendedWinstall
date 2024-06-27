@@ -125,6 +125,15 @@ In short, you need to include the [autounattended.xml](https://github.com/memste
    - [Ventoy](https://www.ventoy.net/)
 5. Boot from the Windows Installation USB, do a clean install of Windows as normal, and the scripts will run automatically.
 
+## Known-Issues
+
+1. If you want to install and use Adobe Creative Cloud then you need to reinstall Microsoft Edge or else the Adobe Installer won't run.
+   - Open Windows Powershell as admin and run the following command to reinstall Microsoft Edge (or use the Chris Titus Windows Utility)
+     
+     ```
+     winget install -e --id Microsoft.Edge
+     ```
+
 ## Conclusion
 
 I hope this Unattended Windows Answer file helps streamline the Windows installation process as much as it has for me. Feel free to leave Your feedback and suggestions as they are always welcome! Also, if you find these scripts useful, consider giving this repository a star ⭐ on GitHub.
