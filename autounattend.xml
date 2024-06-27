@@ -549,8 +549,8 @@ foreach ($key in $registryKeysTeredo) {
 netsh interface teredo set state disabled
 
 # Disables IPv6
-New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters' -Name 'DisabledComponents' -PropertyType 'DWord' -Value 255 -Force
-Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpip6
+# New-ItemProperty -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip6\Parameters' -Name 'DisabledComponents' -PropertyType 'DWord' -Value 255 -Force
+# Disable-NetAdapterBinding -Name "*" -ComponentID ms_tcpip6
 
 # Disables Telemetry
 # Disable Scheduled Tasks
@@ -904,7 +904,7 @@ reg.exe add "HKU\DefaultUser\SOFTWARE\Microsoft\Notepad" /v ShowStoreBanner /t R
 reg.exe delete "HKU\DefaultUser\SOFTWARE\Microsoft\Windows\CurrentVersion\Run" /v OneDriveSetup /f
 
 :: Align the taskbar to the left on Windows 11
-reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v TaskbarAl /t REG_DWORD /d 0 /f
+:: reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v TaskbarAl /t REG_DWORD /d 0 /f
 
 :: Hides Search Icon on Taskbar
 reg.exe add "HKU\DefaultUser\SOFTWARE\Microsoft\Windows\CurrentVersion\Search" /v SearchboxTaskbarMode /t REG_DWORD /d 0 /f
@@ -1024,7 +1024,7 @@ reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\Explorer" /v Di
 reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\PushNotifications" /v ToastEnabled /t REG_DWORD /d 0 /f
 
 :: Set Classic Right-Click Menu for Windows 11
-reg.exe add "HKU\DefaultUser\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /ve /t REG_SZ /d "" /f
+:: reg.exe add "HKU\DefaultUser\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32" /ve /t REG_SZ /d "" /f
 
 :: Disable Xbox GameDVR
 reg.exe add "HKU\DefaultUser\System\GameConfigStore" /v GameDVR_FSEBehavior /t REG_DWORD /d 2 /f
