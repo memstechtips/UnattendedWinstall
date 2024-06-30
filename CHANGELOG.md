@@ -11,8 +11,20 @@ reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\
 :: Disables Recently Added Apps and Recommendations in the Start Menu
 reg.exe add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer" /v HideRecentlyAddedApps /t REG_DWORD /d 1 /f
 reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v Start_IrisRecommendations /t REG_DWORD /d 0 /f
+
+:: Start Menu Customization
+reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v ConfigureStartPins /t REG_SZ /d "{ \"pinnedList\": [] }" /f
+reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v ConfigureStartPins_ProviderSet /t REG_DWORD /d 1 /f
+reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v ConfigureStartPins_WinningProvider /t REG_SZ /d B5292708-1619-419B-9923-E5D9F3925E71 /f
+reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\providers\B5292708-1619-419B-9923-E5D9F3925E71\default\Device\Start" /v ConfigureStartPins /t REG_SZ /d "{ \"pinnedList\": [] }" /f
+reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\providers\B5292708-1619-419B-9923-E5D9F3925E71\default\Device\Start" /v ConfigureStartPins_LastWrite /t REG_DWORD /d 1 /f
+:: Enables the "Settings" and "File Explorer" Icon in the Start Menu
+reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v AllowPinnedFolderSettings /t REG_DWORD /d 00000001 /f
+reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v AllowPinnedFolderSettings_ProviderSet /t REG_DWORD /d 00000001 /f
+reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v AllowPinnedFolderFileExplorer /t REG_DWORD /d 00000001 /f
+reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v AllowPinnedFolderFileExplorer_ProviderSet /t REG_DWORD /d 00000001 /f
 ```
-Reason: Intended for Windows 11 but doesn't work and prevents the user from changing the settings manually.
+Reason: Intended for Windows 11 but doesn't work as originally intended and prevents the user from changing the settings manually.
 
 ```
 :: Disables User Account Control
@@ -84,6 +96,14 @@ Windows Registry Editor Version 5.00
 </File>
 ```
 Reason: Useful Context Menu Entry to Quickly Take Ownership of Files and Folders
+
+```
+<ProductKey>
+      <Key>00000-00000-00000-00000-00000</Key>
+      <WillShowUI>Always</WillShowUI> <!-- This ensures the UI will show to select the edition of Windows -->
+</ProductKey>
+```
+Reason: Prevents Windows from Automatically Selecting a Windows Edition due to a OEM key being installed in the BIOS/UEFI.
 
 ### Misc
 Update XML file so it is properly escaped and prevents errors.
