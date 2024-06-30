@@ -1,5 +1,91 @@
 # Updates
 ## 30/6/2024
+### Removed
+```
+:: Start Menu Customizations
+:: Disables Recently Added Apps and Recommendations in the Start Menu
+reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\Explorer" /v HideRecentlyAddedApps /t REG_DWORD /d 1 /f
+reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v Start_IrisRecommendations /t REG_DWORD /d 0 /f
+
+:: Start Menu Customizations 
+:: Disables Recently Added Apps and Recommendations in the Start Menu
+reg.exe add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Explorer" /v HideRecentlyAddedApps /t REG_DWORD /d 1 /f
+reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v Start_IrisRecommendations /t REG_DWORD /d 0 /f
+```
+Reason: Intended for Windows 11 but doesn't work and prevents the user from changing the settings manually.
+
+```
+:: Disables User Account Control
+reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v EnableLUA /t REG_DWORD /d 0 /f
+
+:: Disables User Account Control
+reg.exe add "HKU\DefaultUser\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy" /v UserAccountControlSettings /t REG_DWORD /d 0 /f
+
+:: Disables User Account Control
+reg.exe add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Privacy" /v UserAccountControlSettings /t REG_DWORD /d 0 /f
+```
+Reason: Could cause security issues, user can set it manually.
+
+### Added
+```
+<RunSynchronousCommand wcm:action="add">
+      <Order>10</Order>
+      <Description>Adds Take Ownership to the Right Click Context Menu</Description>
+      <Path>cmd.exe /c "reg.exe import "C:\Windows\Setup\Scripts\take-ownership.reg" &gt;&gt;"C:\Windows\Setup\Scripts\take-ownership.log" 2&gt;&amp;1"</Path>
+</RunSynchronousCommand>
+```
+```
+<!--Adds "Take Ownership" to the Right Click Context Menu-->
+<File path="C:\Windows\Setup\Scripts\take-ownership.reg"><![CDATA[
+Windows Registry Editor Version 5.00
+
+; Created by: Shawn Brink
+; Created on: September 6, 2021
+; Updated on: January 7, 2024
+; Tutorial: https://www.elevenforum.com/t/add-take-ownership-to-context-menu-in-windows-11.1230/
+
+[-HKEY_CLASSES_ROOT\*\shell\TakeOwnership]
+[-HKEY_CLASSES_ROOT\*\shell\runas]
+
+[HKEY_CLASSES_ROOT\*\shell\TakeOwnership]
+@="Take Ownership"
+"Extended"=-
+"HasLUAShield"=""
+"NoWorkingDirectory"=""
+"NeverDefault"=""
+
+[HKEY_CLASSES_ROOT\*\shell\TakeOwnership\command]
+@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c takeown /f \\\"%1\\\" && icacls \\\"%1\\\" /grant *S-1-3-4:F /t /c /l & pause' -Verb runAs\""
+"IsolatedCommand"= "powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c takeown /f \\\"%1\\\" && icacls \\\"%1\\\" /grant *S-1-3-4:F /t /c /l & pause' -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\TakeOwnership]
+@="Take Ownership"
+"AppliesTo"="NOT (System.ItemPathDisplay:=\"C:\\Users\" OR System.ItemPathDisplay:=\"C:\\ProgramData\" OR System.ItemPathDisplay:=\"C:\\Windows\" OR System.ItemPathDisplay:=\"C:\\Windows\\System32\" OR System.ItemPathDisplay:=\"C:\\Program Files\" OR System.ItemPathDisplay:=\"C:\\Program Files (x86)\")"
+"Extended"=-
+"HasLUAShield"=""
+"NoWorkingDirectory"=""
+"Position"="middle"
+
+[HKEY_CLASSES_ROOT\Directory\shell\TakeOwnership\command]
+@="powershell -windowstyle hidden -command \"$Y = ($null | choice).Substring(1,1); Start-Process cmd -ArgumentList ('/c takeown /f \\\"%1\\\" /r /d ' + $Y + ' && icacls \\\"%1\\\" /grant *S-1-3-4:F /t /c /l /q & pause') -Verb runAs\""
+"IsolatedCommand"="powershell -windowstyle hidden -command \"$Y = ($null | choice).Substring(1,1); Start-Process cmd -ArgumentList ('/c takeown /f \\\"%1\\\" /r /d ' + $Y + ' && icacls \\\"%1\\\" /grant *S-1-3-4:F /t /c /l /q & pause') -Verb runAs\""
+
+[HKEY_CLASSES_ROOT\Drive\shell\runas]
+@="Take Ownership"
+"Extended"=-
+"HasLUAShield"=""
+"NoWorkingDirectory"=""
+"Position"="middle"
+"AppliesTo"="NOT (System.ItemPathDisplay:=\"C:\\\")"
+
+[HKEY_CLASSES_ROOT\Drive\shell\runas\command]
+@="cmd.exe /c takeown /f \"%1\\\" /r /d y && icacls \"%1\\\" /grant *S-1-3-4:F /t /c & Pause"
+"IsolatedCommand"="cmd.exe /c takeown /f \"%1\\\" /r /d y && icacls \"%1\\\" /grant *S-1-3-4:F /t /c & Pause"]]>
+</File>
+```
+Reason: Useful Context Menu Entry to Quickly Take Ownership of Files and Folders
+
+### Misc
 Update XML file so it is properly escaped and prevents errors.
 
 ## 29/6/2024
