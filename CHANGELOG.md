@@ -1,4 +1,7 @@
 # Updates
+## 30/6/2024
+Update XML file so it is properly escaped and prevents errors.
+
 ## 29/6/2024
 ### Removed
 ```
