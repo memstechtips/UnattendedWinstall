@@ -197,7 +197,7 @@
   'Microsoft.Windows.Ai.Copilot.Provider';
   'Microsoft.WindowsMeetNow';
   ) | Remove-AppxProvisionedPackage -AllUsers -Online *&gt;&amp;1 &gt;&gt; "$env:TEMP\remove-packages.log";
-</File>
+		</File>
 		<!--Removes Legacy Apps-->
 		<File path="%TEMP%\remove-caps.ps1">
   Get-WindowsCapability -Online |
@@ -212,10 +212,9 @@
     'Microsoft.Windows.WordPad';
   );
   } | Remove-WindowsCapability -Online *&gt;&amp;1 &gt;&gt; "$env:TEMP\remove-caps.log";
-</File>
+		</File>
 		<!--Local Machine Registry Entries - This Sets Features for the Local Machine-->
 		<File path="C:\Windows\Setup\Scripts\localmachine.cmd">
-@echo off
 :: Bypasses Microsoft Account Creation
 reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE" /v BypassNRO /t REG_DWORD /d 1 /f
 
@@ -380,7 +379,7 @@ reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskC
 reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "TargetReleaseVersion" /t REG_DWORD /d 1 /f
 reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "TargetReleaseVersionInfo" /t REG_SZ /d "22H2" /f
 reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "ProductVersion" /t REG_SZ /d "Windows 10" /f
-</File>
+		</File>
 		<!--Powershell Script to Run Various Tweaks, Most of These are from the Chris Titus Tech Windows Utility (Credit:https://christitus.com/windows-tool/)-->
 		<File path="C:\Windows\Setup\Scripts\wintweaks.ps1">
 			<![CDATA[
@@ -1002,7 +1001,7 @@ reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\
 reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\WindowsAI" /f
 reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\WindowsAI" /v "DisableAIDataAnalysis" /t REG_DWORD /d 1 /f
 reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\Windows AI" /v "TurnOffSavingSnapshots" /t REG_DWORD /d 1 /f
-</File>
+		</File>
 		<!--Current User Registry Entries - This Sets Features for the Current User as Some Entries Defined in DefaultUser is Reset for Some Reason-->
 		<File path="C:\Windows\Setup\Scripts\currentuser.cmd">
 :: Disabling the Delivery of Personalized or Suggested Content Like App Suggestions, Tips, and Advertisements in Windows
@@ -1253,7 +1252,7 @@ reg.exe add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Windows AI" /
 
 :: Restart PC to Apply All Changes
 shutdown /r -t 1
-</File>
+		</File>
 		<!--Start Menu Template (Credit:https://schneegans.de/windows/unattend-generator/)-->
 		<File path="C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml">
 			<![CDATA[
