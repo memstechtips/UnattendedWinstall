@@ -11,15 +11,18 @@ I've created a few of these answer files that I use to automate and streamline m
   - *Windows 11 24H2 will be tested once it's fully released.*
 
 My motivation for this project is to get an “IoT-LTSC-Like” or even better experience on the Pro and Home versions of Windows 10 and Windows 11 without having to worry about getting an LTSC License or ISO file.
+<br/>
+<br/>
 
-## Why should I use an Answer File as opposed to other methods of optimizing or debloating Windows?
+## Why should I use an Answer File?
 
-### Security:
+### <ins>Security:</ins>
   - You can see every single change that will be made to the Windows Image by inspecting the answer file.
   - It runs on the Official Windows 10 or 11 ISO downloaded directly from Microsoft, no need to download edited ISO files from Unofficial sources.
   - It's not dependent on any third party tools and is an Official Microsoft Feature used to make Mass Windows Deployments easier.
-### Automation:
+### <ins>Automation:</ins>
   - When installing Windows on multiple computers, there's no need to manually configure settings and run scripts on each machine, which saves a lot of time (and effort).
+<br/>
 
 ## What does Memory's UnattendedWinstall answer files do?
 
