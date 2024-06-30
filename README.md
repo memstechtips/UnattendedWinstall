@@ -23,7 +23,7 @@ My motivation for this project is to get an “IoT-LTSC-Like” or even better e
 
 ## What does Memory's UnattendedWinstall answer files do?
 
-### <ins>There are 3 versions to choose from:</ins>
+### <ins>Choose one of the following:</ins>
 ### [IoT-LTSC-Like](https://github.com/memstechtips/UnattendedWinstall/blob/main/IoT-LTSC-Like/autounattend.xml) 
 ### *Recommended for most people*
    - Includes most of the same Windows Packages as IoT-LTSC
