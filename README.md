@@ -158,6 +158,6 @@ In short, you need to include the `autounattend.xml` answer file on your Windows
 
 ## Conclusion
 
-I hope this Unattended Windows Answer file helps streamline the Windows installation process as much as it has for me. Feel free to leave Your feedback and suggestions as they are always welcome! Also, if you find these scripts useful, consider giving this repository a star ⭐ on GitHub.
+I hope these Unattended Windows Answer files helps streamline the Windows installation process as much as it has for me. Feel free to join my [Discord Community](discord.gg/Z9nUfGmm) or leave Your feedback and suggestions in the [Discussions](https://github.com/memstechtips/UnattendedWinstall/discussions) as they are always welcome! Also, if you find these scripts useful, consider giving this repository a star ⭐ on GitHub.
 
 Happy installing!
