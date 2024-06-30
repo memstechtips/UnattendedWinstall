@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<unattend xmlns="urn:schemas-microsoft-com:unattend" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
-<!--Unattended Windows Installation File to Automatically Debloat Windows 10 & 11 During Installation-->
-<!--Compiled by Memory's Tech Tips https://www.youtube.com/@memstechtips | https://memstechtips.blogspot.com/ -->
-<!--Credit to Schneegans.de as the Base File was Generated with https://schneegans.de/windows/unattend-generator/ -->
-<!--Credit to Chris Titus Tech as this file contains Tweaks from The Windows Utility https://github.com/ChrisTitusTech/winutil | https://christitus.com/windows-tool/ | https://www.youtube.com/@ChrisTitusTech/ -->
+<unattend
+	xmlns="urn:schemas-microsoft-com:unattend"
+	xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State">
+	<!--Unattended Windows Installation File to Automatically Debloat Windows 10 & 11 During Installation-->
+	<!--Compiled by Memory's Tech Tips https://www.youtube.com/@memstechtips | https://memstechtips.blogspot.com/ -->
+	<!--Credit to Schneegans.de as the Base File was Generated with https://schneegans.de/windows/unattend-generator/ -->
+	<!--Credit to Chris Titus Tech as this file contains Tweaks from The Windows Utility https://github.com/ChrisTitusTech/winutil | https://christitus.com/windows-tool/ | https://www.youtube.com/@ChrisTitusTech/ -->
 	<settings pass="offlineServicing"></settings>
 	<settings pass="windowsPE">
 		<component name="Microsoft-Windows-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 			<UserData>
 				<ProductKey>
 					<Key>00000-00000-00000-00000-00000</Key>
-					<WillShowUI>Always</WillShowUI> <!-- This ensures the UI will show to select the edition of Windows -->
+					<WillShowUI>Always</WillShowUI>
+					<!-- This ensures the UI will show to select the edition of Windows -->
 				</ProductKey>
 				<AcceptEula>true</AcceptEula>
 			</UserData>
@@ -44,7 +47,7 @@
 		</component>
 	</settings>
 	<settings pass="generalize"></settings>
-	<settings pass="specialize"> 
+	<settings pass="specialize">
 		<component name="Microsoft-Windows-Deployment" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
 			<RunSynchronous>
 				<RunSynchronousCommand wcm:action="add">
@@ -54,7 +57,7 @@
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>2</Order>
-          				<Description>Loads the Default User Registry Hive so Changes Can be Made to It</Description>
+					<Description>Loads the Default User Registry Hive so Changes Can be Made to It</Description>
 					<Path>reg.exe load "HKU\DefaultUser" "C:\Users\Default\NTUSER.DAT"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
@@ -73,59 +76,58 @@
 					<Path>powershell.exe -NoProfile -Command "Get-Content -LiteralPath '%TEMP%\remove-features.ps1' -Raw | Invoke-Expression;"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
-    					<Order>6</Order>
-          				<Description>Run Chris Titus WinUtil Tweaks</Description>
-          				<Path>cmd.exe /c "powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\wintweaks.ps1' -Raw | Invoke-Expression;" &gt;&gt;"C:\Windows\Setup\Scripts\wintweaks.log" 2&gt;&amp;1"</Path>
+					<Order>6</Order>
+					<Description>Run Chris Titus WinUtil Tweaks</Description>
+					<Path>cmd.exe /c "powershell.exe -NoProfile -ExecutionPolicy Bypass -Command "Get-Content -LiteralPath 'C:\Windows\Setup\Scripts\wintweaks.ps1' -Raw | Invoke-Expression;" &gt;&gt;"C:\Windows\Setup\Scripts\wintweaks.log" 2&gt;&amp;1"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>7</Order>
 					<Description>Executes the HKLM Registry Entries Script</Description>
 					<Path>cmd.exe /c "C:\Windows\Setup\Scripts\localmachine.cmd &gt;&gt;"C:\Windows\Setup\Scripts\localmachine.log" 2&gt;&amp;1"</Path>
-				</RunSynchronousCommand>    
+				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>8</Order>
-         				<Description>Registry Entry to Execute the HKCU Registry Entry Script the First Time a New User Logs In</Description>
+					<Description>Registry Entry to Execute the HKCU Registry Entry Script the First Time a New User Logs In</Description>
 					<Path>reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Runonce" /v "currentuser" /t REG_SZ /d "C:\Windows\Setup\Scripts\currentuser.cmd" /f</Path>
 				</RunSynchronousCommand>
-          			<RunSynchronousCommand wcm:action="add">
+				<RunSynchronousCommand wcm:action="add">
 					<Order>9</Order>
-          				<Description>Registry Entry to Execute the HKU\DefaultUser Registry Entries Script</Description>
+					<Description>Registry Entry to Execute the HKU\DefaultUser Registry Entries Script</Description>
 					<Path>cmd.exe /c "C:\Windows\Setup\Scripts\defaultuser.cmd &gt;&gt;"C:\Windows\Setup\Scripts\defaultuser.log" 2&gt;&amp;1"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>10</Order>
-          				<Description>Executes the EdgeRemoval batch file</Description>
+					<Description>Executes the EdgeRemoval batch file</Description>
 					<Path>cmd.exe /c "C:\Windows\Setup\Scripts\edgeremoval.bat &gt;&gt;"C:\Windows\Setup\Scripts\edgeremoval.log" 2&gt;&amp;1"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>11</Order>
-          				<Description>Adds Take Ownership to the Right Click Context Menu</Description>
+					<Description>Adds Take Ownership to the Right Click Context Menu</Description>
 					<Path>cmd.exe /c "reg.exe import "C:\Windows\Setup\Scripts\take-ownership.reg" &gt;&gt;"C:\Windows\Setup\Scripts\take-ownership.log" 2&gt;&amp;1"</Path>
 				</RunSynchronousCommand>
 				<RunSynchronousCommand wcm:action="add">
 					<Order>12</Order>
-          				<Description>Unloads the Default User Registry Hive</Description>
+					<Description>Unloads the Default User Registry Hive</Description>
 					<Path>reg.exe unload "HKU\DefaultUser"</Path>
-				</RunSynchronousCommand>          
+				</RunSynchronousCommand>
 			</RunSynchronous>
 		</component>
 	</settings>
 	<settings pass="auditSystem"></settings>
 	<settings pass="auditUser"></settings>
 	<settings pass="oobeSystem">
-    <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
-        <OOBE>
-            <HideEULAPage>true</HideEULAPage>
-            <HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
-            <HideOnlineAccountScreens>true</HideOnlineAccountScreens>
-            <HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
-            <NetworkLocation>Work</NetworkLocation>
-            <ProtectYourPC>3</ProtectYourPC>
-        </OOBE>
-        <FirstLogonCommands>       
-        </FirstLogonCommands>
-    </component>
-</settings>
+		<component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
+			<OOBE>
+				<HideEULAPage>true</HideEULAPage>
+				<HideOEMRegistrationScreen>true</HideOEMRegistrationScreen>
+				<HideOnlineAccountScreens>true</HideOnlineAccountScreens>
+				<HideWirelessSetupInOOBE>true</HideWirelessSetupInOOBE>
+				<NetworkLocation>Work</NetworkLocation>
+				<ProtectYourPC>3</ProtectYourPC>
+			</OOBE>
+			<FirstLogonCommands></FirstLogonCommands>
+		</component>
+	</settings>
 	<Extensions>
 		<ExtractScript>
 param(
@@ -148,8 +150,7 @@ foreach( $file in $Document.unattend.Extensions.File ) {
     [System.IO.File]::WriteAllBytes( $path, ( $encoding.GetPreamble() + $encoding.GetBytes( $file.InnerText.Trim() ) ) );
 }
 		</ExtractScript>
-
-<!--Removes Preinstalled Bloatware Apps-->
+		<!--Removes Preinstalled Bloatware Apps-->
 		<File path="%TEMP%\remove-packages.ps1">
 Get-AppxProvisionedPackage -Online |
 Where-Object -Property 'DisplayName' -In -Value @(
@@ -212,8 +213,7 @@ Where-Object -Property 'DisplayName' -In -Value @(
   'Microsoft.WindowsStore';
 ) | Remove-AppxProvisionedPackage -AllUsers -Online *&gt;&amp;1 &gt;&gt; "$env:TEMP\remove-packages.log";
 		</File>
-		
-<!--Removes Legacy Apps-->		
+		<!--Removes Legacy Apps-->
 		<File path="%TEMP%\remove-caps.ps1">
 Get-WindowsCapability -Online |
 Where-Object -FilterScript {
@@ -231,17 +231,15 @@ Where-Object -FilterScript {
   );
 } | Remove-WindowsCapability -Online *&gt;&amp;1 &gt;&gt; "$env:TEMP\remove-caps.log";
 		</File>
-
-<!--Removes Legacy Snipping Tool-->
-<File path="%TEMP%\remove-features.ps1">
+		<!--Removes Legacy Snipping Tool-->
+		<File path="%TEMP%\remove-features.ps1">
 Get-WindowsOptionalFeature -Online |
 Where-Object -Property 'FeatureName' -In -Value @(
   'Microsoft-SnippingTool';
 ) | Disable-WindowsOptionalFeature -Online -Remove -NoRestart *&gt;&amp;1 &gt;&gt; "$env:TEMP\remove-features.log";
-</File>    
-
-<!--Local Machine Registry Entries - This Sets Features for the Local Machine-->
-<File path="C:\Windows\Setup\Scripts\localmachine.cmd">
+		</File>
+		<!--Local Machine Registry Entries - This Sets Features for the Local Machine-->
+		<File path="C:\Windows\Setup\Scripts\localmachine.cmd">
 :: Bypasses Microsoft Account Creation
 reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE" /v BypassNRO /t REG_DWORD /d 1 /f
 
@@ -419,10 +417,10 @@ reg.exe delete "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Schedule\TaskC
 reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "TargetReleaseVersion" /t REG_DWORD /d 1 /f
 reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "TargetReleaseVersionInfo" /t REG_SZ /d "22H2" /f
 reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "ProductVersion" /t REG_SZ /d "Windows 10" /f
-</File>
-
-<!--Powershell Script to Run Various Tweaks, Most of These are from the Chris Titus Tech Windows Utility (Credit:https://christitus.com/windows-tool/)-->
-<File path="C:\Windows\Setup\Scripts\wintweaks.ps1"><![CDATA[
+		</File>
+		<!--Powershell Script to Run Various Tweaks, Most of These are from the Chris Titus Tech Windows Utility (Credit:https://christitus.com/windows-tool/)-->
+		<File path="C:\Windows\Setup\Scripts\wintweaks.ps1">
+			<![CDATA[
 # Creates Desktop Shortcut for the Chris Titus Windows Utility So You Can Easily Launch it to Install Programs
 $path = "C:\Users\Default\Desktop\LAUNCH-CTT-WINUTIL.ps1"
 $content = 'irm https://www.christitus.com/win | iex'
@@ -854,10 +852,9 @@ Set-Service -Name 'wmiApSrv' -StartupType Manual -ErrorAction Continue
 Set-Service -Name 'workfolderssvc' -StartupType Manual -ErrorAction Continue
 Set-Service -Name 'wuauserv' -StartupType Manual -ErrorAction Continue
 Set-Service -Name 'wudfsvc' -StartupType Manual -ErrorAction Continue]]>
-</File>
-
-<!--Default User Registry Entries - This Sets Features for the Default User-->
-<File path="C:\Windows\Setup\Scripts\defaultuser.cmd">
+		</File>
+		<!--Default User Registry Entries - This Sets Features for the Default User-->
+		<File path="C:\Windows\Setup\Scripts\defaultuser.cmd">
 :: Disabling the Delivery of Personalized or Suggested Content Like App Suggestions, Tips, and Advertisements in Windows
 reg.exe add "HKU\DefaultUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "ContentDeliveryAllowed" /t REG_DWORD /d 0 /f
 reg.exe add "HKU\DefaultUser\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "FeatureManagementEnabled" /t REG_DWORD /d 0 /f
@@ -1103,10 +1100,9 @@ reg.exe add "HKU\DefaultUser\Software\Microsoft\Windows\CurrentVersion\Explorer\
 reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\WindowsAI" /f
 reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\WindowsAI" /v "DisableAIDataAnalysis" /t REG_DWORD /d 1 /f
 reg.exe add "HKU\DefaultUser\Software\Policies\Microsoft\Windows\Windows AI" /v "TurnOffSavingSnapshots" /t REG_DWORD /d 1 /f
-</File>
-
-<!--Current User Registry Entries - This Sets Features for the Current User as Some Entries Defined in DefaultUser is Reset for Some Reason-->
-<File path="C:\Windows\Setup\Scripts\currentuser.cmd">
+		</File>
+		<!--Current User Registry Entries - This Sets Features for the Current User as Some Entries Defined in DefaultUser is Reset for Some Reason-->
+		<File path="C:\Windows\Setup\Scripts\currentuser.cmd">
 :: Disabling the Delivery of Personalized or Suggested Content Like App Suggestions, Tips, and Advertisements in Windows
 reg.exe add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "ContentDeliveryAllowed" /t REG_DWORD /d 0 /f
 reg.exe add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager" /v "FeatureManagementEnabled" /t REG_DWORD /d 0 /f
@@ -1358,10 +1354,10 @@ reg.exe add "HKEY_CURRENT_USER\Software\Policies\Microsoft\Windows\Windows AI" /
 
 :: Restart PC to Apply All Changes
 shutdown /r -t 1
-</File>
-
-<!--Additional Edge Removal Script by Chris Titus & AveYo to Ensure Complete Removal-->
-<File path="C:\Windows\Setup\Scripts\edgeremoval.bat"><![CDATA[
+		</File>
+		<!--Additional Edge Removal Script by Chris Titus & AveYo to Ensure Complete Removal-->
+		<File path="C:\Windows\Setup\Scripts\edgeremoval.bat">
+			<![CDATA[
 @(set "0=%~f0"^)#) & powershell -nop -c iex([io.file]::ReadAllText($env:0)) & exit /b
 #:: made by AveYo source: https://raw.githubusercontent.com/AveYo/fox/main/Edge_Removal.bat
 sp 'HKCU:\Volatile Environment' 'Edge_Removal' @'
@@ -1598,22 +1594,16 @@ write-host "`n${.}[40;32m EDGE REMOVED! ${.}[97m -GET-ANOTHER-BROWSER? ENTER:$fi
 start powershell -args "-nop -noe -c & {iex(($code)[0].Edge_Removal)}" -verb runas
 $_Press_Enter
 #::]]>
-</File>
-
-<!--Start Menu Template (Credit:https://schneegans.de/windows/unattend-generator/)-->
-<File path="C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml"><![CDATA[
-<LayoutModificationTemplate Version="1" xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification">
-	<LayoutOptions StartTileGroupCellWidth="6" />
-	<DefaultLayoutOverride>
-		<StartLayoutCollection>
-			<StartLayout GroupCellWidth="6" xmlns="http://schemas.microsoft.com/Start/2014/FullDefaultLayout" />
-		</StartLayoutCollection>
-	</DefaultLayoutOverride>
-</LayoutModificationTemplate>]]>
-</File>
-
-<!--Adds "Take Ownership" to the Right Click Context Menu-->
-<File path="C:\Windows\Setup\Scripts\take-ownership.reg"><![CDATA[
+		</File>
+		<!--Start Menu Template (Credit:https://schneegans.de/windows/unattend-generator/)-->
+		<File path="C:\Users\Default\AppData\Local\Microsoft\Windows\Shell\LayoutModification.xml">
+			<![CDATA[
+<LayoutModificationTemplate Version="1"
+			xmlns="http://schemas.microsoft.com/Start/2014/LayoutModification"><LayoutOptions StartTileGroupCellWidth="6" /><DefaultLayoutOverride><StartLayoutCollection><StartLayout GroupCellWidth="6"xmlns="http://schemas.microsoft.com/Start/2014/FullDefaultLayout" /></StartLayoutCollection></DefaultLayoutOverride></LayoutModificationTemplate>]]>
+		</File>
+		<!--Adds "Take Ownership" to the Right Click Context Menu-->
+		<File path="C:\Windows\Setup\Scripts\take-ownership.reg">
+			<![CDATA[
 Windows Registry Editor Version 5.00
 
 ; Created by: Shawn Brink
@@ -1658,6 +1648,6 @@ Windows Registry Editor Version 5.00
 [HKEY_CLASSES_ROOT\Drive\shell\runas\command]
 @="cmd.exe /c takeown /f \"%1\\\" /r /d y && icacls \"%1\\\" /grant *S-1-3-4:F /t /c & Pause"
 "IsolatedCommand"="cmd.exe /c takeown /f \"%1\\\" /r /d y && icacls \"%1\\\" /grant *S-1-3-4:F /t /c & Pause"]]>
-</File>
-</Extensions>
+		</File>
+	</Extensions>
 </unattend>
