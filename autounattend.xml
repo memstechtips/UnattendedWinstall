@@ -431,7 +431,7 @@ reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "Product
 </File>
 
 <!--Powershell Script to Run Various Tweaks, Most of These are from the Chris Titus Tech Windows Utility (Credit:https://christitus.com/windows-tool/)-->
-<File path="C:\Windows\Setup\Scripts\wintweaks.ps1">
+<File path="C:\Windows\Setup\Scripts\wintweaks.ps1"><![CDATA[
 # Creates Desktop Shortcut for the Chris Titus Windows Utility So You Can Easily Launch it to Install Programs
 $path = "C:\Users\Default\Desktop\LAUNCH-CTT-WINUTIL.ps1"
 $content = 'irm https://www.christitus.com/win | iex'
@@ -862,7 +862,7 @@ Set-Service -Name 'wlpasvc' -StartupType Manual -ErrorAction Continue
 Set-Service -Name 'wmiApSrv' -StartupType Manual -ErrorAction Continue
 Set-Service -Name 'workfolderssvc' -StartupType Manual -ErrorAction Continue
 Set-Service -Name 'wuauserv' -StartupType Manual -ErrorAction Continue
-Set-Service -Name 'wudfsvc' -StartupType Manual -ErrorAction Continue
+Set-Service -Name 'wudfsvc' -StartupType Manual -ErrorAction Continue]]>
 </File>
 
 <!--Default User Registry Entries - This Sets Features for the Default User-->
@@ -1069,7 +1069,7 @@ reg.exe add "HKU\DefaultUser\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\
 :: Makes Taskbar Small in Windows 10
 reg.exe add "HKU\DefaultUser\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v "TaskbarSmallIcons" /t REG_DWORD /d 1 /f
 
-:: Restore Windows Photo Viewer & Set as Default Program for Image Files
+:: Restore Windows Photo Viewer and Set as Default Program for Image Files
 :: Restore Windows Photo Viewer
 reg.exe add "HKU\DefaultUser\SOFTWARE\Classes\.bmp" /ve /d "PhotoViewer.FileAssoc.Tiff" /f
 reg.exe add "HKU\DefaultUser\SOFTWARE\Classes\.cr2" /ve /d "PhotoViewer.FileAssoc.Tiff" /f
@@ -1329,7 +1329,7 @@ reg.exe add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explore
 :: Don't Update Last Access Time Stamp - This Can Improve File System Performance
 fsutil.exe behavior set disableLastAccess 1
 
-:: Restore Windows Photo Viewer & Set as Default Program for Image Files
+:: Restore Windows Photo Viewer and Set as Default Program for Image Files
 :: Restore Windows Photo Viewer
 reg.exe add "HKEY_CURRENT_USER\SOFTWARE\Classes\.bmp" /ve /d "PhotoViewer.FileAssoc.Tiff" /f
 reg.exe add "HKEY_CURRENT_USER\SOFTWARE\Classes\.cr2" /ve /d "PhotoViewer.FileAssoc.Tiff" /f
