@@ -422,10 +422,10 @@ reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "Product
 		<File path="C:\Windows\Setup\Scripts\wintweaks.ps1">
 			<![CDATA[
 # Creates Desktop Shortcut for the Chris Titus Windows Utility So You Can Easily Launch it to Install Programs
-$path = "C:\Users\Default\Desktop\LAUNCH-CTT-WINUTIL.ps1"
-$content = 'irm https://www.christitus.com/win | iex'
+$path = "C:\Users\Default\Desktop\Launch-CTT-WinUtil.bat"
+$content = '@echo off & net session >nul 2>&1 || powershell -Command "Start-Process \"cmd.exe\" -ArgumentList \"/c %~f0\" -Verb RunAs" && exit /B & powershell.exe -Command "iex (iwr \"https://www.christitus.com/win\")"'
 New-Item -Path $path -ItemType File -Force
-$content | Out-File -FilePath $path -Encoding UTF8 -Force
+$content | Out-File -FilePath $path -Encoding ASCII -Force
 
 # Configure Maximum Password Age in Windows
 net.exe accounts /maxpwage:UNLIMITED
