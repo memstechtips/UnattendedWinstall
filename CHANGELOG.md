@@ -1,4 +1,93 @@
 # Updates
+## 8/7/2024
+*These Updates apply to the Standard and IoT-LTSC-Like Versions*
+
+### Changed
+```
+reg.exe add "HKEY_CURRENT_USER\Control Panel\Desktop" /v DragFullWindows /t REG_SZ /d 1 /f
+reg.exe add "HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced" /v ListviewAlphaSelect /t REG_DWORD /d 1 /f
+```
+Reason: Enabled these Settings for a more aesthetically pleasing Windows Experience.
+
+Added `<![CDATA[]]>` to all <Files></Files>.
+
+```
+<settings pass="specialize"></settings>
+```
+Changes in the `specialize` phase
+      - Added `-WindowStyle Hidden` to the powershell.exe commands to run the scripts minimized. (The Windows still appear briefly.)
+      - Combined the `remove-caps.ps1`, `remove-features.ps1` scripts together into the `remove-packages.ps1` Script and changed the file path to `'C:\Windows\Setup\Scripts\remove-packages.ps1'`.
+      - Changed the <Path></Path> command for <Description>Run Chris Titus WinUtil Tweaks</Description>
+      
+### Added
+Added the following items to `wintweaks.ps1`
+```
+Dism /Online /Enable-Feature /FeatureName:NetFx3 /All /Source:X:\sources\sxs /LimitAccess
+```
+Reason: Auto-enables .NET Framework 3.5 (it's already a part of Windows) This fixes - https://github.com/memstechtips/UnattendedWinstall/issues/19
+
+```
+# Create WinUtil shortcut on the desktop (sourced from CTT MicroWin)
+$desktopPath = "C:\Users\Default\Desktop"
+# Specify the target PowerShell command
+$command = "powershell.exe -NoProfile -ExecutionPolicy Bypass -Command 'irm https://christitus.com/win | iex'"
+# Specify the path for the shortcut
+$shortcutPath = Join-Path $desktopPath 'LAUNCH-CTT-WINUTIL.lnk'
+# Create a shell object
+$shell = New-Object -ComObject WScript.Shell
+    
+# Create a shortcut object
+$shortcut = $shell.CreateShortcut($shortcutPath)
+       
+# Set properties of the shortcut
+$shortcut.TargetPath = "powershell.exe"
+$shortcut.Arguments = "-NoProfile -ExecutionPolicy Bypass -Command `"$command`""
+# Save the shortcut
+$shortcut.Save()
+    
+# Make the shortcut have 'Run as administrator' property on
+$bytes = [System.IO.File]::ReadAllBytes($shortcutPath)
+# Set byte value at position 0x15 in hex, or 21 in decimal, from the value 0x00 to 0x20 in hex
+$bytes[0x15] = $bytes[0x15] -bor 0x20
+[System.IO.File]::WriteAllBytes($shortcutPath, $bytes)
+```
+Reason: This fixes https://github.com/memstechtips/UnattendedWinstall/issues/30 where the CTT WinUtil didn't launch correctly.
+
+```
+<!-- Create or modify ei.cfg file -->
+<RunSynchronousCommand wcm:action="add">
+      <Order>7</Order>
+      <Path>cmd /c echo [Channel]>%SYSTEMDRIVE%\sources\ei.cfg &amp;&amp; echo Retail>>%SYSTEMDRIVE%\sources\ei.cfg &amp;&amp; echo [VL]>>%SYSTEMDRIVE%\sources\ei.cfg &amp;&amp; echo 0>>%SYSTEMDRIVE%\sources\ei.cfg</Path>
+</RunSynchronousCommand>
+```
+Reason: Prevents auto detection of Windows Edition and forces Windows Setup to show all available Editions of Windows during setup.
+
+```
+:: Unpins all apps from the Start Menu
+      reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v ConfigureStartPins /t REG_SZ /d "{ \"pinnedList\": [] }" /f
+      reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v ConfigureStartPins_ProviderSet /t REG_DWORD /d 1 /f
+      reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\current\device\Start" /v ConfigureStartPins_WinningProvider /t REG_SZ /d B5292708-1619-419B-9923-E5D9F3925E71 /f
+      reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\providers\B5292708-1619-419B-9923-E5D9F3925E71\default\Device\Start" /v ConfigureStartPins /t REG_SZ /d "{ \"pinnedList\": [] }" /f
+      reg.exe add "HKLM\SOFTWARE\Microsoft\PolicyManager\providers\B5292708-1619-419B-9923-E5D9F3925E71\default\Device\Start" /v ConfigureStartPins_LastWrite /t REG_DWORD /d 1 /f
+```
+Reason: Was previously removed (by mistake) - It cleans up the start menu.
+
+Added ARM versions of all files. This fixes https://github.com/memstechtips/UnattendedWinstall/issues/8
+
+```
+:: Disables User Account Control
+reg.exe add "HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v EnableLUA /t REG_DWORD /d 0 /f
+```
+Reason: Without this entry, the `currentuser.cmd` file won't automatically run as Admin and some of the commands will fail. If you use UAC, just enable it in Control Panel.
+
+### Removed
+```
+:: Hides the Language Switcher on the Taskbar
+reg.exe add "HKEY_CURRENT_USER\SOFTWARE\Microsoft\CTF\LangBar" /v ShowStatus /t REG_DWORD /d 3 /f
+```
+Reason: Doesn't work.
+
+
 ## 30/6/2024
 ### Uploaded first edition of [IoT-LTSC-Like](https://github.com/memstechtips/UnattendedWinstall/blob/main/IoT-LTSC-Like/autounattend.xml) Answer File
 
@@ -157,8 +246,7 @@ reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v DeferQua
 ```
 
 ## 23/6/2024
-Reorder Runsynchronous commands in the specialize phase to load Default User Registry hive earlier.
-   
+ 
 Restore and Set Windows Photo Viewer as default image viewer.
 
 Updated following description:
