@@ -17,7 +17,7 @@ My motivation for this project is to get an “IoT-LTSC-Like” or even better e
 ## Why should I use an Answer File?
 
 ### <ins>Security:</ins>
-  - You can see every single change that will be made to the Windows Image by inspecting the answer file.
+  - You can see all of the changes that will be made to the Windows Image by inspecting the answer file.
   - It runs on the Official Windows 10 or 11 ISO downloaded directly from Microsoft, no need to download edited ISO files from Unofficial sources.
   - It's not dependent on any third party tools and is an Official Microsoft Feature used to make Mass Windows Deployments easier.
 ### <ins>Automation:</ins>
@@ -26,20 +26,22 @@ My motivation for this project is to get an “IoT-LTSC-Like” or even better e
 
 ## What does Memory's UnattendedWinstall answer files do?
 
-### <ins>Choose one of the following:</ins>
-### [IoT-LTSC-Like](https://github.com/memstechtips/UnattendedWinstall/blob/main/IoT-LTSC-Like/autounattend.xml) 
+### <ins>Choose one of the following versions:</ins>
+### [IoT-LTSC-Like](https://github.com/memstechtips/UnattendedWinstall/blob/main/IoT-LTSC-Like/autounattend.xml) / [arm64](https://github.com/memstechtips/UnattendedWinstall/blob/main/IoT-LTSC-Like/arm64/autounattend.xml)
 ### *Recommended for most people*
    - Includes most of the same Windows Packages as IoT-LTSC
      - (Windows Security, Edge, Notepad, Snipping Tool, Calculator, Paint, Legacy Windows Media Player) with added Microsoft Store.
    - Only Security updates are installed, others are delayed for 1 year (max period)
    - Includes better privacy settings and various other tweaks, view [CHANGELOG](https://github.com/memstechtips/UnattendedWinstall/blob/main/CHANGELOG.md) for a full list.
+   - UAC is Disabled by Default to ensure the `currentuser.cmd` script executes correctly at first logon. If you use UAC, please enable it in Control Panel once you're in Windows.
 <br/>
 
-### [Standard](https://github.com/memstechtips/UnattendedWinstall/blob/main/autounattend.xml) 
+### [Standard](https://github.com/memstechtips/UnattendedWinstall/blob/main/Standard/autounattend.xml) / [arm64](https://github.com/memstechtips/UnattendedWinstall/blob/main/Standard/arm64/autounattend.xml)
 ### *This acts as a "Blank Canvas" where you can start from scratch and only install the software you want).*
-   - ALL Windows Packages are removed except for Windows Security (Microsoft Edge and Microsoft Store are both removed).
+   - ALL Windows Packages are removed except for Windows Security. Microsoft Edge (NOT on Win 10 after updates) and Microsoft Store are both removed.
    - Only Security updates are installed, others are delayed for 1 year (max period)
    - Includes better privacy settings and various other tweaks, view [CHANGELOG](https://github.com/memstechtips/UnattendedWinstall/blob/main/CHANGELOG.md) for a full list.
+   - UAC is Disabled by Default to ensure the `currentuser.cmd` script executes correctly at first logon. If you use UAC, please enable it in Control Panel once you're in Windows.
 <br/>
 
 ### [Core]() 
@@ -150,7 +152,7 @@ In short, you need to include the `autounattend.xml` answer file on your Windows
    - Click on “Add” and select the `autounattend.xml` file you downloaded in Step 1 or just click and drag the `autounattend.xml` into the AnyBurn window.
    - Click on “Next,” then on “Create Now.” You should be prompted to overwrite the ISO file, click on “Yes.”
    - Once the process is complete, close AnyBurn.
-4. Use the ISO file to Install Windows on a Virtual Machine OR use a program like [Rufus](https://rufus.ie/en/) or [Ventoy](https://www.ventoy.net/) to create a bootable USB flash drive with the edited Windows ISO file.
+4. Use the ISO file to Install Windows on a Virtual Machine OR use a program like [Rufus](https://rufus.ie/en/) or [Ventoy](https://github.com/ventoy/Ventoy) to create a bootable USB flash drive with the edited Windows ISO file.
 > [!IMPORTANT]
 > When using Rufus, don’t select any of the checkboxes in “Customize Your Windows Experience” as it creates another answer file, we don't want that.
 5. Boot from the Windows Installation USB, do a clean install of Windows as normal, and the scripts will run automatically.
@@ -158,6 +160,6 @@ In short, you need to include the `autounattend.xml` answer file on your Windows
 
 ## Conclusion
 
-I hope these Unattended Windows Answer files helps streamline the Windows installation process as much as it has for me. Feel free to join my [Discord Community](https://www.discord.gg/Z9nUfGmm) or leave Your feedback and suggestions in the [Discussions](https://github.com/memstechtips/UnattendedWinstall/discussions) as they are always welcome! Also, if you find these scripts useful, consider giving this repository a star ⭐ on GitHub.
+I hope these Unattended Windows Answer files helps streamline the Windows installation process as much as it has for me. Feel free to join my [Discord Community](https://www.discord.gg/zWGANV8QAX) or leave Your feedback and suggestions in the [Discussions](https://github.com/memstechtips/UnattendedWinstall/discussions) as they are always welcome! Also, if you find these scripts useful, consider giving this repository a star ⭐ on GitHub.
 
 Happy installing!
