@@ -129,7 +129,7 @@ In short, you need to include the `autounattend.xml` answer file on your Windows
 </br>
 
 > [!NOTE]
-> If the following instructions are unclear, [this video](https://youtu.be/JUTdRZNqODY) should help.
+> If the following instructions are unclear, follow this [video tutorial.](https://youtu.be/pDEZDD_gEbo)
 </br>
 
 ### <ins>Method 1: Create a Bootable Windows Installation Media</ins>
