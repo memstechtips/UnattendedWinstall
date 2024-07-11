@@ -135,9 +135,11 @@ In short, you need to include the `autounattend.xml` answer file on your Windows
 ### <ins>Method 1: Create a Bootable Windows Installation Media</ins>
 
 1. Download your preferred `autounattend.xml` file and save it on your computer.
-2. Create a [Windows 10](https://www.microsoft.com/en-us/software-download/windows10) or [Windows 11](https://www.microsoft.com/en-us/software-download/windows11) Bootable Installation USB drive with the Media Creation Tool or [Rufus](https://rufus.ie/en/).
+2. Create a [Windows 10](https://www.microsoft.com/en-us/software-download/windows10) or [Windows 11](https://www.microsoft.com/en-us/software-download/windows11) Bootable Installation USB drive with [Rufus](https://rufus.ie/en/). 
 > [!IMPORTANT]
-> When using Rufus, don’t select any of the checkboxes in “Customize Your Windows Experience” as it creates another answer file, we don't want that.
+> 1. DO NOT USE the Media Creation Tool to Create the Windows Installation USB!
+> 
+> 2. When using Rufus, don’t select any of the checkboxes in “Customize Your Windows Experience” as it creates another answer file, we don't want that.
 3. Copy the `autounattend.xml` file you downloaded in Step 1 to the root of the Bootable Windows Installation USB you created in Step 2.
 4. Boot from the Windows Installation USB, do a clean install of Windows as normal, and the scripts will run automatically.
 </br>
