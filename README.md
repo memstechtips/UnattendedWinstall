@@ -27,7 +27,8 @@ My motivation for this project is to get an “IoT-LTSC-Like” or even better e
 ## What does Memory's UnattendedWinstall answer files do?
 
 ### <ins>Choose one of the following versions:</ins>
-### [IoT-LTSC-Like](https://github.com/memstechtips/UnattendedWinstall/blob/main/IoT-LTSC-Like/autounattend.xml) / [arm64](https://github.com/memstechtips/UnattendedWinstall/blob/main/IoT-LTSC-Like/arm64/autounattend.xml)
+### IoT-LTSC-Like
+[x64/amd64](https://github.com/memstechtips/UnattendedWinstall/blob/main/IoT-LTSC-Like/autounattend.xml) OR [arm64](https://github.com/memstechtips/UnattendedWinstall/blob/main/IoT-LTSC-Like/arm64/autounattend.xml)
 ### *Recommended for most people*
    - Includes most of the same Windows Packages as IoT-LTSC
      - (Windows Security, Edge, Notepad, Snipping Tool, Calculator, Paint, Legacy Windows Media Player) with added Microsoft Store.
@@ -36,7 +37,8 @@ My motivation for this project is to get an “IoT-LTSC-Like” or even better e
    - UAC is Disabled by Default to ensure the `currentuser.cmd` script executes correctly at first logon. If you use UAC, please enable it in Control Panel once you're in Windows.
 <br/>
 
-### [Standard](https://github.com/memstechtips/UnattendedWinstall/blob/main/Standard/autounattend.xml) / [arm64](https://github.com/memstechtips/UnattendedWinstall/blob/main/Standard/arm64/autounattend.xml)
+### Standard
+[x64/amd64](https://github.com/memstechtips/UnattendedWinstall/blob/main/Standard/autounattend.xml) OR [arm64](https://github.com/memstechtips/UnattendedWinstall/blob/main/Standard/arm64/autounattend.xml)
 ### *This acts as a "Blank Canvas" where you can start from scratch and only install the software you want).*
    - ALL Windows Packages are removed except for Windows Security. Microsoft Edge (NOT on Win 10 after updates) and Microsoft Store are both removed.
    - Only Security updates are installed, others are delayed for 1 year (max period)
@@ -44,7 +46,7 @@ My motivation for this project is to get an “IoT-LTSC-Like” or even better e
    - UAC is Disabled by Default to ensure the `currentuser.cmd` script executes correctly at first logon. If you use UAC, please enable it in Control Panel once you're in Windows.
 <br/>
 
-### [Core]() 
+### Core 
 ### *(coming sometime in the future)*
    - *Removal of Windows Security (Completely Barebones)*
 <br/>
