@@ -162,6 +162,23 @@ In short, you need to include the `autounattend.xml` answer file on your Windows
 5. Boot from the Windows Installation USB, do a clean install of Windows as normal, and the scripts will run automatically.
 </br>
 
+### <ins>Method 3: Use Ventoy Auto Install plugin</ins>
+
+1. Download your preferred `autounattend.xml` file and save it on your computer.
+2. Download the [Windows 10](https://www.microsoft.com/en-us/software-download/windows10) or [Windows 11](https://www.microsoft.com/en-us/software-download/windows11) ISO file depending on the version you want.
+3. Download and install [Ventoy](https://github.com/ventoy/Ventoy) to your desired USB flash drive. Before we get started we have to prepare the folder structure:
+    - In your newly created Ventoy Disk, create the following Folders: `ISO/Windows` and `Templates`. They should be at the root of the drive.
+    - Put your ISOs in the newly created `ISO/Windows` folder.
+    - Put your downloaded `autounattend.xml` into `Templates`
+    - You are ready to keep on going!
+4. Start VentoyPlugson. Depending on your OS the steps might differ, on Windows, run the `.exe` file. A browser window should have opened up, with a ventoy webinterface ready to go.
+5. Navigate to the Auto Install Plugin menu. In there, add a new entry.
+    - Select [parent] to make the whole Windows ISO folder benefit from the plugin.
+    - In the Directory Path, paste in the absolute path to your `ISO/Windows` folder.
+    - In the Template Path, paste in the absolute path to your `autounattend.xml` file. (PSA: If you have more `autounattend.xml` files, you can add them later on!)
+6. Restart your computer and boot from the Ventoy drive. After selecting a Windows ISO under the `ISO/Windows` path, you will be prompted to select the `autounattend.xml` file.
+</br>
+
 ## Conclusion
 
 I hope these Unattended Windows Answer files helps streamline the Windows installation process as much as it has for me. Feel free to join my [Discord Community](https://www.discord.gg/zWGANV8QAX) or leave Your feedback and suggestions in the [Discussions](https://github.com/memstechtips/UnattendedWinstall/discussions) as they are always welcome! Also, if you find these scripts useful, consider giving this repository a star ⭐ on GitHub.
