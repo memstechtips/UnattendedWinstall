@@ -52,11 +52,11 @@ My motivation for this project is to get an “IoT-LTSC-Like” or even better e
 <br/>
 
 > [!IMPORTANT]
-> If you want to install and use Adobe Creative Cloud then you need to reinstall Microsoft Edge or else the Adobe Installer won't run.
+> If you want to install and use Adobe Creative Cloud then you need to reinstall Microsoft Edge Webview2 Runtime or else the Adobe Installer won't run.
 > 
-> Open Windows Powershell as admin and run the following command to reinstall Microsoft Edge (or use the Chris Titus Windows Utility)
+> Open Windows Powershell as admin and run the following command to reinstall Microsoft Edge Webview2 Runtime (or use the Chris Titus Windows Utility)
 >```
->winget install -e --id Microsoft.Edge
+>winget install -e --id Microsoft.EdgeWebView2Runtime
 >```
 <br/>
 
