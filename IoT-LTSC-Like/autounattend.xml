@@ -816,7 +816,6 @@ reg.exe add "HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate" /v "Product
     @="cmd.exe /c takeown /f \"%1\\\" /r /d y && icacls \"%1\\\" /grant *S-1-3-4:F /t /c & Pause"
     "IsolatedCommand"="cmd.exe /c takeown /f \"%1\\\" /r /d y && icacls \"%1\\\" /grant *S-1-3-4:F /t /c & Pause"]]>
     </File>
-    <!--Current User Registry Entries - This Sets Features for the Current User-->
     <File path="C:\Windows\Setup\Scripts\currentuser.cmd">
       <![CDATA[
 :: Disabling the Delivery of Personalized or Suggested Content Like App Suggestions, Tips, and Advertisements in Windows

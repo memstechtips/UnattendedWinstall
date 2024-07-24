@@ -27,7 +27,8 @@ My motivation for this project is to get an “IoT-LTSC-Like” or even better e
 ## What does Memory's UnattendedWinstall answer files do?
 
 ### <ins>Choose one of the following versions:</ins>
-### [IoT-LTSC-Like](https://github.com/memstechtips/UnattendedWinstall/blob/main/IoT-LTSC-Like/autounattend.xml) / [arm64](https://github.com/memstechtips/UnattendedWinstall/blob/main/IoT-LTSC-Like/arm64/autounattend.xml)
+### IoT-LTSC-Like
+[x64/amd64](https://github.com/memstechtips/UnattendedWinstall/blob/main/IoT-LTSC-Like/autounattend.xml) OR [arm64](https://github.com/memstechtips/UnattendedWinstall/blob/main/IoT-LTSC-Like/arm64/autounattend.xml)
 ### *Recommended for most people*
    - Includes most of the same Windows Packages as IoT-LTSC
      - (Windows Security, Edge, Notepad, Snipping Tool, Calculator, Paint, Legacy Windows Media Player) with added Microsoft Store.
@@ -36,7 +37,8 @@ My motivation for this project is to get an “IoT-LTSC-Like” or even better e
    - UAC is Disabled by Default to ensure the `currentuser.cmd` script executes correctly at first logon. If you use UAC, please enable it in Control Panel once you're in Windows.
 <br/>
 
-### [Standard](https://github.com/memstechtips/UnattendedWinstall/blob/main/Standard/autounattend.xml) / [arm64](https://github.com/memstechtips/UnattendedWinstall/blob/main/Standard/arm64/autounattend.xml)
+### Standard
+[x64/amd64](https://github.com/memstechtips/UnattendedWinstall/blob/main/Standard/autounattend.xml) OR [arm64](https://github.com/memstechtips/UnattendedWinstall/blob/main/Standard/arm64/autounattend.xml)
 ### *This acts as a "Blank Canvas" where you can start from scratch and only install the software you want).*
    - ALL Windows Packages are removed except for Windows Security. Microsoft Edge (NOT on Win 10 after updates) and Microsoft Store are both removed.
    - Only Security updates are installed, others are delayed for 1 year (max period)
@@ -44,7 +46,7 @@ My motivation for this project is to get an “IoT-LTSC-Like” or even better e
    - UAC is Disabled by Default to ensure the `currentuser.cmd` script executes correctly at first logon. If you use UAC, please enable it in Control Panel once you're in Windows.
 <br/>
 
-### [Core]() 
+### Core 
 ### *(coming sometime in the future)*
    - *Removal of Windows Security (Completely Barebones)*
 <br/>
@@ -135,9 +137,11 @@ In short, you need to include the `autounattend.xml` answer file on your Windows
 ### <ins>Method 1: Create a Bootable Windows Installation Media</ins>
 
 1. Download your preferred `autounattend.xml` file and save it on your computer.
-2. Create a [Windows 10](https://www.microsoft.com/en-us/software-download/windows10) or [Windows 11](https://www.microsoft.com/en-us/software-download/windows11) Bootable Installation USB drive with the Media Creation Tool or [Rufus](https://rufus.ie/en/).
+2. Create a [Windows 10](https://www.microsoft.com/en-us/software-download/windows10) or [Windows 11](https://www.microsoft.com/en-us/software-download/windows11) Bootable Installation USB drive with [Rufus](https://rufus.ie/en/). 
 > [!IMPORTANT]
-> When using Rufus, don’t select any of the checkboxes in “Customize Your Windows Experience” as it creates another answer file, we don't want that.
+> 1. DO NOT USE the Media Creation Tool to Create the Windows Installation USB!
+> 
+> 2. When using Rufus, don’t select any of the checkboxes in “Customize Your Windows Experience” as it creates another answer file, we don't want that.
 3. Copy the `autounattend.xml` file you downloaded in Step 1 to the root of the Bootable Windows Installation USB you created in Step 2.
 4. Boot from the Windows Installation USB, do a clean install of Windows as normal, and the scripts will run automatically.
 </br>
@@ -163,17 +167,12 @@ In short, you need to include the `autounattend.xml` answer file on your Windows
 1. Download your preferred `autounattend.xml` file and save it on your computer.
 2. Download the [Windows 10](https://www.microsoft.com/en-us/software-download/windows10) or [Windows 11](https://www.microsoft.com/en-us/software-download/windows11) ISO file, depending on the version you want.
 3. Download and install [Ventoy](https://github.com/ventoy/Ventoy) to your desired USB flash drive. Before we get started, we have to prepare the folder structure:
-    - In your newly created Ventoy disk, create the following folders: `ISO` and `Templates`. They should be at the root of the drive.
-    - Put your ISOs in the newly created `ISO` folder.
+
     - Put your downloaded `autounattend.xml` into `Templates`.
     - You are ready to keep on going!
 4. Start VentoyPlugson. Depending on your OS, the steps might differ. On Windows, run the `.exe` file. A browser window should open up with a Ventoy web interface ready to go.
 5. Navigate to the Auto Install Plugin menu. In there, add a new entry.
     - Select [parent] to make the whole Windows ISO folder benefit from the plugin.
-    - In the Directory Path, paste in the absolute path to your `ISO` folder.
-    - In the Template Path, paste in the absolute path to your `autounattend.xml` file. (PSA: If you have more `autounattend.xml` files, you can add them later on!)
-6. Restart your computer and boot from the Ventoy drive. After selecting a Windows ISO under the `ISO` path, you will be prompted to select the `autounattend.xml` file.
-
 </br>
 
 ## Conclusion
