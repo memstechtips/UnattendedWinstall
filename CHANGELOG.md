@@ -1,4 +1,29 @@
 # Updates
+## 24/7/2024
+*These Updates apply to ALL Versions*
+
+### Changed
+README.md - Fixed wrong `ISO/Windows` folder creation in Method 3. (Can't create folders with "/")
+
+```
+reg.exe add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System" /v Wallpaper /t REG_SZ /d "C:\Windows\Web\Wallpaper\Windows\img19.jpg" /f
+```
+Changed img0.jpg to img19.jpg to compliment the automatic enabling of dark mode.
+
+### Added
+```
+:: Disables Wallpaper JPEG Quality Reduction in Windows 10
+reg.exe add "HKEY_CURRENT_USER\Control Panel\Desktop" /v JPEGImportQuality /t REG_DWORD /d 100 /f
+```
+
+```
+:: Set Desktop Background Dark Mode Wallpaper
+reg.exe add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d "C:\Windows\Web\Wallpaper\Windows\img19.jpg" /f
+```
+
+### Removed
+Completely Removed `defaultuser.cmd` - It doesn't work as intended, registry settings are applied to user accounts via the `currentuser.cmd` script.
+
 ## 8/7/2024
 *These Updates apply to the Standard and IoT-LTSC-Like Versions*
 
