@@ -165,7 +165,6 @@ foreach( $file in $Document.unattend.Extensions.File ) {
   'Microsoft.Paint';
   'Microsoft.MSPaint';
   'Microsoft.People';
-  'Microsoft.Windows.Photos';
   'Microsoft.PowerAutomateDesktop';
   'MicrosoftCorporationII.QuickAssist';
   'Microsoft.SkypeApp';
