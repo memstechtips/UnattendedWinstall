@@ -43,7 +43,7 @@
         <RunSynchronousCommand wcm:action="add">
           <Order>7</Order>
           <Description>Prevents auto detection of Windows Edition and forces Windows Setup to show all available Editions of Windows during setup.</Description>
-          <Path>cmd /c echo [Channel]>%SYSTEMDRIVE%\sources\ei.cfg &amp;&amp; echo Retail>>%SYSTEMDRIVE%\sources\ei.cfg &amp;&amp; echo [VL]>>%SYSTEMDRIVE%\sources\ei.cfg &amp;&amp; echo 0>>%SYSTEMDRIVE%\sources\ei.cfg</Path>
+          <Path>cmd /c echo [Channel]>%SYSTEMDRIVE%\sources\ei.cfg && echo Retail>>%SYSTEMDRIVE%\sources\ei.cfg</Path>
         </RunSynchronousCommand>
       </RunSynchronous>
     </component>
