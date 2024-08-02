@@ -3,7 +3,7 @@ name: Draft Release
 on:
   push:
     branches:
-      - dev
+      - development
 
 jobs:
   release:
@@ -17,10 +17,7 @@ jobs:
         with:
           node-version: '16'
 
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run Release Drafter
+      - name: Install and run Release Drafter
         uses: release-drafter/release-drafter@v5
         with:
           config-name: .github/release-drafter.yml
