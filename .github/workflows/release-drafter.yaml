@@ -3,10 +3,19 @@ tag-template: 'v$NEXT_PATCH_VERSION'
 categories:
   - title: '🚀 Features'
     label: 'feature'
+    keywords:
+      - 'feat'
+      - 'feature'
   - title: '🐛 Bug Fixes'
     label: 'bug'
+    keywords:
+      - 'fix'
+      - 'bug'
   - title: '🛠 Maintenance'
     label: 'maintenance'
+    keywords:
+      - 'chore'
+      - 'maintenance'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 template: |
   ## What’s Changed
