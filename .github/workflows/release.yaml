@@ -9,8 +9,10 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout development branch
         uses: actions/checkout@v3
+        with:
+          ref: development
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
