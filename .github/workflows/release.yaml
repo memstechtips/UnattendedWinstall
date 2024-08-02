@@ -11,6 +11,8 @@ jobs:
     steps:
       - name: Checkout development branch
         uses: actions/checkout@v3
+        with:
+          ref: development
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
