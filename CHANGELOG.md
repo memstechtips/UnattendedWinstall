@@ -1,4 +1,17 @@
 # Updates
+## 3/8/2024
+- Added Core version which disables Windows Defender. Specifically, it disables the following services "Sense, WdBoot, WdFilter, WdNisDrv, WdNisSvc, WinDefend" which in turns prevents the MsMpEng.exe process from running. Credit to Christoph Schneegans for explaining.
+- Combined 64bit, 32bit and ARM64 support into a single `autounattend.xml` file for each version of the file.
+- Fixed the `ei.cfg` file creation to correctly show all available editions of Windows during the setup.
+- User Account Control is now set to default (level 3) at the end of the `currentuser.cmd` script.
+- Set Powershell ExecutionPolicy to "AllSigned" for better security. Thanks https://github.com/cyb3rm4gus
+- Set "When Windows Detects Communication Activity" under "System > Sound > More sound settings > Communications" to "Do Nothing". Thanks https://github.com/MicaelJarniac
+- Added Blocks the “Allow my organization to manage my device” and “No, sign in to this app only” pop-up message. Thanks https://github.com/Syntax3rror404
+- Changed `NetworkThrottlingIndex` to 10 (Default)
+- Removed the "Disables Hibernation" entry.
+- Created `TROUBLESHOOTING.md` to provide fixes to common "issues."
+- Updated `README.md` for better readability and included more information and FAQ's.
+
 ## 24/7/2024
 *These Updates apply to ALL Versions*
 
