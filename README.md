@@ -148,7 +148,7 @@ In short, you need to include the `autounattend.xml` answer file on your Windows
     - Select the `Auto Install Plugin` menu from the list.
     - Click on the `Add` button.
     - Select [parent] to make the whole Windows ISO folder benefit from the plugin.
-    - In the Directory Path, paste in the absolute path to your `ISO` folder. </br> example: `F:\ISO\Windows` (Replace `F` with your drive letter.)
+    - In the Directory Path, paste in the absolute path to your `Windows` folder. </br> example: `F:\ISO\Windows` (Replace `F` with your drive letter.)
     - In the Template Path, paste in the absolute path to your `autounattend.xml` file. </br> example: `F:\Templates\autounattend.xml` (Replace `F` with your drive letter.) <br/> (PSA: If you have more `autounattend.xml` files, you can add them later on!)
     - Click on `OK` and you should see a message saying that the configuration has been saved successfully.
     - Close the VentoyPlugson browser window and stop the VentoyPlugson application.
