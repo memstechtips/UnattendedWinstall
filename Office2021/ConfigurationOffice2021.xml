@@ -1,0 +1,23 @@
+<Configuration>
+  <Add OfficeClientEdition="64" Channel="PerpetualVL2021" AllowCdnFallback="TRUE" ForceUpgrade="TRUE">
+    <Product ID="Standard2021Volume">
+      <Language ID="de-de" />
+      <ExcludeApp ID="Groove" />
+    </Product>
+  </Add>
+  <Property Name="SharedComputerLicensing" Value="0" />
+  <Property Name="PinIconsToTaskbar" Value="TRUE" />
+  <Property Name="SCLCacheOverride" Value="0" />
+  <Updates Enabled="TRUE" />
+  <RemoveMSI All="TRUE" />
+  <AppSettings>
+    <Setup Name="Company" Value="Company" />
+    <User Key="software\microsoft\office\16.0\firstrun" Name="disablemovie" Value="1" Type="REG_DWORD" App="office16" Id="L_DisableMovie" />
+    <User Key="software\microsoft\office\16.0\firstrun" Name="bootedrtm" Value="1" Type="REG_DWORD" App="office16" Id="L_DisableOfficeFirstrun" />
+    <User Key="software\microsoft\office\16.0\common" Name="sendcustomerdata" Value="0" Type="REG_DWORD" App="office16" Id="L_Sendcustomerdata" />
+    <User Key="software\microsoft\office\16.0\word\options" Name="disablesaveaslosswarningopendocumenttext" Value="1" Type="REG_DWORD" App="word16" Id="L_DoNotDisplayFileFormatCompatiblityDialogForODT" />
+    <User Key="software\microsoft\office\16.0\excel\options" Name="disablesaveaslosswarningopendocumentspreadsheet" Value="1" Type="REG_DWORD" App="excel16" Id="L_TurnOffFileFormatCompatiblityDialogForODS" />
+    <User Key="software\microsoft\office\16.0\powerpoint\options" Name="disablesaveaslosswarningopendocumentpresentation" Value="1" Type="REG_DWORD" App="ppt16" Id="L_TurnOffFileFormatCompatiblityDialogForODP" />
+  </AppSettings>
+  <Display Level="full" AcceptEULA="TRUE" />
+</Configuration>
