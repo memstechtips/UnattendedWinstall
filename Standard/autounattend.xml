@@ -410,7 +410,6 @@ foreach( $file in $Document.unattend.Extensions.File ) {
   'Microsoft.WindowsMaps';
   'Microsoft.ZuneVideo';
   'Microsoft.BingNews';
-  'Microsoft.WindowsNotepad';
   'Microsoft.MicrosoftOfficeHub';
   'Microsoft.Office.OneNote';
   'Microsoft.OutlookForWindows';
