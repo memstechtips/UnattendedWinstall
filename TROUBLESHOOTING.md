@@ -1,5 +1,17 @@
 # Troubleshooting Guides
 
+## Install latest VCRedis
+<details>
+    <summary>Click to Show Fix</summary>
+    https://aka.ms/vs/17/release/vc_redist.x64.exe
+</details>
+
+## Install Edge WebView2 if needed (for Teams or RDM)
+<details>
+    <summary>Click to Show Fix</summary>
+    https://developer.microsoft.com/en-us/microsoft-edge/webview2/?form=MA13LH
+</details>
+
 ## Adobe Creative Cloud Installer won't Launch
 
 <details>
