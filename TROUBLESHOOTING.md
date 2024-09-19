@@ -88,11 +88,26 @@
 <details>
 <summary>Click to Show Fix</summary>
 
-### Reinstall the Microsoft Store - [Video Instructions](https://youtu.be/pjPtV_1cVOk)
+### Reinstall the Microsoft Store
 
-1. Download, Install and Launch the [Xbox App for Windows](https://www.xbox.com/en-US/apps/xbox-app-for-pc)
-2. It will prompt you to install missing dependencies and the Microsoft Store is one of them.
+Option 1 (easiest):
 
+1. Right-Click on Start and open Windows Powershell or Terminal as Admin.
+2. Run the following command:
+    ```powershell
+    wsreset -i
+    ```
+This will install the Microsoft Store.
+
+Option 2:
+
+1. Download and Install the [Xbox App for Windows](https://www.xbox.com/en-US/apps/xbox-app-for-pc)
+2. Launch the Xbox App and select "Browse the Catalog".
+3. At the top of the window, the app will show the Microsoft Store as an uninstalled dependency. Click to install it.
+
+Option 3:
+
+[Video Instructions and some other ideas](https://youtu.be/pjPtV_1cVOk)
 </details>
 
 ## Xbox Game Bar not Working or Recording
