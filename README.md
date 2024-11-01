@@ -16,7 +16,7 @@ UnattendedWinstall leverages Microsoft's [Answer Files](https://learn.microsoft.
 
 - Enables automated configuration across multiple devices, saving time and effort by eliminating repetitive manual setups.
 
-> **Note**  
+> [!NOTE] 
 > UnattendedWinstall has been tested and optimized for personal use. For those interested in customizing further, [create your own answer file](https://schneegans.de/windows/unattend-generator/) following [this video guide](https://youtu.be/WyLiJl-NQU8).
 
 ### Support the Project
@@ -80,7 +80,7 @@ The UnattendedWinstall answer file come with detailed descriptions for nearly al
 - Configures Windows services for optimal performance
 - Enables the Ultimate Performance power plan
 
-> **Note**  
+> [!NOTE] 
 > Use the `UWScript.ps1` file once Windows is installed to reapply or revert settings in case Windows Update resets some of the settings or if you encounter any issues.  
 > It can also be used to achieve a similar experience to UnattendedWinstall on an existing Windows installation without reinstalling Windows.
 >
@@ -98,14 +98,12 @@ The UnattendedWinstall answer file come with detailed descriptions for nearly al
 
 ## Usage Instructions
 
-### Installing Windows with an Answer File
-
 To use an answer file, include `autounattend.xml` at the root of your Windows Installation Media to be executed during Windows setup.
 
-> **Note**  
+> [!NOTE]  
 > Ensure the answer file is named `autounattend.xml`; otherwise, it won’t be recognized by the installer.
 
-> **Note**  
+> [!NOTE] 
 > You can back up your drivers prior to installation to ensure they’re readily available:
 >
 > <details>
@@ -127,7 +125,7 @@ To use an answer file, include `autounattend.xml` at the root of your Windows In
 >
 > </details>
 
-#### Method 1: Create a Bootable Windows Installation USB
+### Method 1: Create a Bootable Windows Installation USB
 
 - [Video Tutorial](https://youtu.be/pDEZDD_gEbo)
 
@@ -146,7 +144,7 @@ To use an answer file, include `autounattend.xml` at the root of your Windows In
 
 </details>
 
-#### Method 2: Create a Custom ISO File
+### Method 2: Create a Custom ISO File
 
 - [Video Tutorial](https://youtu.be/pDEZDD_gEbo?si=ChEGghEOLCyLSnp7&t=1117)
 
@@ -171,7 +169,7 @@ To use an answer file, include `autounattend.xml` at the root of your Windows In
 
 </details>
 
-#### Method 3: Use Ventoy Auto Install Plugin
+### Method 3: Use Ventoy Auto Install Plugin
 
 - [Video Tutorial](https://youtu.be/4AGZQJTyCOs)
 
