@@ -1,4 +1,8 @@
 # Updates
+
+## 1/11/2024
+- Released UnattendedWinstall v2.0.0
+
 ## 3/8/2024
 - Added Core version which disables Windows Defender. Specifically, it disables the following services "Sense, WdBoot, WdFilter, WdNisDrv, WdNisSvc, WinDefend" which in turns prevents the MsMpEng.exe process from running. Credit to Christoph Schneegans for explaining.
 - Combined 64bit, 32bit and ARM64 support into a single `autounattend.xml` file for each version of the file.
