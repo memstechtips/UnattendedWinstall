@@ -19,18 +19,23 @@ UnattendedWinstall leverages Microsoft's [Answer Files](https://learn.microsoft.
 > [!NOTE] 
 > UnattendedWinstall has been tested and optimized for personal use. For those interested in customizing further, [create your own answer file](https://schneegans.de/windows/unattend-generator/) following [this video guide](https://youtu.be/WyLiJl-NQU8).
 
+### Versions
+
+[![Version 2 Release (Latest)](https://img.shields.io/badge/Version-2.0.0%20Latest-0078D4?style=for-the-badge&logo=github&logoColor=white)](https://github.com/memstechtips/UnattendedWinstall/releases/tag/v2.0.0)
+[![Version 1 Release](https://img.shields.io/badge/Version-1.0.0-FFA500?style=for-the-badge&logo=github&logoColor=white)](https://github.com/memstechtips/UnattendedWinstall/releases/tag/v1.0.0)
+
 ### Support the Project
 
 If UnattendedWinstall has been useful to you, consider supporting the project, it really does help!
 
-[![Support via PayPal](https://img.shields.io/badge/Support-via%20PayPal-yellow?logo=paypal)](https://paypal.me/memstech)
+[![Support via PayPal](https://img.shields.io/badge/Support-via%20PayPal-FFD700?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/memstech)
 
 ### Feedback and Community
 
 If you have feedback, suggestions, or need help with UnattendedWinstall, please feel free to join the discussion on GitHub or our Discord community:
 
-[![Join the Discussion](https://img.shields.io/badge/Join-the%20Discussion-blue?logo=github&logoColor=white)](https://github.com/memstechtips/UnattendedWinstall/discussions)
-[![Join Discord Community](https://img.shields.io/badge/Join-Discord%20Community-5865F2?logo=discord&logoColor=white)](https://www.discord.gg/zWGANV8QAX)
+[![Join the Discussion](https://img.shields.io/badge/Join-the%20Discussion-2D9F2D?style=for-the-badge&logo=github&logoColor=white)](https://github.com/memstechtips/UnattendedWinstall/discussions)
+[![Join Discord Community](https://img.shields.io/badge/Join-Discord%20Community-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://www.discord.gg/zWGANV8QAX)
 
 ## Requirements
 
@@ -91,7 +96,7 @@ The UnattendedWinstall answer file come with detailed descriptions for nearly al
 > Ensure you open PowerShell as an administrator. Additionally, set the execution policy to allow script execution by running the following command:
 >
 > ```powershell
-> Set-ExecutionPolicy RemoteSigned
+> Set-ExecutionPolicy Unrestricted
 > ```
 >
 > Running PowerShell with elevated permissions and enabling script execution will ensure that `UWScript.ps1` can apply the necessary system changes.
@@ -204,7 +209,7 @@ To use an answer file, include `autounattend.xml` at the root of your Windows In
 
 ### How can I apply these settings to an existing Windows installation?
 
-- Run the `UWScript.ps1` file or use the [Chris Titus Tech Windows Utility](https://github.com/ChrisTitusTech/winutil) ([Video](https://youtu.be/pldFPTnOCGM)).
+- Run the [`UWScript.ps1`](https://github.com/memstechtips/UnattendedWinstall/blob/main/UWScript.ps1) file or use the [Chris Titus Tech Windows Utility](https://github.com/ChrisTitusTech/winutil) ([Video](https://youtu.be/pldFPTnOCGM)).
 
 ### Can this answer file be used for an in-place upgrade?
 
@@ -230,3 +235,65 @@ To use an answer file, include `autounattend.xml` at the root of your Windows In
   After installation, you should be able to connect to the internet.
 
 </details>
+
+### How can I install a different edition of Windows other than Pro?
+
+<details>
+  <summary>Click to Show Instructions</summary>
+
+  To install an edition of Windows other than Pro, you’ll need to adjust the product key placeholders in your `autounattend.xml` file.
+
+  1. Locate the three `<Key>` entries within the file that currently look like this:
+     ```xml
+     <Key>VK7JG-NPHTM-C97JM-9MPGT-3V66T</Key>
+     ```
+  2. Replace each entry with the following generic key placeholder:
+     ```xml
+     <Key>00000-00000-00000-00000-00000</Key>
+     ```
+
+  By replacing these sections with a generic placeholder, you’ll be able to select the desired Windows edition during installation.
+
+</details>
+
+### How can I access the previous "IoT-LTSC-Like," "Standard," and "Core" versions of the file(s)?
+
+  - You still have access to the previous files here: [Version 1.0.0 Release](https://github.com/memstechtips/UnattendedWinstall/releases/tag/v1.0.0).
+
+  > [!NOTE]  
+  > You need to download the `Source Code.zip` file. Once extracted, you’ll have access to all the previous v1.0.0 files.
+
+### Why isn't Microsoft Edge Uninstalled?
+
+<details>
+  <summary>Click to Show Explanation</summary>
+
+  I spent a lot of time trying to find a way to uninstall Microsoft Edge during Windows installation. However, it was challenging because of differences between Windows 10 22H2 and Windows 11 24H2. My goal is to use Microsoft’s supported uninstall methods, and I plan to add an easy Edge removal option in future releases.
+
+  In the meantime, if you wish to remove Edge after Windows installation, consider using [this script by FR33THY](https://github.com/FR33THYFR33THY/Ultimate-Windows-Optimization-Guide/blob/main/6%20Windows/14%20Edge.ps1). FR33THY’s *Ultimate Windows Optimization Guide* was a major inspiration for version 2.0.0 of this project, and I highly recommend exploring it for additional Windows optimization tips.
+
+</details>
+
+### How can I add my own Registry Tweaks to v2.0.0 of the `autounattend.xml` file?
+
+<details>
+  <summary>Click to Show Instructions</summary>
+
+  You can also still add your own registry entries to the v2.0.0 file, and it is actually easier if you understand where to add it. I'll give a brief explanation.
+
+  For registry entries that apply to the local machine, i.e., `HKEY_LOCAL_MACHINE` registry keys, you can find the `function SetRecommendedHKLMRegistry` in the `autounattend.xml` file, see here: https://github.com/memstechtips/UnattendedWinstall/blob/93305192ed6d64e0f5b98a89f447927480285354/autounattend.xml#L1981
+
+  and then add whatever registry entries you want to add in `.reg` format, like the rest of the entries are set, and just make sure you add it before the `"@` to make it part of the `.reg` file that will be generated, see here: https://github.com/memstechtips/UnattendedWinstall/blob/93305192ed6d64e0f5b98a89f447927480285354/autounattend.xml#L3412
+
+  and it will then be applied to the registry.
+
+  Similarly, if you have `HKEY_CURRENT_USER` registry keys, you can add those to the `User Customization.ps1` file in the same way as explained above, starting here:
+  https://github.com/memstechtips/UnattendedWinstall/blob/93305192ed6d64e0f5b98a89f447927480285354/autounattend.xml#L3912
+  so below the `Windows Registry Editor Version 5.00` and then ending before the `"@` here: https://github.com/memstechtips/UnattendedWinstall/blob/93305192ed6d64e0f5b98a89f447927480285354/autounattend.xml#L4423
+
+  > **Note**  
+  > The above links might not take you to the correct lines of code once new versions of the file are released, but it does take you to the correct lines on v2.0.0.
+
+</details>
+
+
