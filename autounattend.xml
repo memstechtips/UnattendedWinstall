@@ -1539,7 +1539,7 @@ $appxPackages = @(
 
 # Define Windows Capabilities
 $capabilities = @(
-    'Browser.InternetExplorer', 'MathRecognizer', 'OpenSSH.Client',
+    'MathRecognizer', 'OpenSSH.Client',
     'Microsoft.Windows.PowerShell.ISE', 'App.Support.QuickAssist', 'App.StepsRecorder',
     'Media.WindowsMediaPlayer', 'Microsoft.Windows.WordPad', 'Microsoft.Windows.MSPaint'
 )
