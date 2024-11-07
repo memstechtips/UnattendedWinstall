@@ -909,7 +909,7 @@ Windows Registry Editor Version 5.00
 "DeferFeatureUpdates"=dword:00000001
 "DeferFeatureUpdatesPeriodInDays"=dword:0000016d
 "DeferQualityUpdates"=dword:00000001
-"DeferQualityUpdatesPeriodInDays"=dword:0000016d
+"DeferQualityUpdatesPeriodInDays"=dword:00000007
 
 ; Disables allowing downloads from other PCs (Delivery Optimization)
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\DeliveryOptimization]
@@ -1096,11 +1096,6 @@ Windows Registry Editor Version 5.00
 ; Enable Long File Paths with Up to 32,767 Characters
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem]
 "LongPathsEnabled"=dword:00000001
-
-; --Memory Management--
-; Controls whether the memory page file is cleared at shutdown (0 means it will not be cleared, speeding up shutdown)
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
-"ClearPageFileAtShutdown"=dword:00000000
 
 ; --Multimedia and Gaming Performance--
 ; Gives Multimedia Applications like Games and Video Editing a Higher Priority
@@ -1362,12 +1357,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile]
 "SystemResponsiveness"=dword:00000014
 "NetworkThrottlingIndex"=dword:ffffffff
-
-; --Revert Memory Management--
-
-; Reverts Clearing the Page File at Shutdown to Default (Enabled)
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management]
-"ClearPageFileAtShutdown"=dword:00000001
 
 ; --Revert Gaming Performance--
 
