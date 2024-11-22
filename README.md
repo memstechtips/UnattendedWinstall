@@ -2,7 +2,7 @@
 
 ## Introduction
 
-UnattendedWinstall leverages Microsoft's [Answer Files](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/update-windows-settings-and-scripts-create-your-own-answer-file-sxs?view=windows-11) (or Unattend files) to automate and customize Windows installations. It enables modifications to Windows Settings and Packages directly in the Windows ISO during setup.
+UnattendedWinstall leverages Microsoft's [Answer Files](https://learn.microsoft.com/en-us/windows-hardware/manufacture/desktop/update-windows-settings-and-scripts-create-your-own-answer-file-sxs?view=windows-11) (or Unattend files) to automate and customize Windows installations. </br> It enables modifications to Windows Settings and Packages directly in the Windows ISO during setup.
 
 ### Why Use an Answer File?
 
@@ -45,7 +45,7 @@ If you have feedback, suggestions, or need help with UnattendedWinstall, please 
 
 ## What Does UnattendedWinstall Do?
 
-The UnattendedWinstall answer file come with detailed descriptions for nearly all configurations and registry tweaks, which are available for inspection here on GitHub. For customization, download the answer file and open it in editors like [Cursor](https://www.cursor.com/) or [VSCode](https://code.visualstudio.com/).
+The UnattendedWinstall answer file comes with detailed descriptions for nearly all configurations and registry tweaks, which are available for inspection here on GitHub. For customization, download the answer file and open it in editors like [Cursor](https://www.cursor.com/) or [VSCode](https://code.visualstudio.com/).
 
 ### Sources and Contributions
 
@@ -105,32 +105,45 @@ The UnattendedWinstall answer file come with detailed descriptions for nearly al
 
 To use an answer file, include `autounattend.xml` at the root of your Windows Installation Media to be executed during Windows setup.
 
-> [!NOTE]  
+> [!IMPORTANT]  
 > Ensure the answer file is named `autounattend.xml`; otherwise, it won’t be recognized by the installer.
 
-> [!NOTE] 
-> You can back up your drivers prior to installation to ensure they’re readily available:
->
-> <details>
->   <summary>Click to Show Instructions</summary>
->
-> 1. **Create a folder named `Drivers` on your C: drive.**
->
-> 2. **Backup your current Windows drivers to the `C:` drive** by running the following command in Command Prompt as Administrator:
->
->      ```bash
->      dism /online /export-driver /destination:C:\Drivers
->      ```
->
-> 3. **Plug your USB drive/installation media into your computer.**
->
-> 4. **Create a folder named `$WinpeDriver$` on your USB drive.**
->
-> 5. **Copy the drivers you want to install automatically** from `C:\Drivers` to `D:\$WinpeDriver$` **assuming `D:` is your USB drive.**
->
-> </details>
+---
 
-### Method 1: Create a Bootable Windows Installation USB
+### Using Memory's [WIMUtil](https://github.com/memstechtips/WIMUtil) (Highly Preferred)
+
+To use **WIMUtil**, follow these steps to launch PowerShell as an Administrator and run the installation script:
+
+1. **Open PowerShell as Administrator:**
+   - **Windows 10/11**: Right-click on the **Start** button and select **Windows PowerShell (Admin)** or **Windows Terminal (Admin)**. </br> PowerShell will open in a new window.
+
+2. **Confirm Administrator Privileges**: 
+   - If prompted by the User Account Control (UAC), click **Yes** to allow PowerShell to run as an administrator.
+
+3. **Paste and Run the Command**:
+   - Copy the following command:
+     ```powershell
+     irm "https://github.com/memstechtips/WIMUtil/raw/main/src/WIMUtil.ps1" | iex
+     ```
+   - To paste into PowerShell, **Right-Click** or press **Ctrl + V** in the PowerShell or Terminal window. </br> This should automatically paste your copied command.
+   - Press **Enter** to execute the command.
+
+Once launched, **WIMUtil** guides you through a wizard:
+
+1. **Select or Download Windows ISO**
+2. **Add Latest UnattendedWinstall Answer File Automatically**
+3. **Extract and Add Current Device Drivers to Installation Media**
+4. **Create New ISO with Customizations Included**
+5. **Create a Bootable USB Flash Drive with [Ventoy](https://github.com/ventoy/Ventoy)**
+6. **Copy the New ISO File to the Ventoy Flash Drive**
+7. **Boot from the USB flash drive, choose your ISO & Install Windows**
+
+For more info, check out the official [WIMUtil](https://github.com/memstechtips/WIMUtil) GitHub Repo.
+
+---
+
+### Old Methods
+#### Method 1: Create a Bootable Windows Installation USB
 
 - [Video Tutorial](https://youtu.be/pDEZDD_gEbo)
 
@@ -149,7 +162,7 @@ To use an answer file, include `autounattend.xml` at the root of your Windows In
 
 </details>
 
-### Method 2: Create a Custom ISO File
+#### Method 2: Create a Custom ISO File
 
 - [Video Tutorial](https://youtu.be/pDEZDD_gEbo?si=ChEGghEOLCyLSnp7&t=1117)
 
@@ -174,7 +187,7 @@ To use an answer file, include `autounattend.xml` at the root of your Windows In
 
 </details>
 
-### Method 3: Use Ventoy Auto Install Plugin
+#### Method 3: Use Ventoy Auto Install Plugin
 
 - [Video Tutorial](https://youtu.be/4AGZQJTyCOs)
 
