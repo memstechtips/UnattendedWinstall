@@ -39,6 +39,7 @@ If you have feedback, suggestions, or need help with UnattendedWinstall, please 
 
 ## Requirements
 
+- Windows 10 or Windows 11 Product Key
 - Windows 10 or Windows 11  
   - *(Tested on Windows 10 22H2 & Windows 11 24H2)*
   - *(32-bit, 64-bit and arm64 is supported)*
@@ -103,10 +104,14 @@ The UnattendedWinstall answer file comes with detailed descriptions for nearly a
 
 ## Usage Instructions
 
-To use an answer file, include `autounattend.xml` at the root of your Windows Installation Media to be executed during Windows setup.
+1. Download the `autounattend.xml`
+2. Open the file in an editor and search for `YOUR-PRODUCT-KEY-HERE` to replace it with your Windows product key.
+3. Copy the `autounattend.xml` file to your Windows Installation Media.
+
 
 > [!IMPORTANT]  
-> Ensure the answer file is named `autounattend.xml`; otherwise, it won’t be recognized by the installer.
+> File must be named `autounattend.xml` for the Windows installer to recognize it.  
+> File must be placed in the root directory of the Windows Installation Media.
 
 ---
 
