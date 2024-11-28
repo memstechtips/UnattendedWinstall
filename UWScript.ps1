@@ -1185,37 +1185,6 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
 "AutoDownload"=dword:00000002
 
-; EDGE
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]
-"StartupBoostEnabled"=dword:00000000
-"HardwareAccelerationModeEnabled"=dword:00000000
-"BackgroundModeEnabled"=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MicrosoftEdgeElevationService]
-"Start"=dword:00000004
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\edgeupdate]
-"Start"=dword:00000004
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\edgeupdatem]
-"Start"=dword:00000004
-
-; CHROME
-[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
-"StartupBoostEnabled"=dword:00000000
-"HardwareAccelerationModeEnabled"=dword:00000000
-"BackgroundModeEnabled"=dword:00000000
-"HighEfficiencyModeEnabled"=dword:00000001
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\GoogleChromeElevationService]
-"Start"=dword:00000004
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gupdate]
-"Start"=dword:00000004
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gupdatem]
-"Start"=dword:00000004
-
 ; UWP APPS
 ; disable background apps
 [HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy]
@@ -1454,30 +1423,6 @@ Windows Registry Editor Version 5.00
 ; --OTHER--
 ; Enable update Microsoft Store apps automatically
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\WindowsStore]
-
-; EDGE
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Edge]
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\MicrosoftEdgeElevationService]
-"Start"=dword:00000002
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\edgeupdate]
-"Start"=dword:00000002
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\edgeupdatem]
-"Start"=dword:00000002
-
-; CHROME
-[-HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome]
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\GoogleChromeElevationService]
-"Start"=dword:00000002
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gupdate]
-"Start"=dword:00000002
-
-[HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\gupdatem]
-"Start"=dword:00000002
 
 ; --CAN'T DO NATIVELY--
 ; UWP APPS
@@ -2399,19 +2344,62 @@ Windows Registry Editor Version 5.00
 # End of Registry Optimizations
 
 # Start of Tasks and Services Functions
+# Start of Tasks and Services Functions
 function Set-ServiceStartup {
     # List of services to set to Disabled
     $disabledServices = @(
-        'AJRouter', 'AssignedAccessManagerSvc', 'AppIDSvc', 'BDESVC', 'DiagTrack', 
-        'DPS', 'EFS', 'FontCache', 'PcaSvc', 'RmSvc', 'WSearch', 'WbioSrvc', 'lfsvc'
-    )
+    'AJRouter', 'AppVClient', 'AssignedAccessManagerSvc', 
+    'DiagTrack', 'DialogBlockingService', 'NetTcpPortSharing',
+    'RemoteAccess', 'RemoteRegistry', 'shpamsvc', 
+    'ssh-agent', 'tzautoupdate', 'uhssvc',
+    'UevAgentService'
+	)
 
     # List of services to set to Manual
     $manualServices = @(
-        'BITS', 'CDPSvc', 'DusmSvc', 'LanmanServer', 'LanmanWorkstation', 
-        'Spooler', 'StateRepository', 'StorSvc', 'SysMain', 'TokenBroker', 
-        'TrkWks', 'UsoSvc', 'WpnService', 'edgeupdate', 'edgeupdatem', 
-        'iphlpsvc', 'sppsvc'
+    'ALG', 'AppIDSvc', 'AppMgmt', 'AppReadiness', 'AppXSvc', 'Appinfo',
+    'AxInstSV', 'BDESVC', 'BITS', 'BTAGService', 'BcastDVRUserService_*',
+    'Browser', 'CDPSvc', 'CDPUserSvc_*', 'COMSysApp', 'CaptureService_*',
+    'CertPropSvc', 'ClipSVC', 'ConsentUxUserSvc_*', 'CscService', 'DcpSvc',
+    'DevQueryBroker', 'DeviceAssociationBrokerSvc_*', 'DeviceAssociationService', 
+    'DeviceInstall', 'DevicePickerUserSvc_*', 'DevicesFlowUserSvc_*', 
+    'DisplayEnhancementService', 'DmEnrollmentSvc', 'DoSvc', 'DsSvc', 'DsmSvc',
+    'EFS', 'EapHost', 'EntAppSvc', 'FDResPub', 'Fax', 'FrameServer',
+    'FrameServerMonitor', 'GraphicsPerfSvc', 'HomeGroupListener', 
+    'HomeGroupProvider', 'HvHost', 'IEEtwCollectorService', 'IKEEXT',
+    'InstallService', 'InventorySvc', 'IpxlatCfgSvc', 'KtmRm', 'LicenseManager',
+    'LxpSvc', 'MSDTC', 'MSiSCSI', 'MapsBroker', 'McpManagementService', 
+    'MessagingService_*', 'MicrosoftEdgeElevationService', 
+    'MixedRealityOpenXRSvc', 'MsKeyboardFilter', 'NPSMSvc_*', 'NaturalAuthentication',
+    'NcaSvc', 'NcbService', 'NcdAutoSetup', 'Netman', 'NgcCtnrSvc', 'NgcSvc',
+    'NlaSvc', 'P9RdrService_*', 'PNRPAutoReg', 'PNRPsvc', 'PcaSvc', 'PeerDistSvc',
+    'PenService_*', 'PerfHost', 'PhoneSvc', 'PimIndexMaintenanceSvc_*', 'PlugPlay',
+    'PolicyAgent', 'PrintNotify', 'PrintWorkflowUserSvc_*', 'PushToInstall', 'QWAVE',
+    'RasAuto', 'RasMan', 'RetailDemo', 'RmSvc', 'RpcLocator', 'SCPolicySvc',
+    'SCardSvr', 'SDRSVC', 'SEMgrSvc', 'SecurityHealthService', 
+    'SensorDataService', 'SensorService', 'SensrSvc', 'SessionEnv', 
+    'SharedAccess', 'SharedRealitySvc', 'SmsRouter', 'SstpSvc', 
+    'StateRepository', 'StiSvc', 'StorSvc', 'TabletInputService', 'TapiSrv',
+    'TextInputManagementService', 'TieringEngineService', 'TimeBroker',
+    'TimeBrokerSvc', 'TokenBroker', 'TroubleshootingSvc', 'TrustedInstaller',
+    'UI0Detect', 'UdkUserSvc_*', 'UmRdpService', 'UnistoreSvc_*', 
+    'UserDataSvc_*', 'UsoSvc', 'VSS', 'VacSvc', 'W32Time', 'WEPHOSTSVC',
+    'WFDSConMgrSvc', 'WMPNetworkSvc', 'WManSvc', 'WPDBusEnum', 'WSService',
+    'WSearch', 'WaaSMedicSvc', 'WalletService', 'WarpJITSvc', 'WbioSrvc',
+    'WcsPlugInService', 'WdiServiceHost', 'WdiSystemHost', 'WebClient', 'Wecsvc',
+    'WerSvc', 'WiaRpc', 'WinHttpAutoProxySvc', 'WinRM', 'WpcMonSvc', 
+    'WpnService', 'WwanSvc', 'XblAuthManager', 'XblGameSave', 'XboxGipSvc', 
+    'XboxNetApiSvc', 'autotimesvc', 'bthserv', 'camsvc', 'cbdhsvc_*',
+    'cloudidsvc', 'dcsvc', 'defragsvc', 'diagnosticshub.standardcollector.service',
+    'diagsvc', 'dmwappushservice', 'dot3svc', 'edgeupdate', 'edgeupdatem', 
+    'embeddedmode', 'fdPHost', 'fhsvc', 'hidserv', 'icssvc', 'lfsvc', 
+    'lltdsvc', 'lmhosts', 'msiserver', 'netprofm', 'p2pimsvc', 'p2psvc', 
+    'perceptionsimulation', 'pla', 'seclogon', 'smphost', 'spectrum', 
+    'sppsvc', 'svsvc', 'swprv', 'upnphost', 'vds', 'vm3dservice', 
+    'vmicguestinterface', 'vmicheartbeat', 'vmickvpexchange', 'vmicrdv', 
+    'vmicshutdown', 'vmictimesync', 'vmicvmsession', 'vmicvss', 'wbengine', 
+    'wcncsvc', 'webthreatdefsvc', 'wercplsupport', 'wisvc', 'wlidsvc', 
+    'wlpasvc', 'wmiApSrv', 'workfolderssvc', 'wuauserv', 'wudfsvc'
     )
 
     # Set the services in the disabledServices list to Disabled

@@ -1,5 +1,16 @@
 # Updates
 
+## 28/11/2024
+### v2.1.0 Changes
+#### `autounattend.xml` Changes
+- Removed the forced Pro edition enforcement. This is so the answer file can still be used with Home and especially Enterprise versions like LTSC.
+- Added an order to temporarily disable all network adapters so Windows Updates aren't installed during the OOBE phase. (This should stop Windows Defender from being Enabled automatically.)
+- Added a FirstLogon command that enables the network adapter again when the first user loads in after the OOBE phase.
+
+#### `autounattend.xml` & `UWScript.ps1` Changes
+- Removed Microsoft Edge and Google Chrome Policies as it seems to negatively impact user browsing experience.
+- Defined a new list of services that should be set to Disabled and Manual as the original list in v2.0.0 caused issues. The process count isn't as low as before but Windows should be more functional.
+
 ## 1/11/2024
 - Released UnattendedWinstall v2.0.0
 
