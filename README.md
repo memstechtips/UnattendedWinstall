@@ -21,7 +21,7 @@ UnattendedWinstall leverages Microsoft's [Answer Files](https://learn.microsoft.
 
 ### Versions
 
-[![Version 2 Release (Latest)](https://img.shields.io/badge/Version-2.0.0%20Latest-0078D4?style=for-the-badge&logo=github&logoColor=white)](https://github.com/memstechtips/UnattendedWinstall/releases/tag/v2.0.0)
+[![Version 2 Release (Latest)](https://img.shields.io/badge/Version-2.1.0%20Latest-0078D4?style=for-the-badge&logo=github&logoColor=white)](https://github.com/memstechtips/UnattendedWinstall/releases/tag/v2.1.0)
 [![Version 1 Release](https://img.shields.io/badge/Version-1.0.0-FFA500?style=for-the-badge&logo=github&logoColor=white)](https://github.com/memstechtips/UnattendedWinstall/releases/tag/v1.0.0)
 
 ### Support the Project
@@ -67,7 +67,7 @@ The UnattendedWinstall answer file comes with detailed descriptions for nearly a
 
 ### Key Features
 
-- Windows 10/11 Pro is installed by default
+- Ability to choose Windows Edition (Pro is not enforced anymore as in v2.0.0)
 - Bypasses Windows 11 system requirements
 - Disables Windows Defender services by default
   - *prompted to enable after Windows installation*
@@ -246,26 +246,6 @@ For more info, check out the official [WIMUtil](https://github.com/memstechtips/
   3. **Install the driver** on your Windows system and restart if necessary.
 
   After installation, you should be able to connect to the internet.
-
-</details>
-
-### How can I install a different edition of Windows other than Pro?
-
-<details>
-  <summary>Click to Show Instructions</summary>
-
-  To install an edition of Windows other than Pro, you’ll need to adjust the product key placeholders in your `autounattend.xml` file.
-
-  1. Locate the three `<Key>` entries within the file that currently look like this:
-     ```xml
-     <Key>VK7JG-NPHTM-C97JM-9MPGT-3V66T</Key>
-     ```
-  2. Replace each entry with the following generic key placeholder:
-     ```xml
-     <Key>00000-00000-00000-00000-00000</Key>
-     ```
-
-  By replacing these sections with a generic placeholder, you’ll be able to select the desired Windows edition during installation.
 
 </details>
 
