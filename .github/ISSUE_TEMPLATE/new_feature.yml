@@ -1,0 +1,57 @@
+name: "💡 Propose a new feature"
+description: "Propose a new feature or request something that could be useful in UnattendedWinstall."
+title: "[FEATURE] "
+labels: ["feature-request"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to propose a new feature!
+        
+  - type: checkboxes
+    id: prerequisites
+    attributes:
+      label: "Please confirm these before moving forward"
+      description: "Please confirm the following before posting your feature request."
+      options:
+        - label: "I have searched for similar feature requests and have not found a duplicate."
+          required: true
+          
+  - type: dropdown
+    id: feature_type
+    attributes:
+      label: "Feature Type"
+      description: "What type of feature are you requesting?"
+      options:
+        - "New functionality"
+        - "Performance improvement"
+        - "Other"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: description
+    attributes:
+      label: "Describe your feature request"
+      description: "A clear and concise description of what you want to happen."
+      placeholder: "I would like to see..."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: use_case
+    attributes:
+      label: "Use case"
+      description: "Describe how this feature would be used and why it would be valuable."
+      placeholder: "This feature would be useful when..."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: additional
+    attributes:
+      label: "Additional context"
+      description: "Any other details or observations that may be helpful."
+      placeholder: "Add any other context about the feature request here."
+    validations:
+      required: false
