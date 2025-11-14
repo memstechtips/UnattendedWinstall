@@ -26,8 +26,8 @@ UnattendedWinstall leverages Microsoft's [Answer Files](https://learn.microsoft.
 
 If UnattendedWinstall has been useful to you, consider supporting the project, it really does help!
 
-[![Support via PayPal](https://img.shields.io/badge/Support-via%20PayPal-FFD700?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/memstech)
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/memstechtips)
+[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://paypal.me/memstech)
 
 ### Feedback and Community
 
