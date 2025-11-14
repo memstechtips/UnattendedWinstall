@@ -13,7 +13,7 @@ UnattendedWinstall leverages Microsoft's [Answer Files](https://learn.microsoft.
 
 </br>
 
-> [!NOTE] </br>
+> [!NOTE]
 > UnattendedWinstall has been tested and optimized for personal use. For those unsatisfied or interested in customizing further, consider creating your own answer file using: </br> - [Winhance Unattend Generator](https://github.com/memstechtips/Winhance) following [this video guide](https://youtu.be/lrq3ph3xi50). </br> - [Schneegans Unattend Generator](https://schneegans.de/windows/unattend-generator/) following [this video guide](https://youtu.be/WyLiJl-NQU8).
 
 ### Versions
@@ -67,7 +67,7 @@ The UnattendedWinstall answer file comes with detailed descriptions for nearly a
   - Start Menu (Unpins all items from start menu, Disables Bing search results in start)
   - Explorer (Applies Classic Context Menu, opens File Explorer to this PC, shows file extensions, hides Home and Gallery folders in Navigation Pane and much more)
 
-> [!TIP] </br>
+> [!TIP]
 > Use [Winhance](https://winhance.net/) once Windows is installed *(can be installed using the 'Install Winhance' desktop shortcut)* to install software, re-apply or revert settings and manage your Windows apps and settings.
 >
 > It can also be used to achieve the same experience UnattendedWinstall provides on an existing Windows installation without reinstalling Windows, see [this video](https://youtu.be/lrq3ph3xi50) for more info.
