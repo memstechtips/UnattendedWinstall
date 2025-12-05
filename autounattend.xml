@@ -7,6 +7,7 @@
       <UserData>
         <ProductKey>
           <Key>00000-00000-00000-00000-00000</Key>
+          <WillShowUI>Always</WillShowUI>
         </ProductKey>
         <AcceptEula>true</AcceptEula>
       </UserData>
@@ -35,27 +36,6 @@
         <RunSynchronousCommand wcm:action="add">
           <Order>6</Order>
           <Path>reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassDiskCheck /t REG_DWORD /d 1 /f</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>7</Order>
-          <Description>Order 7-11: Prevents auto detection of Windows Edition and forces Windows Setup to show all available Editions of Windows during setup</Description>
-          <Path>cmd.exe /c del /f /q X:\Sources\ei.cfg</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>8</Order>
-          <Path>cmd.exe /c echo [Channel] > X:\Sources\ei.cfg</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>9</Order>
-          <Path>cmd.exe /c echo _Default >> X:\Sources\ei.cfg</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>10</Order>
-          <Path>cmd.exe /c echo [VL] >> X:\Sources\ei.cfg</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>11</Order>
-          <Path>cmd.exe /c echo 0 >> X:\Sources\ei.cfg</Path>
         </RunSynchronousCommand>
       </RunSynchronous>
     </component>
@@ -63,6 +43,7 @@
       <UserData>
         <ProductKey>
           <Key>00000-00000-00000-00000-00000</Key>
+          <WillShowUI>Always</WillShowUI>
         </ProductKey>
         <AcceptEula>true</AcceptEula>
       </UserData>
@@ -91,27 +72,6 @@
         <RunSynchronousCommand wcm:action="add">
           <Order>6</Order>
           <Path>reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassDiskCheck /t REG_DWORD /d 1 /f</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>7</Order>
-          <Description>Order 7-11: Prevents auto detection of Windows Edition and forces Windows Setup to show all available Editions of Windows during setup</Description>
-          <Path>cmd.exe /c del /f /q X:\Sources\ei.cfg</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>8</Order>
-          <Path>cmd.exe /c echo [Channel] > X:\Sources\ei.cfg</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>9</Order>
-          <Path>cmd.exe /c echo _Default >> X:\Sources\ei.cfg</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>10</Order>
-          <Path>cmd.exe /c echo [VL] >> X:\Sources\ei.cfg</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>11</Order>
-          <Path>cmd.exe /c echo 0 >> X:\Sources\ei.cfg</Path>
         </RunSynchronousCommand>
       </RunSynchronous>
     </component>
@@ -119,6 +79,7 @@
       <UserData>
         <ProductKey>
           <Key>00000-00000-00000-00000-00000</Key>
+          <WillShowUI>Always</WillShowUI>
         </ProductKey>
         <AcceptEula>true</AcceptEula>
       </UserData>
@@ -147,35 +108,6 @@
         <RunSynchronousCommand wcm:action="add">
           <Order>6</Order>
           <Path>reg.exe add "HKLM\SYSTEM\Setup\LabConfig" /v BypassDiskCheck /t REG_DWORD /d 1 /f</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>7</Order>
-          <Description>Order 7-11: Prevents auto detection of Windows Edition and forces Windows Setup to show all available Editions of Windows during setup</Description>
-          <Path>cmd.exe /c del /f /q X:\Sources\ei.cfg</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>8</Order>
-          <Path>cmd.exe /c echo [Channel] > X:\Sources\ei.cfg</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>9</Order>
-          <Path>cmd.exe /c echo _Default >> X:\Sources\ei.cfg</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>10</Order>
-          <Path>cmd.exe /c echo [VL] >> X:\Sources\ei.cfg</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>11</Order>
-          <Path>cmd.exe /c echo 0 >> X:\Sources\ei.cfg</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>12</Order>
-          <Path>cmd.exe /c echo [PID] > X:\Sources\PID.txt</Path>
-        </RunSynchronousCommand>
-        <RunSynchronousCommand wcm:action="add">
-          <Order>13</Order>
-          <Path>cmd.exe /c echo Value=00000-00000-00000-00000-00000 >> X:\Sources\PID.txt</Path>
         </RunSynchronousCommand>
       </RunSynchronous>
     </component>
@@ -2302,7 +2234,6 @@ try {
     # ============================================================================
 
     Set-RegistryValue -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\AppPrivacy' -Name 'LetAppsRunInBackground' -Type 'DWord' -Value 0 -Description 'Allow apps to receive notifications, update data, and perform tasks even when not actively in use'
-    Set-RegistryValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management' -Name 'DisablePageCombining' -Type 'DWord' -Value 0 -Description 'Compress unused memory pages to reduce RAM usage. On systems with plenty of RAM (16GB+), disabling can slightly reduce CPU overhead and improve performance'
     Set-RegistryValue -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\StorageSense' -Name 'AllowStorageSenseGlobal' -Type 'DWord' -Value 0 -Description 'Automatically free up disk space by removing temporary files, emptying the recycle bin, and managing downloads'
     Set-RegistryValue -Path 'HKLM:\System\CurrentControlSet\Control\PriorityControl' -Name 'Win32PrioritySeparation' -Type 'DWord' -Value 38 -Description 'Configure how Windows allocates CPU time between foreground applications and background services'
     Set-RegistryValue -Path 'HKLM:\Software\Microsoft\Windows NT\CurrentVersion\Multimedia\SystemProfile' -Name 'SystemResponsiveness' -Type 'DWord' -Value 10 -Description 'Minimize background task interference by allocating more CPU time to your active game or multimedia application'
@@ -2575,54 +2506,6 @@ Windows Registry Editor Version 5.00
     }
 
     Remove-RegistryValue -Path 'HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Shell Extensions\Blocked' -Name '{9F156763-7844-4DC4-B2B1-901F640F5155}' -Description 'Displays the Windows Terminal option when right-clicking folders and backgrounds in File Explorer'
-    try {
-        $regContent_explorer_enable_photo_viewer = @'
-Windows Registry Editor Version 5.00
-
-[-HKEY_CURRENT_USER\SOFTWARE\Classes\.bmp]
-[-HKEY_CURRENT_USER\SOFTWARE\Classes\.cr2]
-[-HKEY_CURRENT_USER\SOFTWARE\Classes\.dib]
-[-HKEY_CURRENT_USER\SOFTWARE\Classes\.gif]
-[-HKEY_CURRENT_USER\SOFTWARE\Classes\.ico]
-[-HKEY_CURRENT_USER\SOFTWARE\Classes\.jfif]
-[-HKEY_CURRENT_USER\SOFTWARE\Classes\.jpe]
-[-HKEY_CURRENT_USER\SOFTWARE\Classes\.jpeg]
-[-HKEY_CURRENT_USER\SOFTWARE\Classes\.jpg]
-[-HKEY_CURRENT_USER\SOFTWARE\Classes\.jxr]
-[-HKEY_CURRENT_USER\SOFTWARE\Classes\.png]
-[-HKEY_CURRENT_USER\SOFTWARE\Classes\.tif]
-[-HKEY_CURRENT_USER\SOFTWARE\Classes\.tiff]
-[-HKEY_CURRENT_USER\SOFTWARE\Classes\.wdp]
-
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.bmp\OpenWithProgids]
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.cr2\OpenWithProgids]
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.dib\OpenWithProgids]
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.gif\OpenWithProgids]
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.ico\OpenWithProgids]
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.jfif\OpenWithProgids]
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.jpe\OpenWithProgids]
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.jpeg\OpenWithProgids]
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.jpg\OpenWithProgids]
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.jxr\OpenWithProgids]
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.png\OpenWithProgids]
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.tif\OpenWithProgids]
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.tiff\OpenWithProgids]
-[-HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\FileExts\.wdp\OpenWithProgids]
-
-'@
-        $tempRegFile = Join-Path $env:TEMP "winhance_explorer-enable-photo-viewer_$((Get-Date).Ticks).reg"
-        $regContent_explorer_enable_photo_viewer | Out-File -FilePath $tempRegFile -Encoding Unicode -Force
-        reg import "$tempRegFile" 2>&1 | Out-Null
-        if ($LASTEXITCODE -eq 0) {
-            Write-Log "Restore the legacy Windows Photo Viewer and set it as the default program for common image file formats" "SUCCESS"
-        } else {
-            Write-Log "Failed to import registry content for Restore the legacy Windows Photo Viewer and set it as the default program for common image file formats" "ERROR"
-        }
-        Remove-Item $tempRegFile -Force -ErrorAction SilentlyContinue
-    } catch {
-        Write-Log "Error processing registry content for Restore the legacy Windows Photo Viewer and set it as the default program for common image file formats: $($_.Exception.Message)" "ERROR"
-    }
-
     Remove-RegistryKey -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}' -Description 'Display the 3D Objects folder alongside Documents, Pictures, and other default folders'
     Remove-RegistryKey -Path 'HKLM:\SOFTWARE\WOW6432Node\Microsoft\Windows\CurrentVersion\Explorer\MyComputer\NameSpace\{0DB7E03F-FC29-4DC6-9020-FF41B59E513A}' -Description 'Display the 3D Objects folder alongside Documents, Pictures, and other default folders'
     Remove-RegistryKey -Path 'HKLM:\Software\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}' -Description 'Display the Home folder in the navigation pane as a shortcut to your user profile folder'
@@ -2927,108 +2810,6 @@ if ($UserCustomizations) {
         Remove-RegistryValue -Path 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer' -Name 'link' -Description 'Prevents Windows from appending ''- Shortcut'' text to newly created shortcut file names'
         New-RegistryKey -Path 'HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32' -Description 'Use the Windows 10-style right-click menu with all options visible instead of the simplified Windows 11 menu'
         Set-RegistryValue -Path 'HKCU:\Software\Classes\CLSID\{86ca1aa0-34aa-4e8b-a509-50c905bae2a2}\InprocServer32' -Name '(Default)' -Type 'String' -Value '' -Description 'Use the Windows 10-style right-click menu with all options visible instead of the simplified Windows 11 menu'
-        try {
-            $regContent_explorer_take_ownership = @'
-Windows Registry Editor Version 5.00
-
-; Created by: Shawn Brink
-; Created on: January 28, 2015
-; Updated on: February 25, 2024
-; Tutorial: https://www.tenforums.com/tutorials/3841-add-take-ownership-context-menu-windows-10-a.html
-
-[-HKEY_CLASSES_ROOT\*\shell\TakeOwnership]
-[-HKEY_CLASSES_ROOT\*\shell\runas]
-
-[HKEY_CLASSES_ROOT\*\shell\TakeOwnership]
-@="Take Ownership"
-"Extended"=-
-"HasLUAShield"=""
-"NoWorkingDirectory"=""
-"NeverDefault"=""
-
-[HKEY_CLASSES_ROOT\*\shell\TakeOwnership\command]
-@="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c takeown /f \\\"%1\\\" && icacls \\\"%1\\\" /grant *S-1-3-4:F /t /c /l & pause' -Verb runAs\""
-"IsolatedCommand"="powershell -windowstyle hidden -command \"Start-Process cmd -ArgumentList '/c takeown /f \\\"%1\\\" && icacls \\\"%1\\\" /grant *S-1-3-4:F /t /c /l & pause' -Verb runAs\""
-
-[HKEY_CLASSES_ROOT\Directory\shell\TakeOwnership]
-@="Take Ownership"
-"AppliesTo"="NOT (System.ItemPathDisplay:=\"C:\\Users\" OR System.ItemPathDisplay:=\"C:\\ProgramData\" OR System.ItemPathDisplay:=\"C:\\Windows\" OR System.ItemPathDisplay:=\"C:\\Windows\\System32\" OR System.ItemPathDisplay:=\"C:\\Program Files\" OR System.ItemPathDisplay:=\"C:\\Program Files (x86)\")"
-"Extended"=-
-"HasLUAShield"=""
-"NoWorkingDirectory"=""
-"Position"="middle"
-
-[HKEY_CLASSES_ROOT\Directory\shell\TakeOwnership\command]
-@="powershell -windowstyle hidden -command \"$Y = ($null | choice).Substring(1,1); Start-Process cmd -ArgumentList ('/c takeown /f \\\"%1\\\" /r /d ' + $Y + ' && icacls \\\"%1\\\" /grant *S-1-3-4:F /t /c /l /q & pause') -Verb runAs\""
-"IsolatedCommand"="powershell -windowstyle hidden -command \"$Y = ($null | choice).Substring(1,1); Start-Process cmd -ArgumentList ('/c takeown /f \\\"%1\\\" /r /d ' + $Y + ' && icacls \\\"%1\\\" /grant *S-1-3-4:F /t /c /l /q & pause') -Verb runAs\""
-
-[HKEY_CLASSES_ROOT\Drive\shell\runas]
-@="Take Ownership"
-"Extended"=-
-"HasLUAShield"=""
-"NoWorkingDirectory"=""
-"Position"="middle"
-"AppliesTo"="NOT (System.ItemPathDisplay:=\"C:\\\")"
-
-[HKEY_CLASSES_ROOT\Drive\shell\runas\command]
-@="cmd.exe /c takeown /f \"%1\\\" /r /d y && icacls \"%1\\\" /grant *S-1-3-4:F /t /c & Pause"
-"IsolatedCommand"="cmd.exe /c takeown /f \"%1\\\" /r /d y && icacls \"%1\\\" /grant *S-1-3-4:F /t /c & Pause"
-
-'@
-            $tempRegFile = Join-Path $env:TEMP "winhance_explorer-take-ownership_$((Get-Date).Ticks).reg"
-            $regContent_explorer_take_ownership | Out-File -FilePath $tempRegFile -Encoding Unicode -Force
-            reg import "$tempRegFile" 2>&1 | Out-Null
-            if ($LASTEXITCODE -eq 0) {
-                Write-Log "Adds a right-click option to take ownership of files, folders, and drives with automatic permission elevation" "SUCCESS"
-            } else {
-                Write-Log "Failed to import registry content for Adds a right-click option to take ownership of files, folders, and drives with automatic permission elevation" "ERROR"
-            }
-            Remove-Item $tempRegFile -Force -ErrorAction SilentlyContinue
-        } catch {
-            Write-Log "Error processing registry content for Adds a right-click option to take ownership of files, folders, and drives with automatic permission elevation: $($_.Exception.Message)" "ERROR"
-        }
-
-        try {
-            $regContent_explorer_context_menu_toggle_extensions = @'
-Windows Registry Editor Version 5.00
-
-[-HKEY_CLASSES_ROOT\AllFilesystemObjects\shell\Windows.ShowFileExtensions]
-[-HKEY_CLASSES_ROOT\Directory\Background\shell\Windows.ShowFileExtensions]
-
-'@
-            $tempRegFile = Join-Path $env:TEMP "winhance_explorer-context-menu-toggle-extensions_$((Get-Date).Ticks).reg"
-            $regContent_explorer_context_menu_toggle_extensions | Out-File -FilePath $tempRegFile -Encoding Unicode -Force
-            reg import "$tempRegFile" 2>&1 | Out-Null
-            if ($LASTEXITCODE -eq 0) {
-                Write-Log "Adds a right-click menu option to quickly toggle file extension visibility in File Explorer (only visible on the Classic Context Menu or Show More Options Menu in Windows 11)" "SUCCESS"
-            } else {
-                Write-Log "Failed to import registry content for Adds a right-click menu option to quickly toggle file extension visibility in File Explorer (only visible on the Classic Context Menu or Show More Options Menu in Windows 11)" "ERROR"
-            }
-            Remove-Item $tempRegFile -Force -ErrorAction SilentlyContinue
-        } catch {
-            Write-Log "Error processing registry content for Adds a right-click menu option to quickly toggle file extension visibility in File Explorer (only visible on the Classic Context Menu or Show More Options Menu in Windows 11): $($_.Exception.Message)" "ERROR"
-        }
-
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Lighting' -Name 'AmbientLightingEnabled' -Type 'DWord' -Value 0 -Description 'Allow Windows Dynamic Lighting to control ambient RGB effects on compatible devices'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Lighting' -Name 'ControlledByForegroundApp' -Type 'DWord' -Value 0 -Description 'Allow compatible apps to control device lighting effects'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows NT\CurrentVersion\Windows' -Name 'LegacyDefaultPrinterMode' -Type 'DWord' -Value 1 -Description 'Prevents Windows from automatically changing your default printer based on location or last used printer'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'LaunchTo' -Type 'DWord' -Value 1 -Description 'Choose what happens when File Explorer is opened'
-        Set-BinaryByte -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState' -Name 'Settings' -ByteIndex 4 -ByteValue 0x0A -Description 'Choose whether each folder opens in the same window or in its own window'
-        Set-BinaryByte -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer' -Name 'ShellState' -ByteIndex 4 -ByteValue 0x3E -Description 'Choose whether to open files and folders with a single click (like web links) or double-click (traditional)'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer' -Name 'IconUnderline' -Type 'DWord' -Value 3 -Description 'Choose whether to open files and folders with a single click (like web links) or double-click (traditional)'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer' -Name 'ShowRecent' -Type 'DWord' -Value 0 -Description 'Displays recently accessed files and recommendations in Quick Access'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer' -Name 'ShowRecommendations' -Type 'DWord' -Value 0 -Description 'Displays recently accessed files and recommendations in Quick Access'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer' -Name 'ShowFrequent' -Type 'DWord' -Value 0 -Description 'Displays your most accessed folders in Quick Access section'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer' -Name 'ShowCloudFilesInQuickAccess' -Type 'DWord' -Value 0 -Description 'Displays cloud files from your Office.com account in Quick Access'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'IconsOnly' -Type 'DWord' -Value 0 -Description 'Displays generic file icons instead of image/document previews'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'AlwaysShowMenus' -Type 'DWord' -Value 0 -Description 'Shows the Menu bar (File, Edit etc.) on all windows that support it'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'UseCompactMode' -Type 'DWord' -Value 0 -Description 'Reduces vertical spacing between files and folders for denser view'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'ShowTypeOverlay' -Type 'DWord' -Value 1 -Description 'Shows file type icon overlay on bottom-right corner of thumbnail previews'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'FolderContentsInfoTip' -Type 'DWord' -Value 1 -Description 'Shows total size and file count when hovering over folders'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\CabinetState' -Name 'FullPath' -Type 'DWord' -Value 1 -Description 'Shows complete directory path in window title instead of folder name only'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'Hidden' -Type 'DWord' -Value 1 -Description 'Displays items with the hidden attribute set'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'HideDrivesWithNoMedia' -Type 'DWord' -Value 1 -Description 'Hides drives with no media inserted like empty card readers or optical drives'
-        Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'HideFileExt' -Type 'DWord' -Value 0 -Description 'Displays file type extensions (like .txt, .pdf) after file names'
         Remove-RegistryKey -Path 'HKCU:\Software\Classes\.bmp' -Description 'Restore the legacy Windows Photo Viewer and set it as the default program for common image file formats'
         try {
             $regContent_explorer_enable_photo_viewer = @'
@@ -3211,7 +2992,8 @@ Windows Registry Editor Version 5.00
 
     if (-not $alreadyApplied) {
         Write-Log "Rebooting system to apply user customizations..." "INFO"
-        shutdown.exe /r /t 0
+        # Wait 20 seconds to give the FirstLogon phase some more time before restarting
+        shutdown.exe /r /t 20
     } else {
         Write-Log "No restart needed - customizations were already applied" "INFO"
     }
