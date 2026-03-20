@@ -2388,6 +2388,11 @@ Write-Host "Done. See $logFile for details."
     Remove-RegistryValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\Interfaces' -Name 'TCPNoDelay' -Description 'Buffers small network packets before sending to reduce overhead. Turn off to lower latency in online games, or keep on for general-purpose network efficiency'
     Set-RegistryValue -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\GameDVR' -Name 'AllowGameDVR' -Type 'DWord' -Value 0 -Description 'Record gameplay clips and take screenshots using the Xbox Game Bar overlay. Disabling reduces CPU/GPU usage and can improve frame rates'
     Set-RegistryValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Control' -Name 'ServicesPipeTimeout' -Type 'DWord' -Value 30000 -Description 'Reduce the startup timeout for Windows services from 60 to 30 seconds. This can speed up boot time slightly'
+
+    # ============================================================================
+    # SERVICES & TASKS
+    # ============================================================================
+
     Set-RegistryValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\SysMain' -Name 'Start' -Type 'DWord' -Value 4 -Description 'Preload frequently used applications into RAM for faster launch times. Automatic is recommended for HDDs, Manual or Disabled is preferred for SSDs'
     Set-RegistryValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters' -Name 'EnablePrefetcher' -Type 'DWord' -Value 3 -Description 'Preload frequently used applications and boot files into memory to speed up launches. Generally recommended for HDDs not SSDs'
     Set-RegistryValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\WSearch' -Name 'Start' -Type 'DWord' -Value 3 -Description 'Indexes files and folders for faster search results. Disabling reduces background CPU and disk activity but makes Windows Search slower'
@@ -2783,7 +2788,6 @@ if ($UserCustomizations) {
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Search\Preferences' -Name 'WholeFileSystem' -Type 'DWord' -Value 0 -Description 'Search your entire file system instead of only indexed locations. This provides more complete results but is significantly slower than indexed search and increases disk activity'
             Set-RegistryValue -Path 'HKCU:\Control Panel\Desktop' -Name 'JPEGImportQuality' -Type 'DWord' -Value 100 -Description 'Allow Windows to compress wallpapers to save disk space and improve performance. Only affects images in JPEG format.'
             Set-RegistryValue -Path 'HKCU:\Control Panel\Desktop' -Name 'MenuShowDelay' -Type 'String' -Value '0' -Description 'Add a brief delay before displaying menus (400ms - Windows default), or show them instantly (0ms) for faster navigation'
-            Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'MultiTaskingAltTabFilter' -Type 'DWord' -Value 3 -Description 'Show only traditional open windows in Alt+Tab instead of including Microsoft Edge tabs and other Windows suggestions'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\DirectX\UserGpuPreferences' -Name 'DirectXUserGlobalSettings' -Type 'String' -Value 'SwapEffectUpgradeEnable=1;VRROptimizeEnable=0;AutoHDREnable=0;' -Description 'Reduce latency and use advanced features in compatible games by using DirectX flip presentation model'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\DirectX\UserGpuPreferences' -Name 'DirectXUserGlobalSettings' -Type 'String' -Value 'SwapEffectUpgradeEnable=1;VRROptimizeEnable=0;AutoHDREnable=0;' -Description 'Enable VRR (G-Sync/FreeSync) optimizations for smoother gameplay. Requires a VRR-compatible monitor; this setting has no effect if your monitor does not support VRR'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\DirectX\UserGpuPreferences' -Name 'DirectXUserGlobalSettings' -Type 'String' -Value 'SwapEffectUpgradeEnable=1;VRROptimizeEnable=0;AutoHDREnable=0;' -Description 'Automatically convert SDR content to HDR for enhanced colors and brightness. Requires an HDR-capable display with HDR enabled; this setting has no effect if your display does not support HDR'
@@ -2793,10 +2797,14 @@ if ($UserCustomizations) {
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\GameDVR' -Name 'AppCaptureEnabled' -Type 'DWord' -Value 0 -Description 'Record gameplay clips and take screenshots using the Xbox Game Bar overlay. Disabling reduces CPU/GPU usage and can improve frame rates'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\GameBar' -Name 'UseNexusForGameBarEnabled' -Type 'DWord' -Value 0 -Description 'Allow your Xbox/compatible controller to open Game Bar by pressing the Xbox button. Disable to prevent accidental Game Bar activation during gaming'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\GameBar' -Name 'ShowStartupPanel' -Type 'DWord' -Value 0 -Description 'Show tips and hints about Game Bar features when opening the overlay. Disabling reduces distractions during gameplay'
+
+            # ============================================================================
+            # DESKTOP & VISUAL EFFECTS
+            # ============================================================================
+
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects' -Name 'VisualFXSetting' -Type 'DWord' -Value 3 -Description 'Choose how Windows displays visual effects'
             Set-BinaryBit -Path 'HKCU:\Control Panel\Desktop' -Name 'UserPreferencesMask' -ByteIndex 4 -BitMask 0x02 -SetBit $False -Description 'Enables animation effects for controls and UI elements'
             Set-RegistryValue -Path 'HKCU:\Control Panel\Desktop\WindowMetrics' -Name 'MinAnimate' -Type 'String' -Value '0' -Description 'Shows smooth animation when windows are minimized or maximized'
-            Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'TaskbarAnimations' -Type 'DWord' -Value 0 -Description 'Controls taskbar animation effects for opening, closing, and switching windows'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\DWM' -Name 'EnableAeroPeek' -Type 'DWord' -Value 1 -Description 'Allows peeking at desktop when hovering over Show Desktop button'
             Set-BinaryBit -Path 'HKCU:\Control Panel\Desktop' -Name 'UserPreferencesMask' -ByteIndex 0 -BitMask 0x02 -SetBit $False -Description 'Animates menus when they appear using fade or slide effects'
             Set-BinaryBit -Path 'HKCU:\Control Panel\Desktop' -Name 'UserPreferencesMask' -ByteIndex 1 -BitMask 0x08 -SetBit $False -Description 'Animates tooltips when they appear using fade or slide effects'
@@ -2804,13 +2812,20 @@ if ($UserCustomizations) {
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\DWM' -Name 'AlwaysHibernateThumbnails' -Type 'DWord' -Value 0 -Description 'Saves thumbnail previews of taskbar windows for faster display'
             Set-BinaryBit -Path 'HKCU:\Control Panel\Desktop' -Name 'UserPreferencesMask' -ByteIndex 1 -BitMask 0x20 -SetBit $False -Description 'Displays shadow effect underneath the mouse cursor'
             Set-BinaryBit -Path 'HKCU:\Control Panel\Desktop' -Name 'UserPreferencesMask' -ByteIndex 2 -BitMask 0x04 -SetBit $False -Description 'Displays shadow effects underneath windows'
-            Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'IconsOnly' -Type 'DWord' -Value 0 -Description 'Displays image and document previews instead of generic file icons'
-            Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'ListviewAlphaSelect' -Type 'DWord' -Value 1 -Description 'Display a semi-transparent selection box when dragging to select multiple files or items'
             Set-RegistryValue -Path 'HKCU:\Control Panel\Desktop' -Name 'DragFullWindows' -Type 'String' -Value '1' -Description 'Displays window contents when dragging instead of just an outline'
             Set-BinaryBit -Path 'HKCU:\Control Panel\Desktop' -Name 'UserPreferencesMask' -ByteIndex 0 -BitMask 0x04 -SetBit $False -Description 'Animates combo boxes when they open with a sliding effect'
             Set-RegistryValue -Path 'HKCU:\Control Panel\Desktop' -Name 'FontSmoothing' -Type 'String' -Value '2' -Description 'Apply anti-aliasing to text for smoother, more readable fonts on screen'
             Set-BinaryBit -Path 'HKCU:\Control Panel\Desktop' -Name 'UserPreferencesMask' -ByteIndex 0 -BitMask 0x08 -SetBit $False -Description 'Enables smooth scrolling in list boxes instead of jumping'
+            Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'IconsOnly' -Type 'DWord' -Value 0 -Description 'Displays image and document previews instead of generic file icons'
+            Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'ListviewAlphaSelect' -Type 'DWord' -Value 1 -Description 'Display a semi-transparent selection box when dragging to select multiple files or items'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'ListviewShadow' -Type 'DWord' -Value 0 -Description 'Add shadow effects behind desktop icon text to improve readability against backgrounds'
+            Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'TaskbarAnimations' -Type 'DWord' -Value 0 -Description 'Controls taskbar animation effects for opening, closing, and switching windows'
+            Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'MultiTaskingAltTabFilter' -Type 'DWord' -Value 3 -Description 'Show only traditional open windows in Alt+Tab instead of including Microsoft Edge tabs and other Windows suggestions'
+
+            # ============================================================================
+            # ACCESSIBILITY SETTINGS
+            # ============================================================================
+
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Narrator\NoRoam' -Name 'WinEnterLaunchEnabled' -Type 'DWord' -Value 0 -Description 'Enable the Win+Ctrl+Enter keyboard shortcut to quickly launch Windows Narrator screen reader'
             Set-RegistryValue -Path 'HKCU:\Control Panel\Accessibility\StickyKeys' -Name 'Flags' -Type 'String' -Value '2' -Description 'Enable the keyboard shortcut to activate StickyKeys by pressing the Shift key five times'
             Set-RegistryValue -Path 'HKCU:\Control Panel\Accessibility\Keyboard Response' -Name 'Flags' -Type 'String' -Value '2' -Description 'Enable the keyboard shortcut to activate FilterKeys by holding the right Shift key for 8 seconds'
@@ -2841,11 +2856,9 @@ if ($UserCustomizations) {
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance' -Name 'Enabled' -Type 'DWord' -Value 1 -Description 'Show notifications from the Security and Maintenance Action Center'
 
             # ============================================================================
-            # PRIVACY & SECURITY SETTINGS
+            # ADS & TIPS SETTINGS
             # ============================================================================
 
-            Set-RegistryValue -Path 'HKCU:\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin' -Name 'BlockAADWorkplaceJoin' -Type 'DWord' -Value 1 -Description 'Blocks the ''Allow my organization to manage my device'' and ''No, sign in to this app only'' pop-up messages'
-            Set-RegistryValue -Path 'HKCU:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting' -Name 'Disabled' -Type 'DWord' -Value 1 -Description 'Choose if Windows should collect and send crash reports and error information to Microsoft'
             Set-RegistryValue -Path 'HKCU:\Software\Winhance\Settings' -Name 'AdsPromotionalContentMode' -Type 'DWord' -Value 1 -Description 'Controls all advertising, suggestions, and promotional content throughout Windows'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager' -Name 'ContentDeliveryAllowed' -Type 'DWord' -Value 0 -Description 'Allows Windows to deliver promotional content and automatically install suggested apps'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager' -Name 'SubscribedContentEnabled' -Type 'DWord' -Value 0 -Description 'Enables promotional content subscriptions from Microsoft and partners throughout Windows'
@@ -2861,11 +2874,19 @@ if ($UserCustomizations) {
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\AdvertisingInfo' -Name 'Enabled' -Type 'DWord' -Value 0 -Description 'Windows generates a unique advertising ID that apps use to track your activity and deliver personalized ads based on your behavior across different apps'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\CPSS\Store\AdvertisingInfo' -Name 'Value' -Type 'DWord' -Value 0 -Description 'Windows generates a unique advertising ID that apps use to track your activity and deliver personalized ads based on your behavior across different apps'
             Set-RegistryValue -Path 'HKCU:\SOFTWARE\Policies\Microsoft\Windows\AdvertisingInfo' -Name 'DisabledByGroupPolicy' -Type 'DWord' -Value 1 -Description 'Windows generates a unique advertising ID that apps use to track your activity and deliver personalized ads based on your behavior across different apps'
-            Set-RegistryValue -Path 'HKCU:\Control Panel\International\User Profile' -Name 'HttpAcceptLanguageOptOut' -Type 'DWord' -Value 1 -Description 'Allows websites to access your language preferences so they can automatically display content in your preferred language without requiring manual configuration on each site'
-            Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'Start_TrackProgs' -Type 'DWord' -Value 1 -Description 'Windows records which apps you use most frequently to personalize your Start menu and improve search results, making your most-used apps more accessible'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager' -Name 'SubscribedContent-338393Enabled' -Type 'DWord' -Value 0 -Description 'Displays promotional content, tips, and feature suggestions within the Windows Settings app. Winhance automatically sets the Start Menu Recommended Section to Show when this setting is enabled as it is required'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager' -Name 'SubscribedContent-353694Enabled' -Type 'DWord' -Value 0 -Description 'Displays promotional content, tips, and feature suggestions within the Windows Settings app. Winhance automatically sets the Start Menu Recommended Section to Show when this setting is enabled as it is required'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager' -Name 'SubscribedContent-353696Enabled' -Type 'DWord' -Value 0 -Description 'Displays promotional content, tips, and feature suggestions within the Windows Settings app. Winhance automatically sets the Start Menu Recommended Section to Show when this setting is enabled as it is required'
+            Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager' -Name 'SubscribedContent-353698Enabled' -Type 'DWord' -Value 0 -Description 'Shows suggestions in the Windows 10 Timeline feature'
+
+            # ============================================================================
+            # PRIVACY & SECURITY SETTINGS
+            # ============================================================================
+
+            Set-RegistryValue -Path 'HKCU:\SOFTWARE\Policies\Microsoft\Windows\WorkplaceJoin' -Name 'BlockAADWorkplaceJoin' -Type 'DWord' -Value 1 -Description 'Blocks the ''Allow my organization to manage my device'' and ''No, sign in to this app only'' pop-up messages'
+            Set-RegistryValue -Path 'HKCU:\SOFTWARE\Policies\Microsoft\Windows\Windows Error Reporting' -Name 'Disabled' -Type 'DWord' -Value 1 -Description 'Choose if Windows should collect and send crash reports and error information to Microsoft'
+            Set-RegistryValue -Path 'HKCU:\Control Panel\International\User Profile' -Name 'HttpAcceptLanguageOptOut' -Type 'DWord' -Value 1 -Description 'Allows websites to access your language preferences so they can automatically display content in your preferred language without requiring manual configuration on each site'
+            Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced' -Name 'Start_TrackProgs' -Type 'DWord' -Value 1 -Description 'Windows records which apps you use most frequently to personalize your Start menu and improve search results, making your most-used apps more accessible'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\SystemSettings\AccountNotifications' -Name 'EnableAccountNotifications' -Type 'DWord' -Value 0 -Description 'Shows account notifications in the Settings app, including prompts to reauthenticate, backup your device, and manage subscriptions'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Speech_OneCore\Settings\OnlineSpeechPrivacy' -Name 'HasAccepted' -Type 'DWord' -Value 0 -Description 'Use your voice for apps using Microsoft''s online speech recognition technology'
             Remove-RegistryValue -Path 'HKCU:\SOFTWARE\Policies\Microsoft\InputPersonalization' -Name 'AllowInputPersonalization' -Description 'Use your voice for apps using Microsoft''s online speech recognition technology'
@@ -2886,7 +2907,6 @@ if ($UserCustomizations) {
             Remove-RegistryValue -Path 'HKCU:\Software\Policies\Microsoft\Windows\CloudContent' -Name 'DisableTailoredExperiencesWithDiagnosticData' -Description 'Let Microsoft use your diagnostic data to show personalized tips, ads and recommendations'
             Set-RegistryValue -Path 'HKCU:\SOFTWARE\Policies\Microsoft\Windows\DataCollection' -Name 'DoNotShowFeedbackNotifications' -Type 'DWord' -Value 1 -Description 'Let Windows ask you to provide feedback on experiences in Windows'
             Set-RegistryValue -Path 'HKCU:\SOFTWARE\Policies\Microsoft\Windows\System' -Name 'PublishUserActivities' -Type 'DWord' -Value 0 -Description 'Allows you to jump back into what you were doing with apps, docs, or other activities on startup'
-            Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager' -Name 'SubscribedContent-353698Enabled' -Type 'DWord' -Value 0 -Description 'Shows suggestions in the Windows 10 Timeline feature'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\SearchSettings' -Name 'IsDeviceSearchHistoryEnabled' -Type 'DWord' -Value 0 -Description 'Improves search results by allowing Windows Search to store your search history locally on this device (Does not clear existing history)'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\SearchSettings' -Name 'IsDynamicSearchBoxEnabled' -Type 'DWord' -Value 0 -Description 'See content suggestions in search'
             Set-RegistryValue -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\SearchSettings' -Name 'IsMSACloudSearchEnabled' -Type 'DWord' -Value 0 -Description 'Allow Windows Search to show results from apps and services that you are signed in to with your Microsoft account'
