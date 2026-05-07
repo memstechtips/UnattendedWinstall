@@ -34,6 +34,3 @@ $RECYCLE.BIN/
 
 # Claude folder
 .claude/
-
-# Agent investigation working notes (regenerated; not source-of-truth)
-.agent-plans/
