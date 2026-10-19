@@ -2316,7 +2316,7 @@ Write-Host "Done. See $logFile for details."
         @{ S="0012ee47-9041-4b5d-9b77-535fba8b1442"; G="6738e2c4-e8a5-4a42-b16a-e040e769756e"; AC=0; DC=600; N="Specifies the period of inactivity before Windows turns off the hard disk" },
         @{ S="0d7dbae2-4294-402a-ba8e-26777e8488cd"; G="309dce9b-bef4-4119-9921-a851fb12f0f4"; AC=1; DC=1; N="Allow or prevent Windows from rotating through multiple wallpaper images" },
         @{ S="19cbb8fa-5279-450e-9fac-8a3d5fedd0c1"; G="12bbebe6-58d6-4636-95bb-3217ef867c1a"; AC=0; DC=2; N="Balance wireless network performance with battery life by adjusting adapter power usage" },
-        @{ S="238c9fa8-0aad-41ed-83f4-97be242c8f20"; G="29f6c1db-86da-48c5-9fdb-f2b67b1f44da"; AC=1; DC=1; N="Specifies the period of inactivity before Windows puts the computer to sleep" },
+        @{ S="238c9fa8-0aad-41ed-83f4-97be242c8f20"; G="29f6c1db-86da-48c5-9fdb-f2b67b1f44da"; AC=0; DC=900; N="Specifies the period of inactivity before Windows puts the computer to sleep" },
         @{ S="238c9fa8-0aad-41ed-83f4-97be242c8f20"; G="bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d"; AC=0; DC=0; N="Allow scheduled tasks and applications to wake your computer from sleep" },
         @{ S="238c9fa8-0aad-41ed-83f4-97be242c8f20"; G="9d7815a6-7ee4-497e-8888-515a05f02364"; AC=0; DC=0; N="Specifies the period of inactivity before Windows hibernates the computer" },
         @{ S="2a737441-1930-4402-8d77-b2bebba308a3"; G="0853a681-27c8-4100-a2fd-82013e970683"; AC=0; DC=1000; N="Set how long USB hubs wait idle before powering down to save energy" },
