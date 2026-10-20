@@ -31,10 +31,9 @@ If UnattendedWinstall has been useful to you, consider supporting the project, i
 
 ### Feedback and Community
 
-If you have feedback, suggestions, or need help with UnattendedWinstall, please feel free to join the discussion on GitHub or our Discord community:
+If you have feedback, suggestions, or need help with UnattendedWinstall, please feel free to join the discussion on GitHub:
 
 [![Join the Discussion](https://img.shields.io/badge/Join-the%20Discussion-2D9F2D?style=for-the-badge&logo=github&logoColor=white)](https://github.com/memstechtips/UnattendedWinstall/discussions)
-[![Join Discord Community](https://img.shields.io/badge/Join-Discord%20Community-5865F2?style=for-the-badge&logo=discord&logoColor=white)](https://www.discord.gg/zWGANV8QAX)
 
 ## Requirements
 

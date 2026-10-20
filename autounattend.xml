@@ -2312,32 +2312,32 @@ Write-Host "Done. See $logFile for details."
     Write-Log "Applying power settings..." "INFO"
 
     $settings = @(
-        @{ S="7516b95f-f776-4464-8c53-06167f40cc99"; G="3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e"; AC=0; DC=300; N="Specifies the period of inactivity before Windows turns off the display" },
+        @{ S="7516b95f-f776-4464-8c53-06167f40cc99"; G="3c0bc021-c8a8-4e07-a973-6b14cbcb2b7e"; AC=900; DC=300; N="Specifies the period of inactivity before Windows turns off the display" },
         @{ S="0012ee47-9041-4b5d-9b77-535fba8b1442"; G="6738e2c4-e8a5-4a42-b16a-e040e769756e"; AC=0; DC=600; N="Specifies the period of inactivity before Windows turns off the hard disk" },
-        @{ S="0d7dbae2-4294-402a-ba8e-26777e8488cd"; G="309dce9b-bef4-4119-9921-a851fb12f0f4"; AC=1; DC=1; N="Allow or prevent Windows from rotating through multiple wallpaper images" },
+        @{ S="0d7dbae2-4294-402a-ba8e-26777e8488cd"; G="309dce9b-bef4-4119-9921-a851fb12f0f4"; AC=0; DC=1; N="Allow or prevent Windows from rotating through multiple wallpaper images" },
         @{ S="19cbb8fa-5279-450e-9fac-8a3d5fedd0c1"; G="12bbebe6-58d6-4636-95bb-3217ef867c1a"; AC=0; DC=2; N="Balance wireless network performance with battery life by adjusting adapter power usage" },
-        @{ S="238c9fa8-0aad-41ed-83f4-97be242c8f20"; G="29f6c1db-86da-48c5-9fdb-f2b67b1f44da"; AC=1; DC=1; N="Specifies the period of inactivity before Windows puts the computer to sleep" },
-        @{ S="238c9fa8-0aad-41ed-83f4-97be242c8f20"; G="bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d"; AC=0; DC=0; N="Allow scheduled tasks and applications to wake your computer from sleep" },
+        @{ S="238c9fa8-0aad-41ed-83f4-97be242c8f20"; G="29f6c1db-86da-48c5-9fdb-f2b67b1f44da"; AC=0; DC=900; N="Specifies the period of inactivity before Windows puts the computer to sleep" },
+        @{ S="238c9fa8-0aad-41ed-83f4-97be242c8f20"; G="bd3b718a-0680-4d9d-8ab2-e1d2b4ac806d"; AC=1; DC=0; N="Allow scheduled tasks and applications to wake your computer from sleep" },
         @{ S="238c9fa8-0aad-41ed-83f4-97be242c8f20"; G="9d7815a6-7ee4-497e-8888-515a05f02364"; AC=0; DC=0; N="Specifies the period of inactivity before Windows hibernates the computer" },
-        @{ S="2a737441-1930-4402-8d77-b2bebba308a3"; G="0853a681-27c8-4100-a2fd-82013e970683"; AC=0; DC=1000; N="Set how long USB hubs wait idle before powering down to save energy" },
+        @{ S="2a737441-1930-4402-8d77-b2bebba308a3"; G="0853a681-27c8-4100-a2fd-82013e970683"; AC=50; DC=50; N="Set how long USB hubs wait idle before powering down to save energy" },
         @{ S="2a737441-1930-4402-8d77-b2bebba308a3"; G="48e6b7a6-50f5-4782-a5d4-53bb8f07e226"; AC=0; DC=1; N="Allow Windows to power down individual USB ports when devices are idle to save energy" },
         @{ S="2a737441-1930-4402-8d77-b2bebba308a3"; G="d4e98f31-5ffe-4ce1-be31-1b38b384c009"; AC=0; DC=2; N="Control how aggressively USB 3.0 ports enter low-power states when devices are idle" },
-        @{ S="4f971e89-eebd-4455-a8de-9e59040e7347"; G="7648efa3-dd9c-4e3e-b566-50f929386280"; AC=0; DC=0; N="Choose what happens when you press the physical power button on your computer" },
-        @{ S="4f971e89-eebd-4455-a8de-9e59040e7347"; G="96996bc0-ad50-47ec-923b-6f41874dd9eb"; AC=0; DC=0; N="Choose what happens when you press the dedicated sleep button on your keyboard or computer" },
+        @{ S="4f971e89-eebd-4455-a8de-9e59040e7347"; G="7648efa3-dd9c-4e3e-b566-50f929386280"; AC=3; DC=3; N="Choose what happens when you press the physical power button on your computer" },
+        @{ S="4f971e89-eebd-4455-a8de-9e59040e7347"; G="96996bc0-ad50-47ec-923b-6f41874dd9eb"; AC=1; DC=1; N="Choose what happens when you press the dedicated sleep button on your keyboard or computer" },
         @{ S="501a4d13-42af-4429-9fd1-a8218c268e20"; G="ee12f906-d277-404b-b6da-e5fa1a576df5"; AC=0; DC=2; N="Control power savings for PCIe devices like graphics cards, SSDs, and expansion cards" },
         @{ S="54533251-82be-4824-96c1-47b60b740d00"; G="893dee8e-2bef-41e0-89c6-b55d0929964c"; AC=100; DC=5; N="Set the lowest CPU speed allowed as a percentage of maximum frequency" },
         @{ S="54533251-82be-4824-96c1-47b60b740d00"; G="bc5038f7-23e0-4960-96da-33abaf5935ec"; AC=100; DC=100; N="Set the highest CPU speed allowed as a percentage of maximum frequency" },
-        @{ S="54533251-82be-4824-96c1-47b60b740d00"; G="94d3a615-a899-4ac5-ae2b-e4d8f634367f"; AC=1; DC=1; N="Choose whether to slow down the processor first (passive) or speed up fans first (active) when hot" },
-        @{ S="54533251-82be-4824-96c1-47b60b740d00"; G="be337238-0d82-4146-a960-4f3749d470c7"; AC=2; DC=1; N="Control how aggressively your CPU boosts above base frequency for demanding tasks" },
+        @{ S="54533251-82be-4824-96c1-47b60b740d00"; G="94d3a615-a899-4ac5-ae2b-e4d8f634367f"; AC=1; DC=0; N="Choose whether to slow down the processor first (passive) or speed up fans first (active) when hot" },
+        @{ S="54533251-82be-4824-96c1-47b60b740d00"; G="be337238-0d82-4146-a960-4f3749d470c7"; AC=2; DC=2; N="Control how aggressively your CPU boosts above base frequency for demanding tasks" },
         @{ S="54533251-82be-4824-96c1-47b60b740d00"; G="465e1f50-b610-473a-ab58-00d1077dc418"; AC=2; DC=0; N="Control how quickly CPU ramps up speed when workload increases (for legacy non-HWP processors)" },
-        @{ S="54533251-82be-4824-96c1-47b60b740d00"; G="40fbefc7-2e9d-4d25-a185-0cfd8574bac6"; AC=1; DC=2; N="Control how quickly CPU reduces speed when workload decreases (for legacy non-HWP processors)" },
+        @{ S="54533251-82be-4824-96c1-47b60b740d00"; G="40fbefc7-2e9d-4d25-a185-0cfd8574bac6"; AC=1; DC=0; N="Control how quickly CPU reduces speed when workload decreases (for legacy non-HWP processors)" },
         @{ S="54533251-82be-4824-96c1-47b60b740d00"; G="ea062031-0e34-4ff1-9b6d-eb1059334028"; AC=100; DC=100; N="Set the maximum percentage of CPU cores allowed to be active (100% for best performance)" },
         @{ S="54533251-82be-4824-96c1-47b60b740d00"; G="36687f9e-e3a5-4dbf-b1dc-15eb381c6863"; AC=0; DC=50; N="Balance power efficiency and performance for modern CPUs with HWP (0 = max performance, 100 = max efficiency)" },
-        @{ S="54533251-82be-4824-96c1-47b60b740d00"; G="06cadf0e-64ed-448a-8927-ce7bf90eb35d"; AC=10; DC=30; N="Set CPU usage percentage that triggers speed increase (lower = more responsive, for legacy non-HWP CPUs)" },
-        @{ S="54533251-82be-4824-96c1-47b60b740d00"; G="12a0ab44-fe28-4fa9-b3bd-4b64f44960a6"; AC=8; DC=20; N="Set CPU usage percentage that triggers speed reduction (lower = maintains performance longer, for legacy non-HWP CPUs)" },
-        @{ S="9596fb26-9850-41fd-ac3e-f7c3c00afd4b"; G="03680956-93bc-4294-bba6-4e0f09bb717f"; AC=1; DC=1; N="Control whether your PC can sleep while streaming media to other devices on your network" },
-        @{ S="9596fb26-9850-41fd-ac3e-f7c3c00afd4b"; G="10778347-1370-4ee0-8bbd-33bdacaade49"; AC=1; DC=1; N="Prioritize smooth video playback over battery life when watching videos" },
-        @{ S="9596fb26-9850-41fd-ac3e-f7c3c00afd4b"; G="34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4"; AC=0; DC=0; N="Balance video quality and power consumption during video playback" },
+        @{ S="54533251-82be-4824-96c1-47b60b740d00"; G="06cadf0e-64ed-448a-8927-ce7bf90eb35d"; AC=30; DC=90; N="Set CPU usage percentage that triggers speed increase (lower = more responsive, for legacy non-HWP CPUs)" },
+        @{ S="54533251-82be-4824-96c1-47b60b740d00"; G="12a0ab44-fe28-4fa9-b3bd-4b64f44960a6"; AC=10; DC=30; N="Set CPU usage percentage that triggers speed reduction (lower = maintains performance longer, for legacy non-HWP CPUs)" },
+        @{ S="9596fb26-9850-41fd-ac3e-f7c3c00afd4b"; G="03680956-93bc-4294-bba6-4e0f09bb717f"; AC=1; DC=0; N="Control whether your PC can sleep while streaming media to other devices on your network" },
+        @{ S="9596fb26-9850-41fd-ac3e-f7c3c00afd4b"; G="10778347-1370-4ee0-8bbd-33bdacaade49"; AC=1; DC=0; N="Prioritize smooth video playback over battery life when watching videos" },
+        @{ S="9596fb26-9850-41fd-ac3e-f7c3c00afd4b"; G="34c7b99f-9a6d-4b3c-8dc7-b6693b78cef4"; AC=0; DC=1; N="Balance video quality and power consumption during video playback" },
         @{ S="c763b4ec-0e50-4b6b-9bed-2b92a6ee884e"; G="7ec1751b-60ed-4588-afb5-9819d3d77d90"; AC=3; DC=1; N="Balance AMD laptop performance and battery life with quick power mode selection" }
     )
 
@@ -2402,7 +2402,7 @@ Write-Host "Done. See $logFile for details."
     Set-RegistryValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\SysMain' -Name 'Start' -Type 'DWord' -Value 4 -Description 'Preload frequently used applications into RAM for faster launch times. Automatic is recommended for HDDs, Manual or Disabled is preferred for SSDs'
     Set-RegistryValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Control\Session Manager\Memory Management\PrefetchParameters' -Name 'EnablePrefetcher' -Type 'DWord' -Value 3 -Description 'Preload frequently used applications and boot files into memory to speed up launches. Generally recommended for HDDs not SSDs'
     Set-RegistryValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\WSearch' -Name 'Start' -Type 'DWord' -Value 3 -Description 'Indexes files and folders for faster search results. Disabling reduces background CPU and disk activity but makes Windows Search slower'
-    Set-RegistryValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Spooler' -Name 'Start' -Type 'DWord' -Value 3 -Description 'Manages print jobs sent to printers. If you do not use a printer, set to Manual or Disabled to free up system resources'
+    Set-RegistryValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\Spooler' -Name 'Start' -Type 'DWord' -Value 2 -Description 'Manages print jobs sent to printers. If you do not use a printer, set to Manual or Disabled to free up system resources'
     Set-RegistryValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\DiagTrack' -Name 'Start' -Type 'DWord' -Value 3 -Description 'Sends usage data and diagnostics to Microsoft. Setting to Manual or Disabled reduces background network and CPU usage'
     Set-RegistryValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\PcaSvc' -Name 'Start' -Type 'DWord' -Value 3 -Description 'Monitors programs for compatibility issues and suggests fixes. Disabling prevents compatibility prompts and saves minor system resources'
     Set-RegistryValue -Path 'HKLM:\SYSTEM\CurrentControlSet\Services\WerSvc' -Name 'Start' -Type 'DWord' -Value 3 -Description 'Collects and sends crash data to Microsoft. Disabling prevents crash reporting, reduces network traffic, and improves privacy with minimal system impact'
@@ -2623,6 +2623,7 @@ Windows Registry Editor Version 5.00
         Write-Log "Applying Windows 11 clean Start Menu layout" "INFO"
         try {
             Set-RegistryValue -Path 'HKLM:\SOFTWARE\Microsoft\PolicyManager\current\device\Start' -Name 'ConfigureStartPins' -Type 'String' -Value '{"pinnedList":[]}' -Description 'Clean Start Menu'
+            Set-RegistryValue -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Explorer' -Name 'ConfigureStartPins' -Type 'String' -Value '{"pinnedList":[]}' -Description 'Clean Start Menu (policy key, needed on newer Windows 11 builds)'
             Write-Log "Windows 11 Start Menu layout applied successfully" "SUCCESS"
         } catch {
             Write-Log "Failed to apply Windows 11 Start Menu layout: $($_.Exception.Message)" "ERROR"
